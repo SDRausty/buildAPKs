@@ -1,0 +1,1 @@
+The origina image of the moon has been taken from Wikipedia (http://upload.wikimedia.org/wikipedia/commons/9/91/Eclipse070304.JPG) where it was available from the user Knuwu under Public Domain license. Further edits have been made by akklet development team, making derived work GPLv3 licensed, same as the rest of the project.

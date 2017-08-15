@@ -1,0 +1,1 @@
+../scripts/build/buildTop10.sh

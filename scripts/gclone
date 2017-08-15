@@ -1,0 +1,52 @@
+#!/data/data/com.termux/files/usr/bin/sh 
+#
+# Copyright 2017 (c) all rights reserved 
+# by S D Rausty https://sdrausty.github.io
+#####################################################################
+git clone
+git clone https://android.googlesource.com/platform/frameworks/support.git
+git clone https://android.googlesource.com/platform/development.git
+git clone https://android.googlesource.com/platform/frameworks/base.git
+git clone https://github.com/Eco80/dudo
+git clone https://github.com/MiCode/Compass
+git clone https://github.com/andviane/moon
+git clone https://github.com/andviane/prism
+git clone https://github.com/beide/Bomber-for-android
+git clone https://github.com/beide/Droidgain
+git clone https://github.com/bvalosek/cpuspy
+git clone https://github.com/chelovek84/mBrowser
+git clone https://github.com/commonsguy/cw-android
+git clone https://github.com/gwhiteside/abstract-art
+git clone https://github.com/jarofgreen/Just-A-Damn-Compass
+git clone https://github.com/jguepin/Manpages
+git clone https://github.com/johanhil/ddg-android
+git clone https://github.com/lucas-tulio/decimal-clock-widget
+git clone https://github.com/lucas-tulio/unix-time-clock-widget
+git clone https://github.com/mobilepearls/com.mobilepearls.flashlight
+git clone https://github.com/mobilepearls/com.mobilepearls.memory
+git clone https://github.com/mobilepearls/com.mobilepearls.react
+git clone https://github.com/nexes/Android-File-Manager
+git clone https://github.com/onyxbits/sensorreadout
+git clone https://github.com/repat/mosf
+git clone https://github.com/rorist/Cowsay-android
+git clone https://github.com/rorist/android-alarm-button
+git clone https://github.com/rrelmy/BatteryLevel
+git clone https://github.com/scoutant/BluetoothChatMulti
+git clone https://github.com/ssaurel/android-clock-livewallpaper
+git clone https://github.com/tobykurien/GoogleApps
+wget https://f-droid.org/repo/de.hechler.andfish_21_src.tar.gz
+tar xf de.hechler.andfish_21_src.tar.gz
+mv de.hechler.andfish_21_src.tar.gz andFish
+wget https://f-droid.org/repo/kdk.android.simplydo_1_src.tar.gz
+tar xfv kdk.android.simplydo_1_src.tar.gz
+mv kdk.android.simplydo_1_src simplyDo
+wget https://f-droid.org/repo/com.mobilepearls.sokoban_14_src.tar.gz
+tar xfv com.mobilepearls.sokoban_14_src.tar.gz
+mv com.mobilepearls.sokoban_14_src.tar.gz com.mobilepearls.sokoban_14_src
+wget https://f-droid.org/repo/ru.o2genum.coregame_3_src.tar.gz
+tar xf ru.o2genum.coregame_3_src.tar.gz
+mv ru.o2genum.coregame_3_src.tar.gz coreGame
+wget https://f-droid.org/repo/org.scoutant.cc_1_src.tar.gz
+tar xf org.scoutant.cc_1_src.tar.gz
+mv org.scoutant.cc_1_src ChineseCheckers
+git clone https://github.com/4544fa8d/AndroTermux

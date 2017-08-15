@@ -1,0 +1,45 @@
+[submodule "sources/liveWallpapers"]
+	path = sources/liveWallpapers
+	url = https://github.com/sdrausty/buildAPKsLiveWallpapers
+[submodule "sources/tutorials"]
+	path = sources/tutorials
+	url = https://github.com/sdrausty/buildAPKsTutorials
+[submodule "sources/widgets"]
+	path = sources/widgets
+	url = https://github.com/sdrausty/buildAPKsWidgets
+[submodule "sources/apps"]
+	path = sources/apps
+	url = https://github.com/sdrausty/buildAPKsApps
+[submodule "sources/top10APKs"]
+	path = sources/top10APKs
+	url = https://github.com/sdrausty/buildTop10APKs
+[submodule "sources/cApps"]
+	path = sources/cApps
+	url = https://github.com/sdrausty/buildAPKsClassifiedApps
+[submodule "sources/browsers"]
+	path = sources/browsers
+	url = https://github.com/sdrausty/buildAPKsBrowsers
+[submodule "sources/clocks"]
+	path = sources/clocks
+	url = https://github.com/sdrausty/buildAPKsClocks
+[submodule "sources/compasses"]
+	path = sources/compasses
+	url = https://github.com/sdrausty/buildAPKsCompasses
+[submodule "sources/flashlights"]
+	path = sources/flashlights
+	url = https://github.com/sdrausty/buildAPKsFlashlights
+[submodule "sources/games"]
+	path = sources/games
+	url = https://github.com/sdrausty/buildAPKsGames
+[submodule "sources/top10"]
+	path = sources/top10
+	url = https://github.com/sdrausty/buildAPKsTop10
+[submodule "sources/amusements"]
+	path = sources/amusements
+	url = https://github.com/sdrausty/buildAPKsAmusements
+[submodule "sources/samples"]
+	path = sources/samples
+	url = https://github.com/sdrausty/buildAPKsSamples
+[submodule "sources/tools"]
+	path = sources/tools
+	url = https://github.com/sdrausty/buildAPKsDevTools
