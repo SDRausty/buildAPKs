@@ -11,11 +11,11 @@ git clone https://github.com/sdrausty/buildAPKs
 
 After you're done installing your first APK from the downloads directory (File Manager > Download (Tap step2.apk with your finger)); You can try to build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
 
-Prefix these bash scripts by typing dot slash name `./` in the [sources](https://github.com/sdrausty/buildAPKs/tree/master/sources) directory on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). Then add a capitol `A`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
+Prefix these bash scripts by typing dot slash name `./` in the [sources](https://github.com/sdrausty/buildAPKs/tree/master/sources) directory on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should add `uild`; Then add a capitol `A`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
 
 Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet. Have fun and enjoy compiling and running these select APKs!
 
-Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, f-droid or others to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android.](https://source.android.com/)
+Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, f-droid or others to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android](https://source.android.com/) and [Github.](https://github.com)
 
 Enjoy building these select APKs for Termux [projects,](https://github.com/sdrausty/buildAPKs/tree/master/sources) and please find the time to post your feelings [here,](https://github.com/sdrausty/buildAPKs/issues) or [at this wiki.](https://github.com/sdrausty/buildAPKs/wiki
 )
