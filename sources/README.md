@@ -4,7 +4,7 @@ Thank you for installing buildAPKs. You can try to build hundreds of other excit
 
 Prefix these bash scripts by typing dot slash `./` on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A`, the a small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
 
-Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet. Have fun and enjoy compiling and running these select APKs!
+`./buildAll.sh` can be used in subdirectories to build one or more APKs, i.e. `cd moon && ../buildAll.sh` will build one APK. Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
 
 Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, f-droid or others to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android](https://source.android.com/) and [Github.](https://github.com)
 
