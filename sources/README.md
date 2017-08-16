@@ -2,7 +2,7 @@
 
 Thank you for installing buildAPKs. You can try to build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from this directory.
 
-Prefix these bash scripts by typing dot slash `./` on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A`, the a small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
+Prefix these bash scripts by typing dot slash `./` on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A`, then a small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
 
 `./buildAll.sh` can be used in subdirectories to build one or more APKs, i.e. `cd moon && ../buildAll.sh` will build one APK. Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
 
