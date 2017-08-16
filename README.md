@@ -14,5 +14,4 @@ Have you ever wanted to build your own application? Something that you can distr
 
 [BuildAPKs](https://github.com/sdrausty/buildAPKs) is a repository of source code designed just for this purpose. Source code is the way programs are written in a human understandable language for applications to compile and then to be run on an Android device. These programs have been tested and were built successfully on device, a smartphone. First successful builds on Sun May 28 2017 in [Termux](https://termux.com/) (Android 6.0.1 aarch64).
 
-See https://sdrausty.github.io/buildAPKs/reallyEasilyBuildAndroidAPKsOnDevice for quick setup instructions or https://sdrausty.github.io/buildAPKs for the website for this project.
-
+See https://sdrausty.github.io/buildAPKs/reallyEasilyBuildAndroidAPKsOnDevice for quick setup instructions or https://sdrausty.github.io/buildAPKs for the website for this project. These documents are also located on the [`./docs`](./docs) subdirectory.
