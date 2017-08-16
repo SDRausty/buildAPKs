@@ -5,6 +5,8 @@
 cd $HOME/buildAPKs
 echo Updating buildAPKs.
 git pull
+echo Loading sources from 3 repositories.
+sleep 2
 git submodule update --init ./sources/clocks
 git submodule update --init ./sources/liveWallpapers
 git submodule update --init ./sources/widgets
