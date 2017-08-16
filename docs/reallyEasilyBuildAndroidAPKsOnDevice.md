@@ -9,7 +9,7 @@ git clone https://github.com/sdrausty/buildAPKs
 
 ```
 
-After you're done installing your first APK from the downloads directory (File Manager > Download (Tap step2.apk with your finger)); You can try to build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
+After you're done installing your first APK from the downloads directory (File Manager > Download (**Tap step2.apk with your finger to install**)); You can build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
 
 Prefix these bash scripts by typing dot slash `./` in the [sources](https://github.com/sdrausty/buildAPKs/tree/master/sources) directory on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A` and small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
 
