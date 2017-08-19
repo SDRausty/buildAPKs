@@ -56,8 +56,8 @@ cd ..
 echo "Making it accessible to the outside world."
 chmod 644 step2.apk
 
-echo "Our Step2 app is ready to go."
-cp step2.apk /sdcard/Download/
-echo "step2.apk copied to /sdcard/Download/"
-echo "Our step2.apk is ready to be installed."
-echo "Install step2.apk from /sdcard/Download/ using your file manager from Android."
+echo "Our moon app is ready to go."
+cp step2.apk /sdcard/Download/moon.apk
+echo "moon.apk copied to /sdcard/Download/moon.apk"
+echo "Our moon.apk is ready to be installed."
+echo "Install moon.apk from /sdcard/Download/ using your file manager from Android."
