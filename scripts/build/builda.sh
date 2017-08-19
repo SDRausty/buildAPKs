@@ -49,7 +49,7 @@ echo "Adding the classes.dex to the apk."
 cd bin
 aapt add -f step2.apk classes.dex
 
-echo "Signing the apk."
+echo "Signing the the apk."
 apksigner ../step2-debug.key step2.apk ../step2.apk
 
 cd ..
@@ -58,6 +58,6 @@ chmod 644 step2.apk
 
 echo "Our moon app is ready to go."
 cp step2.apk /sdcard/Download/moon.apk
-echo "moon.apk copied to /sdcard/Download/moon.apk"
-echo "Our moon.apk is ready to be installed."
+echo "Your moon.apk was copied to /sdcard/Download/moon.apk"
+echo "It is ready to be installed."
 echo "Install moon.apk from /sdcard/Download/ using your file manager from Android."
