@@ -1,1 +1,0 @@
-easilyBuildAndroidAPKsOnDevice.md
