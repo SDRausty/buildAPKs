@@ -4,9 +4,7 @@ Have you ever wanted to build your own Android application on device? Your own a
 
 Some of these showcased apps are quite complex. Others are very entertaining. While others still are very simple, mere fragments of apps that are complete in themselves. Instructions are located at [this page.](https://sdrausty.github.io/buildAPKs/) More scripts should be written to build Android apps on device. Alternative scripts automating the entire process like `./gradlew`, but much simpler can be found at [this page.](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build/) We should really leave the age of whirling fans and disk drives behind:  
 
-Install [Termux.](https://termux.com/)
-
-Run the following commands in [Termux;](https://termux.com/) Hint copyNpaste the following four lines into Termux. Run each of the following command lines separately. Running them all at once may generate errors. 
+Install [Termux](https://termux.com/) on Android. Copy and paste each of the following commands separately into [Termux.](https://termux.com/) Run each of the following command lines separately. Running them all at once may generate errors. 
 
 ```
 pkg up

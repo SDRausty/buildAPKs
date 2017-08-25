@@ -1,6 +1,6 @@
 ### Really Easily Build an Android APK on an Android Device (Smartphone or Tablet).
 
-Install [Termux](https://termux.com/) on Android. Copy and paste the following into [Termux.](https://termux.com/) Run each of the following command lines separately. Running them all at once may generate errors. 
+Install [Termux](https://termux.com/) on Android. Copy and paste each of the following commands separately into [Termux.](https://termux.com/) Run each of the following command lines separately. Running them all at once may generate errors. 
 
 ```
 pkg up
