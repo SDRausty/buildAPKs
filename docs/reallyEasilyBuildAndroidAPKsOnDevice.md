@@ -3,9 +3,9 @@
 Install [Termux](https://termux.com/) on Android. Copy and paste the following into [Termux.](https://termux.com/) Run each of the following command lines separately, as running them all at once may generate erounius errors. 
 
 ```
-cd && pkg up
+pkg up
 apt install aapt apksigner dx ecj findutils git
-git clone https://github.com/sdrausty/buildAPKs
+cd && git clone https://github.com/sdrausty/buildAPKs
 ./buildAPKs/scripts/build/buildMyFirstAPK.sh
 
 ```
