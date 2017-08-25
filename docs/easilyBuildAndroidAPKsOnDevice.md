@@ -9,7 +9,7 @@ Install [Termux.](https://termux.com/)
 Run the following commands in [Termux;](https://termux.com/) Hint copyNpaste the following four lines into Termux. Run each of the following command lines separately, as running them all at once may generate erounius errors. 
 
 ```
-cd && apt update && apt upgrade
+cd && pkg up
 apt install aapt apksigner dx ecj findutils git 
 git clone https://github.com/sdrausty/buildAPKs
 ./buildAPKs/scripts/build/buildMyFirstAPK.sh
