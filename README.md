@@ -4,7 +4,7 @@ buildAPKs
 
 This project contains [source code](./sources) and [scripts](./scripts/build) to build APKs (Android Package Kits) on the [Termux](https://termux.com/) Android application. Quick setup instructions can be found at https://sdrausty.github.io/buildAPKs/setup
 
-**Cloning and updating [submodules](https://gist.github.com/gitaarik/8735255) is automated into the [build\*.sh scripts.](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) Please use `git pull` to update buildAPKs to its' newest version.** 
+**Cloning and updating [submodules](https://gist.github.com/gitaarik/8735255) is automated into the [build\*.sh scripts.](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) Please use `git pull` to update buildAPKs to its' newest version.** If you recieve an error message from `git pull`, the simplest solution is `mv ~/buildAPKs ~/b0` and then reclone into $HOME please.  
 
 Build Android APKs on device (smartphone or tablet).
 ===========================================
