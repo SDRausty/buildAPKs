@@ -6,7 +6,7 @@ Some of these showcased apps are quite complex. Others are very entertaining. Wh
 
 Install [Termux.](https://termux.com/)
 
-Run the following commands in [Termux;](https://termux.com/) Hint copyNpaste the following four lines into Termux. Run each of the following command lines separately, as running them all at once may generate erounius errors. 
+Run the following commands in [Termux;](https://termux.com/) Hint copyNpaste the following four lines into Termux. Run each of the following command lines separately, as running them all at once may generate errors. 
 
 ```
 pkg up
