@@ -10,9 +10,17 @@ cd && git clone https://github.com/sdrausty/buildAPKs
 
 ```
 
-After you're done installing your first APK from the downloads directory (File Manager > Download (**Tap step2.apk with your finger to install**)); You can build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
+This may take some time dependent on system speed and configuration for these command-line commands to complete. This means packages will probably be installed in [Termux.](https://termux.com/) and then one of the packages, `git` will fetch the buildAPKs repository, and then the last command. While it should be fairly self-explanatory, it builds one of the APKs in the showcase and places it in the Downloads folder using the tools that we have at our disposal today, in [Termux,](https://termux.com/) on-the-fly. Upon completion, output as follows will print onto the screen:
 
-Prefix these bash scripts by typing dot slash `./` in the [sources](https://github.com/sdrausty/buildAPKs/tree/master/sources) directory on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A` and small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/`.
+
+```
+It is ready to be installed.
+Install moon.apk from /sdcard/Download/ using your file manager from Android.
+```
+
+After you're done installing your first APK from the downloads directory (File Manager > Download (**Tap moon.apk with your finger to install**)); You can build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
+
+Prefix these bash scripts by typing dot slash `./` in the [sources](https://github.com/sdrausty/buildAPKs/tree/master/sources) directory on your Android smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). The prompt should magically add `uild`; Then add a capitol `A` and small `l`. Press TAB TAB (x2) again. This should build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/` and watch as hundreds of APKs build on device..
 
 Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
 
