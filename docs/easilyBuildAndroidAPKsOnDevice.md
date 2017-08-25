@@ -10,7 +10,7 @@ Run the following commands in [Termux;](https://termux.com/) Hint copyNpaste the
 
 ```
 pkg up
-apt install aapt apksigner dx ecj findutils git 
+pkg install aapt apksigner dx ecj findutils git 
 cd && git clone https://github.com/sdrausty/buildAPKs
 ./buildAPKs/scripts/build/buildMyFirstAPK.sh
 

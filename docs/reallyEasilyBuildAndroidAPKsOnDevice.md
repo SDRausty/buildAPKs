@@ -4,7 +4,7 @@ Install [Termux](https://termux.com/) on Android. Copy and paste the following i
 
 ```
 pkg up
-apt install aapt apksigner dx ecj findutils git
+pkg install aapt apksigner dx ecj findutils git
 cd && git clone https://github.com/sdrausty/buildAPKs
 ./buildAPKs/scripts/build/buildMyFirstAPK.sh
 
