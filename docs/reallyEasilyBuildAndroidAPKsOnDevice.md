@@ -33,7 +33,7 @@ The prompt should magically add `uild`; Then add a capitol `A` and small `l`. Pr
 
 Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
 
-Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, F-Droid or others to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android](https://source.android.com/) and [Github.](https://github.com)
+Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, F-Droid or other APK download sites to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android](https://source.android.com/) and [Github.](https://github.com)
 
 Enjoy building these select APKs for Termux [projects,](https://github.com/sdrausty/buildAPKs/tree/master/sources) and please find the time to post your feelings [here,](https://github.com/sdrausty/buildAPKs/issues) or [at this wiki.](https://github.com/sdrausty/buildAPKs/wiki
 )
