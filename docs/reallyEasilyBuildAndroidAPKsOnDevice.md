@@ -12,7 +12,7 @@ cd && git clone https://github.com/sdrausty/buildAPKs
 
 It may take some time, dependent on system speed and configuration, for these command-line commands to complete. This means packages will probably be installed in [Termux.](https://termux.com/) 
 
-Then one of the programs from the git package, in particular, `git` will fetch the buildAPKs repository from [Github,](https://github.com) and then the last command. While it should be fairly self-explanatory; It builds one of the APKs in the showcase, and places it in the Downloads folder using the tools that we have at our disposal today, in [Termux,](https://termux.com/) on-the-fly!
+Then one of the programs from the git package, in particular `git` will fetch the buildAPKs repository from [Github,](https://github.com) and then the last command. While it should be fairly self-explanatory; It builds one of the APKs in the showcase, and places it in the Downloads folder using the tools that we have at our disposal today, in [Termux,](https://termux.com/) on-the-fly!
 
 Upon completion, output as follows will print onto the screen:
 
