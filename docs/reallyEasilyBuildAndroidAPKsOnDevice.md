@@ -18,9 +18,6 @@ Upon completion, output as follows will print onto the screen:
 
 
 ```
-.
-.
-.
 Your moon.apk was copied to /sdcard/Download/moon.apk
 It is ready to be installed.
 Install moon.apk from /sdcard/Download/ using your file manager from Android.
