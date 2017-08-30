@@ -27,7 +27,7 @@ Install moon.apk from /sdcard/Download/ using your file manager from Android.
 
 After you're done installing your first APK from the downloads directory (File Manager > Download (**Tap moon.apk with your finger to install**)). You can build hundreds of other exciting, amazing and beautiful APKs by running [shell scripts](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) from the [sources directory.](https://github.com/sdrausty/buildAPKs/tree/master/sources)
 
-These [shell scripts](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) will download the necessary components from [Github,](https://github.com) build them on device. Then, these [shell scripts](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) will deposit your built APKs into `/sdcard/Download/builtAPKs` on your device (smartphone or tablet). Presto! Like magic!
+These [shell scripts](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) will download the necessary components from [Github,](https://github.com) build them on device. Then, these [shell scripts](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) will deposit your built APKs into `/sdcard/Download/builtAPKs` on your device (smartphone or tablet). Like magic! Presto! 
 
 Prefix these bash scripts by typing dot slash `./` in the [sources directory](https://github.com/sdrausty/buildAPKs/tree/master/sources)  on your smartphone or tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2). 
 
