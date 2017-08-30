@@ -2,7 +2,7 @@ buildAPKs
 ===============
 [![Join the chat at https://gitter.im/termux/termux](https://badges.gitter.im/termux/termux.svg)](https://gitter.im/termux/termux)
 
-This project contains [source code](./sources) and [scripts](./scripts/build) to build APKs (Android Package Kits) on the [Termux](https://termux.com/) Android application. Quick setup instructions can be found at https://sdrausty.github.io/buildAPKs/setup
+This project contains [source code](./sources) and [scripts](./scripts/build) to build APKs (Android Package Kits) on the [Termux](https://termux.com/) Android application. Quick setup instructions can be found at https://sdrausty.github.io/buildAPKs/setup and https://sdrausty.github.io/buildAPKs/reallyEasilyBuildAndroidAPKsOnDevice
 
 **Cloning and updating [submodules](https://gist.github.com/gitaarik/8735255) is automated into the [build\*.sh scripts.](https://github.com/sdrausty/buildAPKs/tree/master/scripts/build) Please use `git pull` to update buildAPKs to its' newest version.** If you recieve an error message from `git pull`, the simplest solution is `mv ~/buildAPKs ~/b0` and then reclone into $HOME please.  
 
