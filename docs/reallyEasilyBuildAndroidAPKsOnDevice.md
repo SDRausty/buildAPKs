@@ -33,7 +33,7 @@ Prefix these bash scripts by typing dot slash `./` in the [sources directory](ht
 
 The prompt should magically add `uild`; Then add a capitol `A` and small `l`. Press TAB TAB (x2) again. This will build the following command on the command line `./buildAll.sh` for you. Press enter (return) in `~/buildAPKs/sources/` and watch as hundreds of APKs build on device...
 
-Your built APKs will be deposited into /sdcard/Download/builtAPKs for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
+Your built APKs will be deposited into `/sdcard/Download/builtAPKs` for installing onto your smartphone or tablet through your file manager. Have fun and enjoy compiling and running these select APKs!
 
 Please contribute to this project through either [the issues page](https://github.com/sdrausty/buildAPKs/issues) or [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you don't need Google Play, F-Droid or other APK download sites to enjoy wonderfully working APKs on your smartphone and tablet; Thanks to [Termux](./pages/asac) and [Github.](https://github.com)
 
