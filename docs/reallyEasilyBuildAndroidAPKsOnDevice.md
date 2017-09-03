@@ -2,7 +2,7 @@
 
 Install [Termux](https://termux.com/) on Android. Copy and paste each of the following commands separately into [Termux.](https://termux.com/) 
 
-Run each of the following command lines separately. Running them all at once may generate errors. 
+Run each of the following command lines separately. Running them all at once may generate errors; Hint, copy and paste the following: 
 
 ```
 pkg up
