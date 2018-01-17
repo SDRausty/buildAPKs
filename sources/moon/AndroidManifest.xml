@@ -5,8 +5,8 @@
     android:versionName="1.2" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="27" />
 
     <application
         android:allowBackup="true"
