@@ -5,7 +5,4 @@
 find .  -name AndroidManifest.xml \
 	-exec cat {} \; | grep minSdkVersion
 find .  -name AndroidManifest.xml \
-	-exec cat {} \; | grep minSdkVersion
-	#-execdir sed -i '/minSdkVersion/c\\tandroid\:minSdkVersion\=\"14\"' {} \;
-        #android:targetSdkVersion="27" />
-	#-execdir /buildAPKs/scripts/build/buildOne.sh {} \;
+	-exec cat {} \; | grep targetSdkVersion
