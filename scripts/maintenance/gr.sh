@@ -10,4 +10,4 @@ git init
 git add .
 git commit -m "$(sn.sh)"
 cp ~/saved_git_config .git/config
-git push --force origin master
+#git push --force origin master
