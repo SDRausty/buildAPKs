@@ -1,0 +1,1 @@
+../scripts/build/buildGames.sh
