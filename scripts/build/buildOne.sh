@@ -88,7 +88,7 @@ printf "\e[1;38;5;149m%s\n\e[1;38;5;113m%s\n\e[0m" "ecj: done" "dx: begun"
 dx --dex --output=./bin/classes.dex ./obj
 printf "\e[1;38;5;148m%s\n\e[1;38;5;112m%s\n\e[0m" "dx: done" "Making the apk."
 aapt package -f \
-	--min-sdk-version 13 \
+	--min-sdk-version 1 \
 	--target-sdk-version 23 \
 	-M ./AndroidManifest.xml \
 	-S ./res \
