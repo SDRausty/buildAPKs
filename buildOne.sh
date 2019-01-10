@@ -73,6 +73,8 @@ printf "\e[1;38;5;148m%s\n\e[1;38;5;114m%s\n\e[0m" "aapt: done" "ecj: begun"
 if [ -d "$TMPDIR"/buildAPKsLibs ]
 then
 	ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs -sourcepath . "$(find . -type f -name "*.java")"
+elif [ -d "$TMPDIR"/buildAPKsLibs ] && [ -d "$WDR"/libs ]
+	ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs:"$WDR"/libs -sourcepath . "$(find . -type f -name "*.java")"
 else
 	ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
 fi
