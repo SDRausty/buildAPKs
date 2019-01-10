@@ -63,9 +63,8 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\n\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-
+NUM="$(date +%s)"
 _WAKELOCK_
-_PRINTDONE_
 git pull 
 git submodule update --init
 git submodule update --init --recursive --remote
@@ -74,9 +73,9 @@ then
 	_PRINTP_
 	mkdir "$TMPDIR"/buildAPKsLibs 
 	cd "$TMPDIR"/buildAPKsLibs 
-	find /storage/ -name "*.aar" -exec ln -s {} \; ||:
-	find /storage/ -name "*.jar" -exec ln -s {} \; ||:
+	find /storage/ -name "*.aar" -exec ln -s {} \; ||: 2>"$PWD"/stnderr"$NUM".log
+	find /storage/ -name "*.jar" -exec ln -s {} \; ||: 2>"$PWD"/stnderr"$NUM".log
 	cd "$PWD"
 	 _PRINTDONE_
 fi
-/bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$@" {} \; 2>"$PWD"/stnderr"$(date +%s)".log
+/bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$@" {} \; 2>"$PWD"/stnderr"$NUM".log
