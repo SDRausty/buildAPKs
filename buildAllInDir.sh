@@ -62,6 +62,7 @@ _PRINTWLD_() {
 }
 declare -a ARGS="$@"	## Declare arguments as string.
 NUM="$(date +%s)"
+WDR="$PWD"/libs 
 if [[ -z "${1:-}" ]] ; then
 	ARGS=""
 fi
@@ -74,9 +75,9 @@ then
 	_PRINTP_
 	mkdir "$TMPDIR"/buildAPKsLibs 
 	cd "$TMPDIR"/buildAPKsLibs 
-	find "$PWD" -name "*.aar" -exec ln -s {} \; 2>"$PWD"/stnderr"$NUM".log ||:
-	find "$PWD" -name "*.jar" -exec ln -s {} \; 2>"$PWD"/stnderr"$NUM".log ||:
-	cd "$PWD"
+	find "$WDR"/libs -name "*.aar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
+	find "$WDR"/libs  -name "*.jar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
+	cd "$WDR"
 	 _PRINTDONE_
 fi
 /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
