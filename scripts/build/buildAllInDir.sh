@@ -73,8 +73,8 @@ then
 	_PRINTP_
 	mkdir "$TMPDIR"/buildAPKsLibs 
 	cd "$TMPDIR"/buildAPKsLibs 
-	find /storage/ -name "*.aar" -exec ln -s {} \; ||: 2>"$PWD"/stnderr"$NUM".log
-	find /storage/ -name "*.jar" -exec ln -s {} \; ||: 2>"$PWD"/stnderr"$NUM".log
+	find /storage/ -name "*.aar" -exec ln -s {} \; 2>"$PWD"/stnderr"$NUM".log 
+	find /storage/ -name "*.jar" -exec ln -s {} \; 2>"$PWD"/stnderr"$NUM".log
 	cd "$PWD"
 	 _PRINTDONE_
 fi
