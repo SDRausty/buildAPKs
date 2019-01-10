@@ -66,6 +66,8 @@ _PRINTWLD_() {
 
 _WAKELOCK_
 _PRINTDONE_
+git pull 
+git submodule update --init --recursive --remote
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
 	_PRINTP_
@@ -76,6 +78,4 @@ then
 	cd "$PWD"
 	 _PRINTDONE_
 fi
-git pull 
-git submodule update --init --recursive --remote
 /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$@" {} \; 2>"$PWD"/stnderr"$(date +%s)".log
