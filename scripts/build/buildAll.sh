@@ -29,22 +29,22 @@ _PRINTWLD_() {
 }
 
 _WAKELOCK_
-# cd "$HOME"/buildAPKs
-# echo Updating buildAPKs.
-# git submodule update --init -- ./sources/apps
-# git submodule update --init -- ./sources/amusements
-# git submodule update --init -- ./sources/browsers 
-# git submodule update --init -- ./sources/clocks
-# git submodule update --init -- ./sources/compasses 
-# git submodule update --init -- ./sources/flashlights 
-# git submodule update --init -- ./sources/games 
-# git submodule update --init -- ./sources/liveWallpapers
-# git submodule update --init -- ./sources/samples 
-# git submodule update --init -- ./sources/top10 
-# git submodule update --init -- ./sources/tools 
-# git submodule update --init -- ./sources/tutorials
-# git submodule update --init -- ./sources/widgets
-# cd "$HOME"/buildAPKs/sources
+cd "$HOME"/buildAPKs
+echo Updating buildAPKs.
+git submodule update --init -- ./sources/apps
+git submodule update --init -- ./sources/amusements
+git submodule update --init -- ./sources/browsers 
+git submodule update --init -- ./sources/clocks
+git submodule update --init -- ./sources/compasses 
+git submodule update --init -- ./sources/flashlights 
+git submodule update --init -- ./sources/games 
+git submodule update --init -- ./sources/liveWallpapers
+git submodule update --init -- ./sources/samples 
+git submodule update --init -- ./sources/top10 
+git submodule update --init -- ./sources/tools 
+git submodule update --init -- ./sources/tutorials
+git submodule update --init -- ./sources/widgets
+cd "$HOME"/buildAPKs/sources
 find .  -name AndroidManifest.xml \
-	-execdir "$PWD"/buildOne.sh {} \;
+	-execdir "$PWD"/buildOne.sh {} \; 2>stnderr"$(date +%s)".log
 _WAKEUNLOCK_

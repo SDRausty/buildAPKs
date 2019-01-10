@@ -65,33 +65,17 @@ _PRINTWLD_() {
 }
 
 _WAKELOCK_
+_PRINTDONE_
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
-	mkdir "$TMPDIR"/buildAPKsLibs 
 	_PRINTP_
+	mkdir "$TMPDIR"/buildAPKsLibs 
 	cd "$TMPDIR"/buildAPKsLibs 
 	find /storage/ -name "*.aar" -exec ln -s {} \; ||:
 	find /storage/ -name "*.jar" -exec ln -s {} \; ||:
+	cd "$PWD"
 	 _PRINTDONE_
 fi
-# 	find /storage/ -name "*.aar" -exec ln -s {} \; 2>> stnd.dir.build.err."$(date +%s)".log ||:
-# 	find /storage/ -name "*.jar" -exec ln -s {} \; 2>> stnd.dir.build.err."$(date +%s)".log ||:
-_PRINTDONE_
-# cd "$HOME"/buildAPKs
-# echo Updating buildAPKs.
-# git submodule update --init -- ./sources/apps
-# git submodule update --init -- ./sources/amusements
-# git submodule update --init -- ./sources/browsers 
-# git submodule update --init -- ./sources/clocks
-# git submodule update --init -- ./sources/compasses 
-# git submodule update --init -- ./sources/flashlights 
-# git submodule update --init -- ./sources/games 
-# git submodule update --init -- ./sources/liveWallpapers
-# git submodule update --init -- ./sources/samples 
-# git submodule update --init -- ./sources/top10 
-# git submodule update --init -- ./sources/tools 
-# git submodule update --init -- ./sources/tutorials
-# git submodule update --init -- ./sources/widgets
-# cd "$HOME"/buildAPKs/sources
-/bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$@" {} \;
-# 2>stnderr"$(date +%s)".log
+git pull 
+git submodule update --init --recursive --remote
+/bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$@" {} \; 2>"$PWD"/stnderr"$(date +%s)".log
