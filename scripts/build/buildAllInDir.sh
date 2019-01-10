@@ -48,20 +48,20 @@ _WAKEUNLOCK_() {
 }
 
 _PRINTDONE_() {
-	printf "\033[1;32mDONE  \033[0m\n\n"
+	printf "\\033[1;32mDONE  \\033[0m\\n"
 }
 
 _PRINTP_() {
-	printf "\n\033[1;34mPopulating %s/buildAPKsLibs: " "$TMPDIR"
+	printf "\\n\\033[1;34mPopulating %s/buildAPKsLibs: " "$TMPDIR"
 	printf '\033]2;Populating %s/buildAPKsLibs: OK\007' "$TMPDIR"
 }
 
 _PRINTWLA_() {
-	printf "\n\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
+	printf "\\n\\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
 }
 
 _PRINTWLD_() {
-	printf "\n\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
+	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
 NUM="$(date +%s)"
 _WAKELOCK_
