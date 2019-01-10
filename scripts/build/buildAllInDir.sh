@@ -67,6 +67,7 @@ _PRINTWLD_() {
 _WAKELOCK_
 _PRINTDONE_
 git pull 
+git submodule update --init
 git submodule update --init --recursive --remote
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
