@@ -72,7 +72,7 @@ aapt package -f \
 printf "\e[1;38;5;148m%s\n\e[1;38;5;114m%s\n\e[0m" "aapt: done" "ecj: begun"
 if [ -d "$TMPDIR"/buildAPKsLibs ]
 then
-	ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")" -classpath "$(find "$TMPDIR"/buildAPKsLibs -name "*.jar")"
+	ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs -sourcepath . "$(find . -type f -name "*.java")"
 else
 	ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
 fi
