@@ -1,0 +1,1 @@
+../buildAllInDirs.sh

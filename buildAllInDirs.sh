@@ -6,11 +6,12 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201
 }
 
 _STRPEXIT_() { # Run on exit.
+	"$HOME"/buildAPKs/scripts/maintenance/fa.sh "$ARGS"
 	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
@@ -18,12 +19,12 @@ _STRPEXIT_() { # Run on exit.
 }
 
 _STRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
  	exit 211 
 }
 
 _STRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Quit signal %s received!\\e[0m\\n" "$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Quit signal %s received!\\e[0m\\n" "$?"
  	exit 221 
 }
 
@@ -64,7 +65,7 @@ declare -a ARGS="$@"	## Declare arguments as string.
 NUM="$(date +%s)"
 WDR="$PWD"
 if [[ -z "${1:-}" ]] ; then
-	ARGS="InDir"
+	ARGS="InDirs"
 fi
 _WAKELOCK_
 "$HOME"/buildAPKs/scripts/pullBuildAPKsSubmodules.sh
@@ -79,4 +80,3 @@ then
 	 _PRINTDONE_
 fi
 /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
-"$HOME"/buildAPKs/scripts/maintenance/fa.sh "$ARGS"
