@@ -70,6 +70,8 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull
-git submodule update --init ./sources/games
+git submodule update --init -- ./sources/games
+git submodule update --init -- ./scripts/maintenance
+git submodule update --init -- ./docs
 find "$HOME"/buildAPKs/sources/games/ -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log

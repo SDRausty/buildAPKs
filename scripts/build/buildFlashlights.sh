@@ -70,7 +70,9 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull
-git submodule update --init ./sources/flashlights
+git submodule update --init -- ./sources/flashlights
+git submodule update --init -- ./scripts/maintenance
+git submodule update --init -- ./docs
 find /data/data/com.termux/files/home/buildAPKs/sources/flashlights/ \
 	-name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log

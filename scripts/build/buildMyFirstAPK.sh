@@ -1,7 +1,7 @@
-#!/data/data/com.termux/files/usr/bin/env sh 
+#!/bin/env bash 
 # Copyright 2017-2019 (c) all rights reserved 
 # by S D Rausty https://sdrausty.github.io
 #####################################################################
 set -e 
 cd $HOME/buildAPKs/sources/moon
-$HOME/buildAPKs/scripts/build/builda.sh
+$HOME/buildAPKs/scripts/build/buildOne.sh 2>stnderr"$(date +%s)".log

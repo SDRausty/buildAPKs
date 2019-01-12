@@ -64,7 +64,7 @@ declare -a ARGS="$@"	## Declare arguments as string.
 NUM="$(date +%s)"
 WDR="$PWD"
 if [[ -z "${1:-}" ]] ; then
-	ARGS=""
+	ARGS="InDir"
 fi
 _WAKELOCK_
 "$HOME"/buildAPKs/scripts/pullBuildAPKsSubmodules.sh
