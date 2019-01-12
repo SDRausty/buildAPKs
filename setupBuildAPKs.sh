@@ -47,6 +47,6 @@ then
 	ARGS=""
 fi
 printf "\n\e[1;38;5;116m%s\n" "Beginning buildAPKs setup"
-au aapt apksigner dx ecj findutils git
+pkg install aapt apksigner dx ecj findutils git
 cd && git clone https://github.com/sdrausty/buildAPKs
 ./buildAPKs/scripts/build/buildMyFirstAPK.sh
