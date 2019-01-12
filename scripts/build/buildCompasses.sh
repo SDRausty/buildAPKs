@@ -70,9 +70,11 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull
-git submodule update --init ./sources/compasses
-git submodule update --init ./sources/tutorials
-git submodule update --init ./sources/samples
+git submodule update --init -- ./sources/compasses
+git submodule update --init -- ./sources/tutorials
+git submodule update --init -- ./sources/samples
+git submodule update --init -- ./scripts/maintenance
+git submodule update --init -- ./docs
 find "$HOME"/buildAPKs/sources/compasses/ -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
