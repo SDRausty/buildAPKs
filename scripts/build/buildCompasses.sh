@@ -67,7 +67,6 @@ if [[ -z "${1:-}" ]] ; then
 	ARGS=Compasses 
 fi
 _WAKELOCK_
-	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
 cd $HOME/buildAPKs
 echo Updating buildAPKs.
 git pull
