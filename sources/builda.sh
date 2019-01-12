@@ -1,1 +1,0 @@
-../scripts/build/builda.sh
