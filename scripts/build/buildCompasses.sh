@@ -67,15 +67,15 @@ if [[ -z "${1:-}" ]] ; then
 	ARGS=Compasses 
 fi
 _WAKELOCK_
-cd $HOME/buildAPKs
+cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull
 git submodule update --init ./sources/compasses
 git submodule update --init ./sources/tutorials
 git submodule update --init ./sources/samples
-find $HOME/buildAPKs/sources/compasses/ -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+find "$HOME"/buildAPKs/sources/compasses/ -name AndroidManifest.xml \
+	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-$HOME/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log 
+"$HOME"/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log 
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-$HOME/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log  
+"$HOME"/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log  
