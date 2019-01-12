@@ -6,7 +6,7 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh ERROR:  Signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh ERROR:  Signal $? received!\\e[0m\\n"
 	exit 201
 }
 
@@ -18,12 +18,12 @@ _STRPEXIT_() { # Run on exit.
 }
 
 _STRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh WARNING:  Signal $? received!\\e[0m\\n"
  	exit 211 
 }
 
 _STRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Quit signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh WARNING:  Quit signal $? received!\\e[0m\\n"
  	exit 221 
 }
 
@@ -76,6 +76,6 @@ git submodule update --init ./sources/samples
 find $HOME/buildAPKs/sources/compasses/ -name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-$HOME/buildAPKs/buildOne.sh "$ARGS" 
+$HOME/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log 
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-$HOME/buildAPKs/buildOne.sh "$ARGS"  
+$HOME/buildAPKs/buildOne.sh "$ARGS" 2>"$PWD"/stnderr"$NUM".log  
