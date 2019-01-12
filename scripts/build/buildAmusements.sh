@@ -64,22 +64,12 @@ declare -a ARGS="$@"	## Declare arguments as string.
 NUM="$(date +%s)"
 WDR="$PWD"
 if [[ -z "${1:-}" ]] ; then
-	ARGS=""
+	ARGS=Amusements
 fi
 _WAKELOCK_
-cd $HOME/buildAPKs
+cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull 
 git submodule update --init ./sources/amusements
-if [ ! -e "$TMPDIR"/buildAPKsLibs ]
-then
-	_PRINTP_
-	mkdir "$TMPDIR"/buildAPKsLibs 
-	cd "$TMPDIR"/buildAPKsLibs 
-	find "$WDR"/libs -name "*.aar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
-	find "$WDR"/libs  -name "*.jar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
-	cd "$WDR"
-	 _PRINTDONE_
-fi
-/bin/env /bin/find $HOME/buildAPKs/sources/amusements/  -name AndroidManifest.xml \
-	-execdir /bin/bash $HOME/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+find "$HOME"/buildAPKs/sources/amusements/  -name AndroidManifest.xml \
+	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
