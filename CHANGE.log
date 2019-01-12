@@ -33,9 +33,9 @@ Size in KB
 3128	.git
 3884	.
 Computed on 20190109 branch master.
-/data/data/com.termux/files/home/git/sdrausty/buildAPKs
-Size in KB
 3628	.git
 4412	.
-git submodule update --init 
-git submodule update --init --recursive --remote
+Computed on 20190112 branch master.
+Size in KB
+354676	.git
+954400	.
