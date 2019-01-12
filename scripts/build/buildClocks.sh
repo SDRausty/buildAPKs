@@ -12,16 +12,16 @@ git submodule update --init ./sources/clocks
 git submodule update --init ./sources/liveWallpapers
 git submodule update --init ./sources/widgets
 find $HOME/buildAPKs/sources/clocks/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh {} \;
+	-execdir $HOME/buildAPKs/buildOne.sh Clocks {} \; 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
-../../../buildOne.sh
+../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
-../../../../buildOne.sh
+../../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-../../../buildOne.sh
+../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/clockWidget/
-../../../buildOne.sh
+../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
-../../../../buildOne.sh
+../../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
-../../../../buildOne.sh
+../../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log

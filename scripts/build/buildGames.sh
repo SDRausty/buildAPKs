@@ -8,4 +8,4 @@ echo Updating buildAPKs.
 git pull
 git submodule update --init ./sources/games
 find $HOME/buildAPKs/sources/games/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh {} \;
+	-execdir $HOME/buildAPKs/buildOne.sh Games {} \; 2>stnderr"$(date +%s)".log

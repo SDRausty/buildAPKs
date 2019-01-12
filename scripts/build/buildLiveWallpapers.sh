@@ -8,4 +8,4 @@ echo Updating buildAPKs.
 git pull
 git submodule update --init ./sources/liveWallpapers
 find $HOME/buildAPKs/sources/liveWallpapers/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh {} \;
+	-execdir $HOME/buildAPKs/buildOne.sh LiveWallpapers {} \; 2>stnderr"$(date +%s)".log
