@@ -12,3 +12,4 @@ git submodule update --init -- ./docs
 find /data/data/com.termux/files/home/buildAPKs/sources/top10 \
 	-name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh Top10 {} \; 2>stnderr"$(date +%s)".log
+"$HOME"/buildAPKs/scripts/maintenance/fa.sh Top10 

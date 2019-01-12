@@ -76,3 +76,4 @@ git submodule update --init -- ./docs
 find /data/data/com.termux/files/home/buildAPKs/sources/flashlights/ \
 	-name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+"$HOME"/buildAPKs/scripts/maintenance/fa.sh "$ARGS" 

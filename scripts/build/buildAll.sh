@@ -33,4 +33,5 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs/sources
 find .  -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh All {} \; 2>stnderr"$(date +%s)".log
+"$HOME"/buildAPKs/scripts/maintenance/fa.sh All 
 _WAKEUNLOCK_

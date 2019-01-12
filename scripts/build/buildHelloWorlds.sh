@@ -11,3 +11,4 @@ git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./docs
 find $HOME/buildAPKs/sources/samples/helloWorlds/  -name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh HelloWorlds {} \; 2>stnderr"$(date +%s)".log
+"$HOME"/buildAPKs/scripts/maintenance/fa.sh HelloWorlds 

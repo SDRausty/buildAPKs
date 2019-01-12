@@ -11,3 +11,4 @@ git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./docs
 find $HOME/buildAPKs/sources/apps/  -name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh Apps {} \; 2>stnderr"$(date +%s)".log
+"$HOME"/buildAPKs/scripts/maintenance/fa.sh Apps 
