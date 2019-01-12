@@ -40,7 +40,7 @@ trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR
 trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
-
+  
 declare -a ARGS="$@"	## Declare arguments as string.
 if [[ -z "${1:-}" ]] 
 then
