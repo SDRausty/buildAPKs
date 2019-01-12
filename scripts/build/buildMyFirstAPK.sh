@@ -4,4 +4,4 @@
 #####################################################################
 set -e 
 cd $HOME/buildAPKs/sources/moon
-$HOME/buildAPKs/scripts/build/buildOne.sh
+$HOME/buildAPKs/scripts/build/buildOne.sh 2>stnderr"$(date +%s)".log
