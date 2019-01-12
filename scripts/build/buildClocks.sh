@@ -70,7 +70,7 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs
 echo Updating buildAPKs.
 git pull
-echo "\`buildClocks.sh\` might need to load sources from 3 submodule repositories to build APKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+echo "\`buildClocks.sh\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
 sleep 2
 git submodule update --init -- ./sources/clocks
 git submodule update --init -- ./sources/liveWallpapers
