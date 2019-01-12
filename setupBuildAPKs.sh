@@ -40,7 +40,12 @@ trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR
 trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
-
+  
+declare -a ARGS="$@"	## Declare arguments as string.
+if [[ -z "${1:-}" ]] 
+then
+	ARGS=""
+fi
 printf "\n\e[1;38;5;116m%s\n" "Beginning buildAPKs setup"
 pkg install aapt apksigner dx ecj findutils git
 cd && git clone https://github.com/sdrausty/buildAPKs
