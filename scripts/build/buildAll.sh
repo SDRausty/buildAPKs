@@ -17,15 +17,15 @@ _WAKEUNLOCK_() {
 }
 
 _PRINTDONE_() {
-	printf "\033[1;32mDONE  \033[0m\n\n"
+	printf "\\033[1;32mDONE  \\033[0m\\n\\n"
 }
 
 _PRINTWLA_() {
-	printf "\n\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
+	printf "\\n\\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
 }
 
 _PRINTWLD_() {
-	printf "\n\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
+	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
 
 _WAKELOCK_

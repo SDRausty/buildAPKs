@@ -27,7 +27,7 @@ _STRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR 
+trap '_STRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 

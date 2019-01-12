@@ -6,7 +6,7 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh ERROR:  Signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201
 }
 
@@ -18,16 +18,16 @@ _STRPEXIT_() { # Run on exit.
 }
 
 _STRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
  	exit 211 
 }
 
 _STRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Quit signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDir.sh WARNING:  Quit signal %s received!\\e[0m\\n" "$?"
  	exit 221 
 }
 
-trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR 
+trap '_STRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
