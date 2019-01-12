@@ -1,4 +1,4 @@
-#!/bin/env sh 
+#!/data/data/com.termux/files/usr/bin/env sh 
 # Copyright 2017-2019 (c) all rights reserved 
 # by S D Rausty https://sdrausty.github.io
 # Adapted from https://github.com/fx-adi-lima/android-tutorials
