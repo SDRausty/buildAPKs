@@ -63,7 +63,8 @@ _PRINTWLD_() {
 declare -a ARGS="$@"	## Declare arguments as string.
 NUM="$(date +%s)"
 WDR="$PWD"
-if [[ -z "${1:-}" ]] ; then
+if [[ -z "${1:-}" ]] 
+then
 	ARGS=Amusements
 fi
 _WAKELOCK_
