@@ -27,4 +27,5 @@ cd $HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
 ../../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
 cd $HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
 ../../../../buildOne.sh Clocks 2>stnderr"$(date +%s)".log
+cd $HOME/buildAPKs
 "$HOME"/buildAPKs/scripts/maintenance/fa.sh Clocks 
