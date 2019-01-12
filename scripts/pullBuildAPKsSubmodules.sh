@@ -20,3 +20,5 @@ git submodule update --init -- ./sources/top10
 git submodule update --init -- ./sources/tools 
 git submodule update --init -- ./sources/tutorials
 git submodule update --init -- ./sources/widgets
+git submodule update --init -- ./scripts/maintenance
+git submodule update --init -- ./docs
