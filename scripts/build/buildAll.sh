@@ -46,5 +46,5 @@ git submodule update --init -- ./sources/tutorials
 git submodule update --init -- ./sources/widgets
 cd "$HOME"/buildAPKs/sources
 find .  -name AndroidManifest.xml \
-	-execdir "$PWD"/buildOne.sh {} \; 2>stnderr"$(date +%s)".log
+	-execdir "$HOME"/buildAPKs/buildOne.sh {} \; 2>stnderr"$(date +%s)".log
 _WAKEUNLOCK_
