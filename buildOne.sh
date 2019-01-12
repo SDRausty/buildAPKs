@@ -39,10 +39,12 @@ trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
 
-now=`date +%Y%m%d%s`
+NOW=`date +%Y%m%d%s`
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
+else
+	EXT="$@"
 fi
 printf "\n\e[1;38;5;116mBeginning build in %s\n" "$PWD"
 if [ ! -e "./assets" ]
@@ -100,6 +102,6 @@ aapt add -f step2.apk classes.dex
 printf "\e[1;38;5;114m%s\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
-cp step2.apk /sdcard/Download/builtAPKs"$EXT"/step"$now".apk
-printf "\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$now"
-printf "\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$now" 
+cp step2.apk /sdcard/Download/builtAPKs"$EXT"/step"$NOW".apk
+printf "\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$NOW"
+printf "\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$NOW" 
