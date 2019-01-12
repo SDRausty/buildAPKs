@@ -67,9 +67,7 @@ if [[ -z "${1:-}" ]] ; then
 	ARGS=""
 fi
 _WAKELOCK_
-git pull 
-git submodule update --init
-git submodule update --init --recursive --remote
+"$HOME"/buildAPKs/scripts/pullBuildAPKsSubmodules.sh
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
 	_PRINTP_
