@@ -33,11 +33,17 @@ _STRPQUIT_() { # Run on quit.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs WARNING:  Quit signal $? received!\\e[0m\\n"
  	exit 221 
 }
-now=`date +%Y%m%d%s`
+
 trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR 
 trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
+
+now=`date +%Y%m%d%s`
+if [[ -z "${1:-}" ]] 
+then
+	EXT=""
+fi
 printf "\n\e[1;38;5;116mBeginning build in %s\n" "$PWD"
 if [ ! -e "./assets" ]
 then
@@ -59,9 +65,9 @@ if [ ! -d "./res" ]
 then
 	mkdir ./res
 fi
-if [ ! -d "/sdcard/Download/builtAPKs"$1"" ]
+if [ ! -d "/sdcard/Download/builtAPKs"$EXT"" ]
 then
-	mkdir /sdcard/Download/builtAPKs"$1"
+	mkdir /sdcard/Download/builtAPKs"$EXT"
 fi
 printf "\e[1;38;5;115m%s\n\e[0m" "aapt: begun"
 aapt package -f \
@@ -94,6 +100,6 @@ aapt add -f step2.apk classes.dex
 printf "\e[1;38;5;114m%s\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
-cp step2.apk /sdcard/Download/builtAPKs"$1"/step"$now".apk
-printf "\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs"$1"/step%s.apk\n" "$now"
-printf "\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs"$1"/step%s.apk\n" "$now" 
+cp step2.apk /sdcard/Download/builtAPKs"$EXT"/step"$now".apk
+printf "\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$now"
+printf "\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs"$EXT"/step%s.apk\n" "$now" 
