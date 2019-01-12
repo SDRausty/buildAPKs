@@ -44,7 +44,7 @@ if [[ -z "${1:-}" ]]
 then
 	EXT=""
 else
-	EXT="$@"
+	EXT="$1"
 fi
 printf "\n\e[1;38;5;116mBeginning build in %s\n" "$PWD"
 if [ ! -e "./assets" ]
