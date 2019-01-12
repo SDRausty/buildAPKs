@@ -80,3 +80,4 @@ then
 	 _PRINTDONE_
 fi
 /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+exit $?
