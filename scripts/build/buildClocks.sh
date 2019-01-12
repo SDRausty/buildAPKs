@@ -11,17 +11,17 @@ sleep 2
 git submodule update --init ./sources/clocks
 git submodule update --init ./sources/liveWallpapers
 git submodule update --init ./sources/widgets
-find ~/buildAPKs/sources/clocks/  -name AndroidManifest.xml \
-	-execdir ~/buildAPKs/scripts/build/buildOne.sh {} \;
-cd ~/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
-../../../scripts/build/buildOne.sh
-cd ~/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
-../../../../scripts/build/buildOne.sh
-cd ~/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-../../../scripts/build/buildOne.sh
-cd ~/buildAPKs/sources/widgets/clockWidget/
-../../../scripts/build/buildOne.sh
-cd ~/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
-../../../../scripts/build/buildOne.sh
-cd ~/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
-../../../../scripts/build/buildOne.sh
+find $HOME/buildAPKs/sources/clocks/  -name AndroidManifest.xml \
+	-execdir $HOME/buildAPKs/buildOne.sh {} \;
+cd $HOME/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
+../../../buildOne.sh
+cd $HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
+../../../../buildOne.sh
+cd $HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
+../../../buildOne.sh
+cd $HOME/buildAPKs/sources/widgets/clockWidget/
+../../../buildOne.sh
+cd $HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
+../../../../buildOne.sh
+cd $HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
+../../../../buildOne.sh

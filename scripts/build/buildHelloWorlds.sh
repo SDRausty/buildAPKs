@@ -7,5 +7,5 @@ cd $HOME/buildAPKs
 echo Updating buildAPKs.
 git pull
 git submodule update --init ./sources/samples
-find ~/buildAPKs/sources/samples/helloWorlds/  -name AndroidManifest.xml \
-	-execdir ~/buildAPKs/scripts/build/buildOne.sh {} \;
+find $HOME/buildAPKs/sources/samples/helloWorlds/  -name AndroidManifest.xml \
+	-execdir $HOME/buildAPKs/buildOne.sh {} \;

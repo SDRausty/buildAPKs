@@ -9,4 +9,4 @@ git pull
 git submodule update --init ./sources/flashlights
 find /data/data/com.termux/files/home/buildAPKs/sources/flashlights/ \
 	-name AndroidManifest.xml \
-	-execdir ~/buildAPKs/scripts/build/buildOne.sh {} \;
+	-execdir $HOME/buildAPKs/buildOne.sh {} \;

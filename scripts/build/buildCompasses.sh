@@ -9,9 +9,9 @@ git pull
 git submodule update --init ./sources/compasses
 git submodule update --init ./sources/tutorials
 git submodule update --init ./sources/samples
-find ~/buildAPKs/sources/compasses/  -name AndroidManifest.xml \
-	-execdir ~/buildAPKs/scripts/build/buildOne.sh {} \;
+find $HOME/buildAPKs/sources/compasses/  -name AndroidManifest.xml \
+	-execdir $HOME/buildAPKs/buildOne.sh {} \;
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-$HOME/buildAPKs/scripts/build/buildOne.sh
+$HOME/buildAPKs/buildOne.sh
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-$HOME/buildAPKs/scripts/build/buildOne.sh
+$HOME/buildAPKs/buildOne.sh

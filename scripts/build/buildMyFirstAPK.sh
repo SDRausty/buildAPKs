@@ -3,5 +3,5 @@
 # by S D Rausty https://sdrausty.github.io
 #####################################################################
 set -e 
-cd ~/buildAPKs/sources/moon
+cd $HOME/buildAPKs/sources/moon
 $HOME/buildAPKs/scripts/build/builda.sh
