@@ -6,7 +6,12 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
+	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildOne.sh ERROR:  Signal $? received!\\e[0m\\n"
+	if [[ "$RV" = 255 ]] 
+	then 
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running the script again; This error might have been corrected by clean up.\\e[0m\\n"
+	fi
 	printf "\\e[?25h\\e[0m\\n"
 	exit 201
 }
@@ -25,12 +30,12 @@ _STRPEXIT_() { # Run on exit.
 }
 
 _STRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs WARNING:  Signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildOne.sh WARNING:  Signal $? received!\\e[0m\\n"
  	exit 211 
 }
 
 _STRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs WARNING:  Quit signal $? received!\\e[0m\\n"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildOne.sh WARNING:  Quit signal $? received!\\e[0m\\n"
  	exit 221 
 }
 
