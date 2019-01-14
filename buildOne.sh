@@ -32,6 +32,10 @@ _STRPEXIT_() { # Run on exit.
 		printf "\\e[?25h\\e[1;7;38;5;0mSignal 223 generated in %s; Try running %s again; This error can be resolved by running %s in a directory that has an \`AndroidManifest.xml\` file.  More information in \`stnderr*.log files.\`\\n\\nRunning \`ls\`:\\n" "$PWD" "${0##*/}" "${0##*/}"
 		ls
 	fi
+	if [[ "$RV" = 224 ]]  
+	then 
+		printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in $HOME!  See \`stnderr*.log file.\`\\n\\nRunning \`ls\`:\\n" "$PWD" "${0##*/}" "${0##*/}"
+	fi
 	sleep 1
 	printf "\e[1;38;5;151m%s\\n\\e[0m" "Cleaning up."
  	rm -rf ./bin 2>/dev/null ||:  
@@ -69,10 +73,15 @@ else
 fi
 if [[ -z "${2:-}" ]] 
 then
-	echo "\$PWD is undefined!"
+	echo "\$WDR is undefined!  Signal 223 generated in $PWD."
 	exit 223
 else
 	WDR="$2"
+fi
+if [[ "$PWD" = "$HOME" ]] 
+then
+	echo "Cannot run in $HOME!  Signal 224 generated in $PWD."
+	exit 224
 fi
 printf "\n\e[1;38;5;116mBeginning build in %s\n" "$PWD"
 if [ ! -e "./assets" ]
