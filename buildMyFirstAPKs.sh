@@ -4,9 +4,10 @@
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
-LCTN=MyFirstAPKs
-find $HOME/buildAPKs/sources/Apps/ -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh "$LCTN" {} \; \
-	2>stnderr"$(date +%s)".log
+JID=MyFirstAPKs
+mkdir -p  "$HOME"/buildAPKs/var/log
+find "$HOME"/buildAPKs/sources/Apps/ -name AndroidManifest.xml \
+	-execdir "$HOME"/buildAPKs/buildOne.sh "$JID" {} \; \
+	2> "$HOME"/buildAPKs/var/log/stnderr.buildMyFirstAPKs."$(date +%s)".log
 
 #EOF
