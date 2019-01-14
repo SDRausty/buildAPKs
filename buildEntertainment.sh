@@ -42,7 +42,7 @@ _WAKELOCK_() {
 _WAKEUNLOCK_() {
 	_PRINTWLD_ 
 	am startservice --user 0 -a com.termux.service_wake_unlock com.termux/com.termux.app.TermuxService 1>/dev/null
-	rm "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PID).file"
+	rm "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PPID).file"
 	_PRINTDONE_ 
 }
 
