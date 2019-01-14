@@ -60,7 +60,7 @@ trap _STRPSIGNAL_ HUP INT TERM
 trap _STRPQUIT_ QUIT 
 
 DAY=`date +%Y%m%d`
-NOW=`date +%Y%m%d%H%S`
+NOW=`date +%s`
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
