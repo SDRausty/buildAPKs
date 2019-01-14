@@ -70,7 +70,7 @@ then
 fi
 _WAKELOCK_
 cd "$HOME"/buildAPKs
-if [[ ! -f "$HOME/buildAPKs/sources/entertainment/.git" ]]
+if [[ ! -f "$HOME/buildAPKs/sources/flashlights/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
@@ -80,7 +80,7 @@ then
 	git submodule update --init -- ./docs
 else
 	echo
-	echo "To update module ~/buildAPKs/sources/flashlights to the newest version remove the ~/buildAPKs/sources/flashlights/.git file."
+	echo "To update module ~/buildAPKs/sources/flashlights to the newest version remove the ~/buildAPKs/sources/flashlights/.git file and run ${0##*/} again."
 fi
 
 find "$HOME"/buildAPKs/sources/flashlights/ -name AndroidManifest.xml \

@@ -75,7 +75,7 @@ then
 	git submodule update --init -- ./docs
 else
 	echo
-	echo "To update module ~/buildAPKs/sources/entertainment to the newest version remove the ~/buildAPKs/sources/entertainment/.git file."
+	echo "To update module ~/buildAPKs/sources/entertainment to the newest version remove the ~/buildAPKs/sources/entertainment/.git file and run ${0##*/} again."
 fi
 find "$HOME"/buildAPKs/sources/entertainment/ -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
