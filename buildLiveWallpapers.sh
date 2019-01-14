@@ -12,6 +12,5 @@ git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./docs
 find $HOME/buildAPKs/sources/liveWallpapers/  -name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh LiveWallpapers {} \; 2>stnderr"$(date +%s)".log
-"$HOME"/buildAPKs/scripts/fa.sh LiveWallpapers 
 
 #EOF

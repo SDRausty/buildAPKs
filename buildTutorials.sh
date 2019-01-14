@@ -12,6 +12,5 @@ git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./docs
 find $HOME/buildAPKs/sources/tutorials/  -name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.sh Tutorials {} \; 2>stnderr"$(date +%s)".log
-"$HOME"/buildAPKs/scripts/fa.sh Tutorials 
 
 #EOF

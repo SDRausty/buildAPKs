@@ -11,7 +11,6 @@ _STRPERROR_() { # Run on script error.
 }
 
 _STRPEXIT_() { # Run on exit.
-	"$HOME"/buildAPKs/scripts/fa.sh "$ARGS"
 	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 

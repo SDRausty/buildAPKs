@@ -82,6 +82,5 @@ cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compa
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
 "$HOME"/buildAPKs/buildOne.sh "$ARGS" 2>"$WDR"/stnderr"$NUM".log  
 cd "$HOME"/buildAPKs
-"$HOME"/buildAPKs/scripts/fa.sh "$ARGS" 
 
 #EOF

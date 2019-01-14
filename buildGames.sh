@@ -75,6 +75,5 @@ git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./docs
 find "$HOME"/buildAPKs/sources/games/ -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
-"$HOME"/buildAPKs/scripts/fa.sh "$ARGS" 
 
 #EOF

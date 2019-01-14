@@ -90,6 +90,5 @@ cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
 ../../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
 cd "$WDR"
-"$HOME"/buildAPKs/scripts/fa.sh "$ARGS" 
 
 #EOF
