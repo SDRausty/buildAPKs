@@ -3,3 +3,12 @@
 # Recreate this file for buildAPKs to stop updating modules from GitHub.  
 # To recreate this file, you can use `touch .hushupdates` and buildAPKs will 
 # work offline.  Simply delete `.hushupdates` to resume updates from GitHub. 
+# $HOME/buildAPKs/var/
+# ├── lock
+# ├── log
+# └── tmp
+# or
+# $TMPDIR/
+# ├── lock
+# └── log
+# or a little of both?
