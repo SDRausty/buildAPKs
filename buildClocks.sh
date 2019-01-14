@@ -78,17 +78,17 @@ git submodule update --init -- ./docs
 find "$HOME"/buildAPKs/sources/clocks/  -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
-../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
-../../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/widgets/clockWidget/
-../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
-../../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
-../../../../buildOne.sh Clocks 2>"$WDR"/stnderr"$NUM".log
+../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
 cd "$WDR"
 
 #EOF
