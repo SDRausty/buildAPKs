@@ -35,22 +35,19 @@ trap _STRPQUIT_ QUIT
 _WAKELOCK_() {
 	_PRINTWLA_ 
 	am startservice --user 0 -a com.termux.service_wake_lock com.termux/com.termux.app.TermuxService 1>/dev/null
+	touch "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PPID).file"
 	_PRINTDONE_ 
 }
 
 _WAKEUNLOCK_() {
 	_PRINTWLD_ 
 	am startservice --user 0 -a com.termux.service_wake_unlock com.termux/com.termux.app.TermuxService 1>/dev/null
+	rm "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PID).file"
 	_PRINTDONE_ 
 }
 
 _PRINTDONE_() {
 	printf "\\033[1;32mDONE  \\033[0m\\n"
-}
-
-_PRINTP_() {
-	printf "\\n\\033[1;34mPopulating %s/buildAPKsLibs: " "$TMPDIR"
-	printf '\033]2;Populating %s/buildAPKsLibs: OK\007' "$TMPDIR"
 }
 
 _PRINTWLA_() {
@@ -60,20 +57,26 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-declare -a ARGS="$@"	## Declare arguments as string.
-NUM="$(date +%s)"
-WDR="$PWD"
-if [[ -z "${1:-}" ]] 
+
+JID=Entertainment
+if [[ ! -z "${1:-}" ]]
 then
-	ARGS=Entertainment
+	JID="$@"
 fi
 _WAKELOCK_
-cd "$HOME"/buildAPKs
-echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-git pull 
-git submodule update --init -- ./sources/entertainment
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./docs
-find "$HOME"/buildAPKs/sources/entertainment/ -name AndroidManifest.xml -execdir /bin/bash "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+cd "$HOME/buildAPKs"
+if [[ ! -f "$HOME/buildAPKs/sources/entertainment/.git" ]]
+then
+	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	git pull 
+	git submodule update --init -- ./sources/entertainment
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./docs
+else
+	echo "To update module ~/buildAPKs/sources/entertainment to the newest version remove the ~/buildAPKs/sources/entertainment/.git file."
+fi
+find "$HOME"/buildAPKs/sources/entertainment/ -name AndroidManifest.xml \
+	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	2> "$HOME/buildAPKs/var/log/stnderr.buildEntertainment.$(date +%s).log"
 
 #EOF
