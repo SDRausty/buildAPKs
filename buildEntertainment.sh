@@ -67,12 +67,14 @@ _WAKELOCK_
 cd "$HOME/buildAPKs"
 if [[ ! -f "$HOME/buildAPKs/sources/entertainment/.git" ]]
 then
+	echo
 	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
 	git pull 
 	git submodule update --init -- ./sources/entertainment
 	git submodule update --init -- ./scripts/maintenance
 	git submodule update --init -- ./docs
 else
+	echo
 	echo "To update module ~/buildAPKs/sources/entertainment to the newest version remove the ~/buildAPKs/sources/entertainment/.git file."
 fi
 find "$HOME"/buildAPKs/sources/entertainment/ -name AndroidManifest.xml \
