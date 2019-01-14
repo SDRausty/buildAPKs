@@ -41,7 +41,7 @@ _STRPEXIT_() { # Run on exit.
 	printf "\e[1;38;5;151mCompleted tasks in %s\n\n\e[0m" "$PWD"
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
-	exit
+	exit 0
 }
 
 _STRPSIGNAL_() { # Run on signal.
