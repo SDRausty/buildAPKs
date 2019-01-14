@@ -1,0 +1,1 @@
+../../buildEntertainment.sh

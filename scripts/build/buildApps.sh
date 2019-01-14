@@ -1,0 +1,1 @@
+../../buildApps.sh

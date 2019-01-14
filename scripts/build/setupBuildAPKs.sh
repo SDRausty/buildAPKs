@@ -1,0 +1,1 @@
+../../setupBuildAPKs.sh

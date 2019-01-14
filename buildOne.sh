@@ -8,15 +8,15 @@ shopt -s nullglob globstar
 _STRPERROR_() { # Run on script error.
 	local RV="$?"
 	echo Signal $RV received!
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`stnderr*.log\`\\e[0m\\n" "${0##*/}" "$RV"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`stnderr*.log files.\`\\e[0m\\n" "${0##*/}" "$RV"
 	if [[ "$RV" = 1 ]] 
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`stnderr*.log\`\\e[0m\\n" "${0##*/}" "${0##*/}"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`stnderr*.log files.\`\\e[0m\\n" "${0##*/}" "${0##*/}"
 		ls
 	fi
 	if [[ "$RV" = 255 ]]
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`stnderr*.log\`\\e[0m\\n" "${0##*/}"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`stnderr*.log files.\`\\e[0m\\n" "${0##*/}"
 	fi
 	exit 220
 }
@@ -25,11 +25,11 @@ _STRPEXIT_() { # Run on exit.
 	local RV="$?"
 	if [[ "$RV" != 0 ]]  
 	then 
-		echo Signal $RV received!  More information in \`stnderr*.log\`
+		echo Signal $RV received!  More information in \`stnderr*.log files.\`
 	fi
 	if [[ "$RV" = 223 ]]  
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mSignal 223 generated in %s; Try running %s again; This error can be resolved by running %s in a directory that has an \`AndroidManifest.xml\` file.  More information in \`stnderr*.log\`\\n\\nRunning \`ls\`:\\n" "$PWD" "${0##*/}" "${0##*/}"
+		printf "\\e[?25h\\e[1;7;38;5;0mSignal 223 generated in %s; Try running %s again; This error can be resolved by running %s in a directory that has an \`AndroidManifest.xml\` file.  More information in \`stnderr*.log files.\`\\n\\nRunning \`ls\`:\\n" "$PWD" "${0##*/}" "${0##*/}"
 		ls
 	fi
 	sleep 1
