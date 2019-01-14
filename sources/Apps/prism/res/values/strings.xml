@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prism</string>
+    <string name="hello">Prism demo </string>
+    <string name="telescope">Telescope (refractor) </string>
+    <string name="microscope">Microscope </string>
+    <string-array name="demos">
+        <item >Converging lens</item>
+        <item >Diverging lens</item>
+        <item >Converging mirror</item>
+        <item >Diverging mirror</item>
+     </string-array>
+            
+</resources>
