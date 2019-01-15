@@ -35,14 +35,14 @@ trap _STRPQUIT_ QUIT
 _WAKELOCK_() {
 	_PRINTWLA_ 
 	am startservice --user 0 -a com.termux.service_wake_lock com.termux/com.termux.app.TermuxService 1>/dev/null
-	touch "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PPID).file"
+	touch "$HOME/buildAPKs/var/lock/wakelock.$PPID"
 	_PRINTDONE_ 
 }
 
 _WAKEUNLOCK_() {
 	_PRINTWLD_ 
 	am startservice --user 0 -a com.termux.service_wake_unlock com.termux/com.termux.app.TermuxService 1>/dev/null
-	rm "$HOME/buildAPKs/var/lock/wakelock.$($(date +%s)*$PPID).file"
+	rm -f "$HOME/buildAPKs/var/lock/wakelock.$PPID"
 	_PRINTDONE_ 
 }
 
