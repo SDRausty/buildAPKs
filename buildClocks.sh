@@ -57,12 +57,7 @@ _PRINTWLD_() {
 }
 
 NUM="$(date +%s)"
-if [[ ! -z "${1:-}" ]]
-then
-	JID=Clocks
-else
-	JID="$@"
-fi
+JID=Clocks
 cd "$HOME"/buildAPKs
 mkdir -p  "$HOME"/buildAPKs/var/log
 if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/liveWallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
