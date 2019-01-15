@@ -4,7 +4,15 @@
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
+JID=InDirs
+NUM="$(date +%s)"
+WDR="$PWD"
+if [[ ! -z "${1:-}" ]]
+then
+	JID="$@"
+fi
 cd $HOME/buildAPKs
+mkdir -p  "$HOME"/buildAPKs/var/log
 if [[ ! -f "$HOME/buildAPKs/sources/applications/.git" ]]
 then
 	echo
@@ -19,6 +27,7 @@ else
 fi
 
 find $HOME/buildAPKs/sources/applications/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh Apps {} \; 2>stnderr"$(date +%s)".log
+	-execdir $HOME/buildAPKs/buildOne.sh Apps {} \; \ 
+	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID"."$NUM".log"
 
 #EOF

@@ -60,12 +60,12 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-declare -a ARGS="$@"	## Declare arguments as string.
+JID=InDirs
 NUM="$(date +%s)"
 WDR="$PWD"
-if [[ -z "${1:-}" ]] 
+if [[ ! -z "${1:-}" ]]
 then
-	ARGS="InDirs"
+	JID="$@"
 fi
 _WAKELOCK_
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
@@ -79,7 +79,10 @@ then
 	cd "$WDR"
 	 _PRINTDONE_
 fi
-/bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" "$WDR" {} \; 2>"$PWD"/stnderr"$NUM".log
+/bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
+	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
+	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID"."$NUM".log"
+# /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" "$WDR" {} \; 2>"$PWD"/stnderr"$NUM".log
 exit $?
 
 #EOF

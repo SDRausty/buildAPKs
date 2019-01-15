@@ -4,6 +4,7 @@
 # Update repository and update submodules.
 #####################################################################
 set -e 
+mkdir -p  "$HOME"/buildAPKs/var/log
 cd "$HOME"/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/applications/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/browsers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/entertainment/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/flashlights/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/games/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/liveWallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/top10/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tools/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
 then
