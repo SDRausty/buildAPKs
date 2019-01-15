@@ -10,9 +10,6 @@
 [submodule "sources/applications"]
 	path = sources/applications
 	url = https://github.com/sdrausty/buildAPKsApps
-[submodule "sources/apps"]
-	path = sources/apps
-	url = https://github.com/sdrausty/buildAPKsApps
 [submodule "sources/browsers"]
 	path = sources/browsers
 	url = https://github.com/sdrausty/buildAPKsBrowsers
