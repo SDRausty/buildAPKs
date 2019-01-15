@@ -48,11 +48,6 @@ _PRINTDONE_() {
 	printf "\\033[1;32mDONE  \\033[0m\\n"
 }
 
-_PRINTP_() {
-	printf "\\n\\033[1;34mPopulating %s/buildAPKsLibs: " "$TMPDIR"
-	printf '\033]2;Populating %s/buildAPKsLibs: OK\007' "$TMPDIR"
-}
-
 _PRINTWLA_() {
 	printf "\\n\\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
 }
@@ -60,35 +55,41 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-declare -a ARGS="$@"	## Declare arguments as string.
+
 NUM="$(date +%s)"
-WDR="$PWD"
-if [[ -z "${1:-}" ]] ; then
-	ARGS=Clocks 
-fi
-_WAKELOCK_
+JID=Clocks
 cd "$HOME"/buildAPKs
-echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-git pull
-git submodule update --init -- ./docs
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./sources/clocks
-git submodule update --init -- ./sources/liveWallpapers
-git submodule update --init -- ./sources/widgets
-find "$HOME"/buildAPKs/sources/clocks/ -name AndroidManifest.xml \
-	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$WDR"/stnderr"$NUM".log
+mkdir -p  "$HOME"/buildAPKs/var/log
+if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/liveWallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
+then
+	echo
+	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	git pull
+	git submodule update --init -- ./docs
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./sources/clocks
+	git submodule update --init -- ./sources/liveWallpapers
+	git submodule update --init -- ./sources/widgets
+else
+	echo
+	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
+fi
+
+_WAKELOCK_
+find "$HOME"/buildAPKs/sources/clocks -name AndroidManifest.xml \
+	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
-../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
-../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
+../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/clockWidget/
-../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
+../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
-../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
+../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
-../../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log
-cd "$WDR"
+../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 
 #EOF
