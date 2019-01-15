@@ -4,11 +4,12 @@
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
-JID=Applications
 NUM="$(date +%s)"
 WDR="$PWD"
 if [[ ! -z "${1:-}" ]]
 then
+	JID=Applications
+else
 	JID="$@"
 fi
 cd "$HOME"/buildAPKs
@@ -26,7 +27,7 @@ else
 	echo "To update module ~/buildAPKs/sources/applications to the newest version remove the ~/buildAPKs/sources/applications/.git file and run ${0##*/} again."
 fi
 
-find "$HOME"/buildAPKs/sources/applications  -name AndroidManifest.xml \
+find "$HOME"/buildAPKs/sources/applications -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 

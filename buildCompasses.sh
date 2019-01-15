@@ -48,11 +48,6 @@ _PRINTDONE_() {
 	printf "\\033[1;32mDONE  \\033[0m\\n"
 }
 
-_PRINTP_() {
-	printf "\\n\\033[1;34mPopulating %s/buildAPKsLibs: " "$TMPDIR"
-	printf '\033]2;Populating %s/buildAPKsLibs: OK\007' "$TMPDIR"
-}
-
 _PRINTWLA_() {
 	printf "\\n\\033[1;34mActivating termux-wake-lock: "'\033]2;Activating termux-wake-lock: OK\007'
 }
@@ -60,27 +55,38 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-declare -a ARGS="$@"	## Declare arguments as string.
+
 NUM="$(date +%s)"
-WDR="$PWD"
-if [[ -z "${1:-}" ]] ; then
-	ARGS=Compasses 
+if [[ ! -z "${1:-}" ]]
+then
+	JID=Compasses 
+else
+	JID="$@"
 fi
+cd "$HOME"/buildAPKs
+mkdir -p  "$HOME"/buildAPKs/var/log
+if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
+then
+	echo
+	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	git pull
+	git submodule update --init -- ./docs
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./sources/compasses
+	git submodule update --init -- ./sources/samples
+	git submodule update --init -- ./sources/tutorials
+else
+	echo
+	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
+fi
+
 _WAKELOCK_
-cd "$HOME"/buildAPKs
-echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-git pull
-git submodule update --init -- ./sources/compasses
-git submodule update --init -- ./sources/tutorials
-git submodule update --init -- ./sources/samples
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./docs
-find "$HOME"/buildAPKs/sources/compasses/ -name AndroidManifest.xml \
-	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$WDR"/stnderr"$NUM".log
+find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
+	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$ARGS" 2>"$WDR"/stnderr"$NUM".log 
+"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$ARGS" 2>"$WDR"/stnderr"$NUM".log  
-cd "$HOME"/buildAPKs
+"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 
 #EOF
