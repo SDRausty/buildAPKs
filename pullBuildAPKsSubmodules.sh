@@ -25,6 +25,9 @@ then
 	git submodule update --init -- ./sources/tutorials
 	git submodule update --init -- ./sources/widgets
 else
-	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove the .git files and run ${0##*/} again.\\n" "${0##*/}"
+	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
+	find "$HOME/buildAPKs" -type f -name .git
+
 fi
 
+#EOF
