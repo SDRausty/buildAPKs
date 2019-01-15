@@ -1,4 +1,5 @@
 *.class
+*.log
 *.org
 *.swp
 *~
@@ -6,3 +7,4 @@ notes
 R.java
 step2.apk
 step2-debug.key
+wakelock.*
