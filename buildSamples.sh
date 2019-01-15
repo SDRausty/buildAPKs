@@ -5,11 +5,19 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 cd "$HOME"/buildAPKs
-echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-git pull
-git submodule update --init -- ./sources/samples
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./docs
+if [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]]
+then
+	echo
+	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	git pull
+	git submodule update --init -- ./sources/samples
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./docs
+else
+	echo
+	echo "To update module ~/buildAPKs/sources/samples to the newest version remove the ~/buildAPKs/sources/samples/.git file and run ${0##*/} again."
+fi
+
 find "$HOME"/buildAPKs/sources/samples/  -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh Samples {} \; 2>stnderr"$(date +%s)".log
 

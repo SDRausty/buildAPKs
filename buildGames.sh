@@ -68,11 +68,19 @@ if [[ -z "${1:-}" ]] ; then
 fi
 _WAKELOCK_
 cd "$HOME"/buildAPKs
-echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-git pull
-git submodule update --init -- ./sources/games
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./docs
+if [[ ! -f "$HOME/buildAPKs/sources/games/.git" ]]
+then
+	echo
+	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	git pull
+	git submodule update --init -- ./sources/games
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./docs
+else
+	echo
+	echo "To update module ~/buildAPKs/sources/games to the newest version remove the ~/buildAPKs/sources/games/.git file and run ${0##*/} again."
+fi
+
 find "$HOME"/buildAPKs/sources/games/ -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
 
