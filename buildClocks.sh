@@ -70,12 +70,12 @@ _WAKELOCK_
 cd "$HOME"/buildAPKs
 echo Updating buildAPKs\; "\`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
 git pull
+git submodule update --init -- ./docs
+git submodule update --init -- ./scripts/maintenance
 git submodule update --init -- ./sources/clocks
 git submodule update --init -- ./sources/liveWallpapers
 git submodule update --init -- ./sources/widgets
-git submodule update --init -- ./scripts/maintenance
-git submodule update --init -- ./docs
-find "$HOME"/buildAPKs/sources/clocks/  -name AndroidManifest.xml \
+find "$HOME"/buildAPKs/sources/clocks/ -name AndroidManifest.xml \
 	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$WDR"/stnderr"$NUM".log
 cd "$HOME"/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
 ../../../buildOne.sh Clocks "$ARGS" 2>"$WDR"/stnderr"$NUM".log

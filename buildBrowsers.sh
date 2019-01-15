@@ -10,9 +10,9 @@ then
 	echo
 	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
 	git pull
-	git submodule update --init -- ./sources/browsers
-	git submodule update --init -- ./scripts/maintenance
 	git submodule update --init -- ./docs
+	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./sources/browsers
 else
 	echo
 	echo "To update module ~/buildAPKs/sources/browsers to the newest version remove the ~/buildAPKs/sources/browsers/.git file and run ${0##*/} again."
