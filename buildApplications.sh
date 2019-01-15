@@ -6,14 +6,12 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 NUM="$(date +%s)"
 WDR="$PWD"
+JID=Applications
 if [[ ! -z "${1:-}" ]]
 then
-	JID=Applications
-else
 	JID="$@"
 fi
 cd "$HOME"/buildAPKs
-mkdir -p  "$HOME"/buildAPKs/var/log
 if [[ ! -f "$HOME/buildAPKs/sources/applications/.git" ]]
 then
 	echo
