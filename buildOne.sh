@@ -73,8 +73,7 @@ else
 fi
 if [[ -z "${2:-}" ]] 
 then
-	echo "\$WDR is undefined!  Signal 223 generated in $PWD."
-	exit 223
+	WDR=""
 else
 	WDR="$2"
 fi
