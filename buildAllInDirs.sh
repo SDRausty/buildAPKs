@@ -82,7 +82,6 @@ fi
 /bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID"."$NUM".log"
-# /bin/env /bin/find . -name AndroidManifest.xml -execdir /bin/bash "$PWD"/buildOne.sh "$ARGS" "$WDR" {} \; 2>"$PWD"/stnderr"$NUM".log
 exit $?
 
 #EOF

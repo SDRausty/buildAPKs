@@ -67,6 +67,7 @@ then
 	git pull
 	git submodule update --init -- ./docs
 	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./scripts/shlibs
 	git submodule update --init -- ./sources/compasses
 	git submodule update --init -- ./sources/samples
 	git submodule update --init -- ./sources/tutorials

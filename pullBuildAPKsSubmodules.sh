@@ -12,6 +12,7 @@ then
 	git pull 
 	git submodule update --init -- ./docs
 	git submodule update --init -- ./scripts/maintenance
+	git submodule update --init -- ./scripts/shlibs
 	git submodule update --init -- ./sources/applications
 	git submodule update --init -- ./sources/browsers 
 	git submodule update --init -- ./sources/clocks
