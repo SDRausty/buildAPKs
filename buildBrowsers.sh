@@ -36,7 +36,7 @@ trap _SETRPSIGNAL_ HUP INT TERM
 trap _SETRPQUIT_ QUIT 
 
 git submodule update --init -- ./scripts/shlibs
-JID=Browsers	# job id/name
+JID=Browsers		# job id/name
 . "$HOME/buildAPKs/scripts/shlibs/mod.sh"
 
 #EOF
