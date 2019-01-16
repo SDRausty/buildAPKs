@@ -35,9 +35,9 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
-JID=Entertainment # job id
-JIDL="${JID,,}" # https://duckduckgo.com/?q=bash+variable+lower+case+site%3Atldp.org
-SHNAME="${0##*/}" # shell script name
+JID=Entertainment	# job id/name
+JIDL="${JID,,}"		# https://duckduckgo.com/?q=bash+variable+lower+case+site%3Atldp.org
+SHNAME="${0##*/}"	# shell script name
 git submodule update --init -- ./scripts/shlibs
 . "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 WDR="$RDR/sources/$JIDL/"
@@ -54,6 +54,6 @@ fi
 find "$WDR" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.sh" "$JID" {} \; \
 	2> "$RDR/var/log/stnderr.build$JID.$(date +%s).log"
-. "$RDR/scripts/shlibs/fa.sh" "$JID" "$WDR"
+. "$RDR/scripts/shlibs/fa.sh" "$JID" "$WDR" ||:
 
 #EOF
