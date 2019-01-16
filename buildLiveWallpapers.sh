@@ -2,23 +2,8 @@
 # Copyright 2017-2019 (c) all rights reserved 
 # by S D Rausty https://sdrausty.github.io
 #####################################################################
-set -e
-cd $HOME/buildAPKs
-if [[ ! -f "$HOME/buildAPKs/sources/liveWallpapers/.git" ]]
-then
-	echo
-	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
-	git pull
-	git submodule update --init -- ./sources/liveWallpapers
-	git submodule update --init -- ./scripts/maintenance
-	git submodule update --init -- ./scripts/shlibs
-	git submodule update --init -- ./docs
-else
-	echo
-	echo "To update module ~/buildAPKs/sources/liveWallpapers to the newest version remove the ~/buildAPKs/sources/liveWallpapers/.git file and run ${0##*/} again."
-fi
-
-find $HOME/buildAPKs/sources/liveWallpapers/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh LiveWallpapers {} \; 2>stnderr"$(date +%s)".log
+git submodule update --init -- ./scripts/shlibs
+JID=LiveWallpapers	# job id/name
+. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
 
 #EOF

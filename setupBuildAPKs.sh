@@ -3,7 +3,7 @@
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
-VERSIONID="v1.2"
+VERSIONID="v2.2"
 
 _STRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh ERROR:  Signal $? received!\\e[0m\\n"
