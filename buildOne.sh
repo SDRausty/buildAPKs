@@ -42,7 +42,7 @@ _STRPEXIT_() { # Run on exit.
 	rm -rf ./gen 2>/dev/null ||:  
  	rm -rf ./obj 2>/dev/null ||:  
 	find . -name R.java -exec rm {} \; 2>/dev/null ||:  
-	printf "\e[1;38;5;151mCompleted tasks in %s\n\n\e[0m" "$PWD"
+	printf "\\e[1;38;5;151mCompleted tasks in %s\\n\\n\\e[0m" "$PWD"
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit 0
@@ -83,7 +83,7 @@ then
 	echo "Cannot run in $HOME!  Signal 224 generated in $PWD."
 	exit 224
 fi
-printf "\n\e[1;38;5;116mBeginning build in %s\n" "$PWD"
+printf "\\n\\e[1;38;5;116mBeginning build in %s\\n" "$PWD"
 if [ ! -e "./assets" ]
 then
 	mkdir -p ./assets
@@ -108,13 +108,13 @@ if [ ! -d "/sdcard/Download/builtAPKs/"$EXT$DAY"" ]
 then
 	mkdir -p -p /sdcard/Download/builtAPKs/"$EXT$DAY"
 fi
-printf "\e[1;38;5;115m%s\n\e[0m" "aapt: begun"
+printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started"
 aapt package -f \
 	-M ./AndroidManifest.xml \
 	-J gen \
 	-S res \
 	-m
-printf "\e[1;38;5;148m%s\n\e[1;38;5;114m%s\n\e[0m" "aapt: done" "ecj: begun"
+printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun"
 if [ -d "$TMPDIR"/buildAPKsLibs ] && [ -d "$WDR"/libs ] # directories exist
 then # loads artifacts
         ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs:"$WDR"/libs -sourcepath . "$(find . -type f -name "*.java")"
@@ -124,9 +124,9 @@ then
 else
         ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
 fi
-printf "\e[1;38;5;149m%s\n\e[1;38;5;113m%s\n\e[0m" "ecj: done" "dx: begun"
+printf "\\e[1;38;5;149m%s;  \\e[1;38;5;113m%s\\n\\e[0m" "ecj: done" "dx: started"
 dx --dex --output=./bin/classes.dex ./obj
-printf "\e[1;38;5;148m%s\n\e[1;38;5;112m%s\n\e[0m" "dx: done" "Making the apk."
+printf "\\e[1;38;5;148m%s;  \\e[1;38;5;112m%s\\n\\e[0m" "dx: done" "Making the apk."
 aapt package -f \
 	--min-sdk-version 1 \
 	--target-sdk-version 23 \
@@ -134,14 +134,14 @@ aapt package -f \
 	-S ./res \
 	-A ./assets \
 	-F bin/step2.apk
-printf "\e[1;38;5;113m%s\n\e[0m" "Adding the classes.dex to the apk."
+printf "\\e[1;38;5;113m%s\n\\e[0m" "Adding the classes.dex to the apk."
 cd bin
 aapt add -f step2.apk classes.dex
-printf "\e[1;38;5;114m%s\n" "Signing step2.apk"
+printf "\\e[1;38;5;114m%s\\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
 cp step2.apk /sdcard/Download/builtAPKs/"$EXT$DAY"/step"$NOW".apk
-printf "\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\n" "$NOW"
-printf "\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\n" "$NOW" 
+printf "\\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW"
+printf "\\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW" 
 
 #EOF
