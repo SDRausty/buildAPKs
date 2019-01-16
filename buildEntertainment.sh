@@ -35,10 +35,10 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
-git submodule update --init -- ./scripts/shlibs
-. "$RDR/scripts/shlibs/lock.sh"
 JID=Entertainment # job id
 SHNAME="${0##*/}" # shell script name
+git submodule update --init -- ./scripts/shlibs
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 WDR="$RDR/sources/entertainment/"
 _WAKELOCK_
 cd "$RDR" # Change directory to root directory.
