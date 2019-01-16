@@ -1,1 +1,0 @@
-../../buildBrowsers.sh

@@ -1,1 +1,0 @@
-../../buildWidgets.sh

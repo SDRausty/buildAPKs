@@ -1,1 +1,0 @@
-../../buildApplications.sh

@@ -1,1 +1,0 @@
-../../buildHelloWorlds.sh

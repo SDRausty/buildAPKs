@@ -1,1 +1,0 @@
-../../buildAll.sh

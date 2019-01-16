@@ -1,1 +1,0 @@
-../../buildFlashlights.sh
