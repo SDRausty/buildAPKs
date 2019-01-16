@@ -21,6 +21,7 @@ fi
 
 find /data/data/com.termux/files/home/buildAPKs/sources/tools \
 	-name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh Top10 {} \; 2>stnderr"$(date +%s)".log
+	-execdir $HOME/buildAPKs/buildOne.sh Tools {} \; \ 
+	2> "$HOME/buildAPKs/var/log/stnderr.buildEntertainment.$(date +%s).log"
 
 #EOF
