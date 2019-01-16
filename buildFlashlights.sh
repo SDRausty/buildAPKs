@@ -64,10 +64,6 @@ _PRINTWLD_() {
 }
 
 JID=Flashlights
-if [[ ! -z "${1:-}" ]]
-then
-	JID="$@"
-fi
 _WAKELOCK_
 cd "$HOME"/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/sources/flashlights/.git" ]]

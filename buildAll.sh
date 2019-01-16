@@ -33,10 +33,6 @@ _WAKELOCK_
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
 cd "$HOME"/buildAPKs/sources
 JID=Everything 
-if [[ ! -z "${1:-}" ]]
-then
-	JID="$@"
-fi
 find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID".$(date +%s).log"

@@ -63,10 +63,6 @@ _PRINTWLD_() {
 JID=InDirs
 NUM="$(date +%s)"
 WDR="$PWD"
-if [[ ! -z "${1:-}" ]]
-then
-	JID="$@"
-fi
 _WAKELOCK_
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]

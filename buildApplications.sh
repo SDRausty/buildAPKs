@@ -7,10 +7,6 @@ shopt -s nullglob globstar
 NUM="$(date +%s)"
 WDR="$PWD"
 JID=Applications
-if [[ ! -z "${1:-}" ]]
-then
-	JID="$@"
-fi
 cd "$HOME"/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/sources/applications/.git" ]]
 then

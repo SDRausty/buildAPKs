@@ -60,12 +60,10 @@ _PRINTWLA_() {
 _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
-declare -a ARGS="$@"	## Declare arguments as string.
+
 NUM="$(date +%s)"
 WDR="$PWD"
-if [[ -z "${1:-}" ]] ; then
-	ARGS=Games 
-fi
+JIB=Games 
 _WAKELOCK_
 cd "$HOME"/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/sources/games/.git" ]]
@@ -83,6 +81,6 @@ else
 fi
 
 find "$HOME"/buildAPKs/sources/games/ -name AndroidManifest.xml \
-	-execdir "$HOME"/buildAPKs/buildOne.sh "$ARGS" {} \; 2>"$PWD"/stnderr"$NUM".log
+	-execdir "$HOME"/buildAPKs/buildOne.sh "$JIB" {} \; 2>"$PWD"/stnderr"$NUM".log
 
 #EOF

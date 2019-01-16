@@ -59,10 +59,6 @@ _PRINTWLD_() {
 }
 
 JID=Entertainment
-if [[ ! -z "${1:-}" ]]
-then
-	JID="$@"
-fi
 _WAKELOCK_
 cd "$HOME/buildAPKs"
 if [[ ! -f "$HOME/buildAPKs/sources/entertainment/.git" ]]
