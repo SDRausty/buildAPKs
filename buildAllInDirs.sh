@@ -19,6 +19,7 @@ _STRPEXIT_() { # Run on exit.
 
 _STRPSIGNAL_() { # Run on signal.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
+	_WAKEUNLOCK_
  	exit 211 
 }
 
@@ -77,7 +78,7 @@ then
 fi
 /bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
-	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID"."$NUM".log"
+	2> "$HOME/buildAPKs/var/log/stnderr.build.$JIDL.$NUM.log"
 exit $?
 
 #EOF
