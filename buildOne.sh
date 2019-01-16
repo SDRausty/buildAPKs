@@ -25,7 +25,12 @@ _STRPEXIT_() { # Run on exit.
 	local RV="$?"
 	if [[ "$RV" != 0 ]]  
 	then 
-		echo Signal $RV received!  More information in \`stnderr*.log\` files.
+		echo "Signal $RV received by ${0##*/}!  More information in \`stnderr*.log\` files."
+	fi
+	if [[ "$RV" = 220 ]]  
+	then 
+		printf "\\n\\n\\e[1;7;38;5;143mSignal %s generated in %s by %s; Try downgrading the version of \`ecj\`.  Version ecj/stable,now 4.7.2-2 does not work correctly; This error can be resolved by sharing here https://github.com/termux/termux-packages/pulls and https://github.com/termux/termux-packages/issues here.  More information about keeping your system as stable as possible by downgrading packages when the need arrises is https://sdrausty.github.io/au here.\\n\\n" "$RV" "$PWD" "${0##*/}" 
+		sleep 4
 	fi
 	if [[ "$RV" = 223 ]]  
 	then 
