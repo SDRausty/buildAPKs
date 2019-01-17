@@ -109,9 +109,9 @@ if [ ! -d "./res" ]
 then
 	mkdir -p ./res
 fi
-if [ ! -d "/sdcard/Download/builtAPKs/"$EXT$DAY"" ]
+if [ ! -d "/storage/emulated/0/Download/builtAPKs/"$EXT$DAY"" ]
 then
-	mkdir -p -p /sdcard/Download/builtAPKs/"$EXT$DAY"
+	mkdir -p -p /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"
 fi
 printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started"
 aapt package -f \
@@ -145,8 +145,8 @@ aapt add -f step2.apk classes.dex
 printf "\\e[1;38;5;114m%s\\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
-cp step2.apk /sdcard/Download/builtAPKs/"$EXT$DAY"/step"$NOW".apk
-printf "\\e[1;38;5;115mCopied to /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW"
-printf "\\e[1;38;5;149mYou can install it from /sdcard/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW" 
+cp step2.apk /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step"$NOW".apk
+printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW"
+printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW" 
 
 #EOF
