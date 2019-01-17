@@ -49,3 +49,6 @@
 [submodule "scripts/shlibs"]
 	path = scripts/shlibs
 	url = https://github.com/sdrausty/shlibs
+[submodule "debs"]
+	path = debs
+	url = https://github.com/sdrausty/debBuildAPKs
