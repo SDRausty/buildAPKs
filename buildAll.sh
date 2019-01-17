@@ -35,6 +35,6 @@ cd "$HOME"/buildAPKs/sources
 JID=Everything 
 find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
-	2> "$HOME/buildAPKs/var/log/stnderr.build"$JID".$(date +%s).log"
+	2> "$HOME/buildAPKs/var/log/stnderr.build."$JID".$(date +%s).log"
 
 #EOF
