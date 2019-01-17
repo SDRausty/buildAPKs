@@ -29,7 +29,7 @@ _STRPEXIT_() { # Run on exit.
 	fi
 	if [[ "$RV" = 220 ]]  
 	then 
-		printf "\\n\\n\\e[1;7;38;5;143mSignal %s generated in %s by %s; Try downgrading the version of \`ecj\`.  Version ecj/stable,now 4.7.2-2 does not work correctly; This error can be resolved by sharing here https://github.com/termux/termux-packages/pulls and https://github.com/termux/termux-packages/issues here.  \\n\\nMore information about keeping your system as stable as possible by downgrading packages when the need arrises is https://sdrausty.github.io/au here.\\n\\nIn the meantime, ecj_4.7.2-1_all.deb works and is included for your convience in scripts/maintenance/.  Use \`dpkg --purge ecj\` followed by \`dpkg --install ecj_4.7.2-1_all.deb\` to downgrade to a stable version.\\n" "$RV" "$PWD" "${0##*/}" 
+		printf "\\n\\n\\e[1;7;38;5;143m	Signal %s generated in %s by %s; Downgrading the version of \`ecj\` is a potential solution if this signal was generated while ecj was compiling.  Version ecj/stable,now 4.7.2-2 does not run very well; This might be solved through sharing here https://github.com/termux/termux-packages/pulls and https://github.com/termux/termux-packages/issues here.\\n\\n	More information about keeping your system as stable as possible by downgrading a package when the need arrises is https://sdrausty.github.io/au here.\\n\\n	In the meantime, ecj_4.7.2-1_all.deb works far better and is included for your convience in scripts/maintenance.  Use \`dpkg --purge ecj\` followed by \`dpkg --install ecj_4.7.2-1_all.deb\` to downgrade to a more stable version.\\n\\n" "$RV" "$PWD" "${0##*/}" 
 		sleep 4
 	fi
 	if [[ "$RV" = 223 ]]  
