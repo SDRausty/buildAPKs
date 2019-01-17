@@ -56,4 +56,4 @@ else
 fi
 cd "$HOME"
 git clone https://github.com/sdrausty/buildAPKs
-bash "$HOME"/buildAPKs/scripts/build/buildMyFirstAPK.sh
+bash "$HOME"/buildAPKs/buildMyFirstAPKs.sh
