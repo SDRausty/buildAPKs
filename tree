@@ -1,0 +1,141 @@
+.
+├── CHANGE.log
+├── LICENSE
+├── README.md
+├── _config.yml
+├── a.bash
+├── build.dir.bash
+├── buildAll.sh
+├── buildAllInDirs.sh
+├── buildApplications.sh
+├── buildBrowsers.sh
+├── buildClocks.sh
+├── buildCompasses.sh
+├── buildEntertainment.sh
+├── buildFlashlights.sh
+├── buildGames.sh
+├── buildHelloWorlds.sh
+├── buildLiveWallpapers.sh
+├── buildMyFirstAPKs.sh
+├── buildOne.sh
+├── buildSamples.sh
+├── buildTools.sh
+├── buildTop10.sh
+├── buildTutorials.sh
+├── buildWidgets.sh
+├── debs
+├── docs
+├── index.md
+├── libs
+├── pullBuildAPKsSubmodules.sh
+├── scripts
+│   ├── build
+│   │   └── buildMyFirstAPKs.sh
+│   ├── maintenance
+│   └── shlibs
+├── setupBuildAPKs.sh
+├── sources
+│   ├── Apps
+│   │   ├── moon
+│   │   │   ├── AndroidManifest.xml
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── moon-image-licening-details.txt
+│   │   │   ├── res
+│   │   │   │   ├── drawable
+│   │   │   │   │   └── moon.png
+│   │   │   │   ├── drawable-hdpi
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── drawable-ldpi
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── drawable-mdpi
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── drawable-xhdpi
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── drawable-xxhdpi
+│   │   │   │   │   └── ic_launcher.png
+│   │   │   │   ├── layout
+│   │   │   │   │   └── activity_fullscreen.xml
+│   │   │   │   └── values
+│   │   │   │       └── strings.xml
+│   │   │   └── src
+│   │   │       └── akk
+│   │   │           └── astro
+│   │   │               └── droid
+│   │   │                   └── moonphase
+│   │   │                       ├── MoonActivity.java
+│   │   │                       ├── MoonPhase.java
+│   │   │                       ├── MoonView.java
+│   │   │                       └── StarDate.java
+│   │   └── prism
+│   │       ├── AndroidManifest.xml
+│   │       ├── LICENSE
+│   │       ├── README
+│   │       ├── res
+│   │       │   ├── drawable
+│   │       │   │   ├── concavelens.png
+│   │       │   │   ├── concavelensic.png
+│   │       │   │   ├── concavemirror.png
+│   │       │   │   ├── concavemirroric.png
+│   │       │   │   ├── convexlens.png
+│   │       │   │   ├── convexlensic.png
+│   │       │   │   ├── convexmirror.png
+│   │       │   │   ├── convexmirroric.png
+│   │       │   │   ├── feather.png
+│   │       │   │   ├── feathermirr.png
+│   │       │   │   ├── ghost.png
+│   │       │   │   ├── microscope.png
+│   │       │   │   ├── prism_tab.xml
+│   │       │   │   ├── prism_tab_grey.png
+│   │       │   │   ├── prism_tab_yellow.png
+│   │       │   │   └── telescope.png
+│   │       │   ├── drawable-hdpi
+│   │       │   │   └── ic_launcher.png
+│   │       │   ├── drawable-ldpi
+│   │       │   │   └── ic_launcher.png
+│   │       │   ├── drawable-mdpi
+│   │       │   │   └── ic_launcher.png
+│   │       │   ├── layout
+│   │       │   │   ├── help.xml
+│   │       │   │   ├── main.xml
+│   │       │   │   ├── microscope.xml
+│   │       │   │   ├── other.xml
+│   │       │   │   ├── prism.xml
+│   │       │   │   └── telescope.xml
+│   │       │   ├── raw
+│   │       │   │   └── documentation.html
+│   │       │   └── values
+│   │       │       └── strings.xml
+│   │       └── src
+│   │           └── org
+│   │               └── us
+│   │                   └── andriod
+│   │                       ├── An_StartActivity.java
+│   │                       ├── Microscope.java
+│   │                       ├── MicroscopeActivity.java
+│   │                       ├── OtherActivity.java
+│   │                       ├── Physics.java
+│   │                       ├── Prism.java
+│   │                       ├── PrismActivity.java
+│   │                       ├── Rays.java
+│   │                       ├── Reflection.java
+│   │                       ├── Telescope.java
+│   │                       ├── TelescopeActivity.java
+│   │                       └── ViewActivity.java
+│   ├── applications
+│   ├── browsers
+│   ├── clocks
+│   ├── compasses
+│   ├── entertainment
+│   ├── flashlights
+│   ├── games
+│   ├── liveWallpapers
+│   ├── samples
+│   ├── tools
+│   ├── top10
+│   ├── tutorials
+│   └── widgets
+├── tree
+└── tree.sha
+
+50 directories, 88 files
