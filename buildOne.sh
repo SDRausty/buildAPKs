@@ -29,7 +29,7 @@ _STRPEXIT_() { # Run on exit.
 	fi
 	if [[ "$RV" = 220 ]]  
 	then 
-		printf "\\n\\n\\e[1;7;38;5;143m	Signal %s generated in %s by %s; Downgrading the version of \`ecj\` is a potential solution if this signal was generated while ecj was compiling.  Version ecj/stable,now 4.7.2-2 does not run very well; This might be solved through sharing here https://github.com/termux/termux-packages/pulls and https://github.com/termux/termux-packages/issues here.\\n\\n	More information about keeping a system as stable as possible by downgrading a package when the need arrises is https://sdrausty.github.io/au here.\\n\\n	\`ecj_4.7.2-1\` works far better than the version currently in use.  So it is included for convience in \`buildAPKs/debs\`.  Use \`dpkg --purge ecj\` followed by \`dpkg --install ecj_4.7.2-1_all.deb\` to downgrade to a more stable version.\\n\\n" "$RV" "$PWD" "${0##*/}" 
+		printf "\\n\\n\\e[1;7;38;5;143m	Signal %s generated in %s by %s; Downgrading the version of \`ecj\` is a potential solution if this signal was generated while ecj was compiling.  Version ecj/stable,now 4.7.2-2 does not run very well; This might be solved through sharing here https://github.com/termux/termux-packages/pulls and https://github.com/termux/termux-packages/issues/3157 here.  First commented Dec 20, 2018\\n\\n	More information about keeping a system as stable as possible by downgrading a package when the need arrises is https://sdrausty.github.io/au here.\\n\\n	\`ecj_4.7.2-1\` works far better than the version currently in use.  So it is included for convience in \`buildAPKs/debs\`.  Use \`dpkg --purge ecj\` followed by \`dpkg --install ecj_4.7.2-1_all.deb\` to downgrade to a more stable version.\\n\\n" "$RV" "$PWD" "${0##*/}" 
 		sleep 4
 	fi
 	if [[ "$RV" = 223 ]]  
