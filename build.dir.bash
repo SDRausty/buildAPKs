@@ -2,36 +2,43 @@
 # Copyright 2019 (c) all rights reserved 
 # by SDRausty https://sdrausty.github.io
 #####################################################################
-set -Eexuo pipefail
+set -Eeuo pipefail
 shopt -s nullglob globstar
 
-_STRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
+_SETRPERROR_() { # Run on script error.
+	local RV="$?"
+	_WAKEUNLOCK_
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
+	set +Eeuo pipefail 
 	exit 201
 }
 
-_STRPEXIT_() { # Run on exit.
-# 	_WAKEUNLOCK_
+_SETRPEXIT_() { # Run on exit.
+	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
 }
 
-_STRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
+_SETRPSIGNAL_() { # Run on signal.
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	_WAKEUNLOCK_
+	printf "\\e[?25h\\e[0m"
+	set +Eeuo pipefail 
  	exit 211 
 }
 
-_STRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Quit signal %s received!\\e[0m\\n" "$?"
+_SETRPQUIT_() { # Run on quit.
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
  	exit 221 
 }
 
-trap '_STRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
-trap _STRPEXIT_ EXIT
-trap _STRPSIGNAL_ HUP INT TERM 
-trap _STRPQUIT_ QUIT 
+trap '_SETRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap _SETRPEXIT_ EXIT
+trap _SETRPSIGNAL_ HUP INT TERM 
+trap _SETRPQUIT_ QUIT 
 
 _WAKELOCK_() {
 	_PRINTWLA_ 
@@ -62,8 +69,6 @@ _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
 JID=InDir
-# search: lowercase bash variable pattern replacement substitution site:tldp.org
-# http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 NUM="$(date +%s)"
 WDR="$PWD"
 _WAKELOCK_
@@ -72,5 +77,6 @@ find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
 	2> "$@/stnderr.build.${JID,,}.$NUM.log"
 exit $?
-
+#	SEARCH: LOWERCASE BASH VARIABLE PATTERN REPLACEMENT SUBSTITUTION SITE:TLDP.ORG
+#	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 #EOF
