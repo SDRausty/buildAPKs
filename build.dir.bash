@@ -2,7 +2,7 @@
 # Copyright 2019 (c) all rights reserved 
 # by SDRausty https://sdrausty.github.io
 #####################################################################
-set -Eexuo pipefail
+set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
