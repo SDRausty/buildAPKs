@@ -54,15 +54,19 @@ Computed on 20190120 branch master.
 3648	.git
 4932	.
 RESET (reason : module errors )
-Size in KB
 604	.git
 928	.
 AFTER `git pull`
-Size in KB
 3396	.git
 3592	.
 WITH MODULES
-Size in KB
 3408	.git
 3768	.
-Full repository with all modules.
+Calculating for /data/data/com.termux/files/home/buildAPKs/sources/entertainment/...
+  Results for /data/data/com.termux/files/home/buildAPKs/sources/entertainment/.
+        5 possible
+        5 built
+  72 deposited in /storage/emulated/0/Download/builtAPKs/Entertainment20190120/
+  Full repository with all modules.
+8808    .git
+13592   .
