@@ -44,8 +44,7 @@ Computed on 20190113 branch master.
 Computed on 20190114 branch master.
 3384	.git
 4472	.
-Computed on 20190114 branch master.
-Full repository with all modules
+Full repository with all modules.
 364892	.git
 1027356	.
 Computed on 20190114 branch master.
@@ -54,12 +53,16 @@ Computed on 20190114 branch master.
 Computed on 20190120 branch master.
 3648	.git
 4932	.
-RESET
+RESET (reason : module errors )
 Size in KB
 604	.git
 928	.
-Computed on 20190120 branch master.
-After `git pull`:
+AFTER `git pull`
 Size in KB
 3396	.git
 3592	.
+WITH MODULES
+Size in KB
+3408	.git
+3768	.
+Full repository with all modules.
