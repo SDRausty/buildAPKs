@@ -37,7 +37,7 @@ JID=InDirs
 NUM="$(date +%s)"
 WDR="$PWD"
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
@@ -52,6 +52,6 @@ fi
 /bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.$JID.$NUM.log"
-exit $?
+_WAKEUNLOCK_
 
 #EOF

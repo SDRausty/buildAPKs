@@ -8,10 +8,11 @@ shopt -s nullglob globstar
 JID=Everything 
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
 cd "$HOME"/buildAPKs/sources
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."$JID".$(date +%s).log"
+_WAKEUNLOCK_
 
 #EOF

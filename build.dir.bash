@@ -43,13 +43,12 @@ trap _SBDBTRPQUIT_ QUIT
 JID=InDir
 NUM="$(date +%s)"
 WDR="$PWD"
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
-
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
 	2> "$WDR/stnderr.build.${JID,,}.$NUM.log"
-exit $?
-#	SEARCH: LOWERCASE BASH VARIABLE PATTERN REPLACEMENT SUBSTITUTION SITE:TLDP.ORG
+_WAKEUNLOCK_
+#	search: lowercase bash variable pattern replacement substitution site:tldp.org
 #	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 #EOF

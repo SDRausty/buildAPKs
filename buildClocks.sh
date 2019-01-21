@@ -55,7 +55,7 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
 fi
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/clocks -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
@@ -72,5 +72,6 @@ cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
 ../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
 ../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+_WAKEUNLOCK_
 
 #EOF
