@@ -15,17 +15,17 @@ then
 	git submodule update --init -- ./scripts/shlibs
 	git submodule update --init --recursive ./sources/applications
 	git submodule update --init --recursive ./sources/browsers 
-	git submodule update --init -- ./sources/clocks
+	git submodule update --init --recursive ./sources/clocks
 	git submodule update --init --recursive ./sources/compasses 
-	git submodule update --init -- ./sources/entertainment
-	git submodule update --init -- ./sources/flashlights 
-	git submodule update --init -- ./sources/games 
-	git submodule update --init --recursive  ./sources/livewallpapers
-	git submodule update --init -- ./sources/samples 
-	git submodule update --init -- ./sources/top10 
-	git submodule update --init -- ./sources/tools 
-	git submodule update --init --recursive  ./sources/tutorials
-	git submodule update --init -- ./sources/widgets
+	git submodule update --init --recursive ./sources/entertainment
+	git submodule update --init --recursive ./sources/flashlights 
+	git submodule update --init --recursive ./sources/games 
+	git submodule update --init --recursive ./sources/livewallpapers
+	git submodule update --init --recursive ./sources/samples 
+	git submodule update --init --recursive ./sources/top10 
+	git submodule update --init --recursive ./sources/tools 
+	git submodule update --init --recursive ./sources/tutorials
+	git submodule update --init --recursive ./sources/widgets
 else
 	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
 	find "$HOME/buildAPKs" -type f -name .git
