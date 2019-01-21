@@ -20,11 +20,11 @@ then
 	git submodule update --init -- ./sources/entertainment
 	git submodule update --init -- ./sources/flashlights 
 	git submodule update --init -- ./sources/games 
-	git submodule update --init -- ./sources/livewallpapers
+	git submodule update --init --recursive  ./sources/livewallpapers
 	git submodule update --init -- ./sources/samples 
 	git submodule update --init -- ./sources/top10 
 	git submodule update --init -- ./sources/tools 
-	git submodule update --init -- ./sources/tutorials
+	git submodule update --init --recursive  ./sources/tutorials
 	git submodule update --init -- ./sources/widgets
 else
 	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
