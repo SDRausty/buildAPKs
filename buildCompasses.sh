@@ -80,11 +80,11 @@ fi
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
-	2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
+	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
+"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
+"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 . "$HOME/buildAPKs/scripts/shlibs/fa.sh" "$JID" "$HOME/buildAPKs/sources/" ||:
 
 #EOF
