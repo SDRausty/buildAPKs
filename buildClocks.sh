@@ -61,7 +61,7 @@ NUM="$(date +%s)"
 JID=Clocks
 cd "$HOME"/buildAPKs
 mkdir -p  "$HOME"/buildAPKs/var/log
-if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/liveWallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
+if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/livewallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
@@ -70,7 +70,7 @@ then
 	git submodule update --init -- ./scripts/maintenance
 	git submodule update --init -- ./scripts/shlibs
 	git submodule update --init -- ./sources/clocks
-	git submodule update --init -- ./sources/liveWallpapers
+	git submodule update --init -- ./sources/livewallpapers
 	git submodule update --init -- ./sources/widgets
 else
 	echo
