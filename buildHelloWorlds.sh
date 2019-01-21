@@ -8,7 +8,7 @@ cd $HOME/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]]
 then
 	echo
-	echo "Updating buildAPKs\; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
+	echo "Updating buildAPKs; \`${0##*/}\` might need to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script needs to download source code from https://github.com"
 	cd "$HOME/buildAPKs"
 	git pull
 	git submodule update --init -- ./sources/samples
