@@ -16,7 +16,7 @@ then
 	git submodule update --init --recursive ./sources/applications
 	git submodule update --init --recursive ./sources/browsers 
 	git submodule update --init -- ./sources/clocks
-	git submodule update --init -- ./sources/compasses 
+	git submodule update --init --recursive ./sources/compasses 
 	git submodule update --init -- ./sources/entertainment
 	git submodule update --init -- ./sources/flashlights 
 	git submodule update --init -- ./sources/games 
