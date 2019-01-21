@@ -55,7 +55,6 @@ _STRPEXIT_() { # Run on exit.
 
 _STRPSIGNAL_() { # Run on signal.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$?"
-	_WAKEUNLOCK_
  	exit 221 
 }
 

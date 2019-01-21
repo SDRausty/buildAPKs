@@ -5,6 +5,7 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _SCOTRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201
@@ -55,7 +56,6 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \

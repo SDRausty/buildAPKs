@@ -5,6 +5,7 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
+. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _SATRPERROR_() { # Run on script error.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
@@ -40,7 +41,6 @@ trap _SATRPQUIT_ QUIT
 JID=Everything 
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
 cd "$HOME"/buildAPKs/sources
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
