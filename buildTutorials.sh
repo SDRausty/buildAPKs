@@ -36,6 +36,7 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
+cd "$HOME/buildAPKs"
 git submodule update --init -- ./scripts/shlibs
 JID=Tutorials		# job id/name
 . "$HOME/buildAPKs/scripts/shlibs/mod.sh"
