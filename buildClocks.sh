@@ -81,7 +81,7 @@ _WAKELOCK_
 find "$HOME"/buildAPKs/sources/clocks -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
-cd "$HOME"/buildAPKs/sources/liveWallpapers/android-clock-livewallpaper/
+cd "$HOME"/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/
 ../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
 ../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
