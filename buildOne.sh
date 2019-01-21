@@ -148,6 +148,6 @@ cd ..
 cp step2.apk /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step"$NOW".apk
 printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW"
 printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW" 
-printf "\\e[?25h\\e[1;7;38;5;34mShare %s here; Share everwhere%s!\\e[0m\\n" "https://wiki.termux.com/wiki/Development" "🌐"
+printf "\\e[?25h\\e[1;7;38;5;34mShare %s here; Share everwhere%s!\\e[0m\\n" "https://wiki.termux.com/wiki/Development" "🌍🌎🌏🌐"
 
 #EOF
