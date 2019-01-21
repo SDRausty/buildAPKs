@@ -1,5 +1,5 @@
 *.class
-*.log
+# *.log
 *.lock
 *.org
 *.swp
