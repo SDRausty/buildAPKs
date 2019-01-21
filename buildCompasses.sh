@@ -57,8 +57,10 @@ _PRINTWLD_() {
 	printf "\\n\\033[1;34mReleasing termux-wake-lock: "'\033]2;Releasing termux-wake-lock: OK\007'
 }
 
-NUM="$(date +%s)"
+DAY="$(date +%Y%m%d)"
 JID=Compasses 
+NUM="$(date +%s)"
+WDR="$HOME/buildAPKs/sources/${JID,,}"
 cd "$HOME"/buildAPKs
 mkdir -p  "$HOME"/buildAPKs/var/log
 if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/maintenance/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
@@ -77,8 +79,6 @@ else
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
 
-DAY="$(date +%Y%m%d)"
-WDR="$HOME/buildAPKs/sources/"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
