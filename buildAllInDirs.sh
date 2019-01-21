@@ -6,7 +6,8 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _SAIDTRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	exit 201
 }
 
@@ -18,13 +19,15 @@ _SAIDTRPEXIT_() { # Run on exit.
 }
 
 _SAIDTRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Signal %s received!\\e[0m\\n" "$?"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	_WAKEUNLOCK_
  	exit 211 
 }
 
 _SAIDTRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildAllInDirs.sh WARNING:  Quit signal %s received!\\e[0m\\n" "$?"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
  	exit 221 
 }
 
