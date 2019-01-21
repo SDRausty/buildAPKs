@@ -13,7 +13,7 @@ then
 	git submodule update --init -- ./docs
 	git submodule update --init -- ./scripts/maintenance
 	git submodule update --init -- ./scripts/shlibs
-	git submodule update --init -- ./sources/applications
+	git submodule update --init --recursive ./sources/applications
 	git submodule update --init --recursive ./sources/browsers 
 	git submodule update --init -- ./sources/clocks
 	git submodule update --init -- ./sources/compasses 
