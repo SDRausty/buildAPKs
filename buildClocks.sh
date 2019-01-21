@@ -93,5 +93,6 @@ cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
 ../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
 ../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build$JID.$NUM.log"
+. "$HOME"/buildAPKs/scripts/shlibs/fa.sh" "$JID" ""$HOME"/buildAPKs/sources/" ||:
 
 #EOF
