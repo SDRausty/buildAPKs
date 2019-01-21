@@ -51,7 +51,7 @@ then
 fi
 /bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
-	2> "$HOME/buildAPKs/var/log/stnderr.build.$JID.$NUM.log"
+	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 _WAKEUNLOCK_
 
 #EOF
