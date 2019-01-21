@@ -77,6 +77,7 @@ else
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
 
+DAY="$(date +%Y%m%d)"
 WDR="$HOME/buildAPKs/sources/"
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
