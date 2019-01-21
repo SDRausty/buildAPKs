@@ -5,36 +5,36 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-_SETRPERROR_() { # Run on script error.
+_SMTRPERROR_() { # Run on script error.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	exit 201
 }
 
-_SETRPEXIT_() { # Run on exit.
+_SMTRPEXIT_() { # Run on exit.
 	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
 }
 
-_SETRPSIGNAL_() { # Run on signal.
+_SMTRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	_WAKEUNLOCK_
  	exit 211 
 }
 
-_SETRPQUIT_() { # Run on quit.
+_SMTRPQUIT_() { # Run on quit.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
  	exit 221 
 }
 
-trap '_SETRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
-trap _SETRPEXIT_ EXIT
-trap _SETRPSIGNAL_ HUP INT TERM 
-trap _SETRPQUIT_ QUIT 
+trap '_SMTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap _SMTRPEXIT_ EXIT
+trap _SMTRPSIGNAL_ HUP INT TERM 
+trap _SMTRPQUIT_ QUIT 
 
 cd "$HOME/buildAPKs"
 git submodule update --init -- ./scripts/shlibs
