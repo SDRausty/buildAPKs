@@ -20,7 +20,7 @@ then
 	git submodule update --init -- ./sources/entertainment
 	git submodule update --init -- ./sources/flashlights 
 	git submodule update --init -- ./sources/games 
-	git submodule update --init -- ./sources/liveWallpapers
+	git submodule update --init -- ./sources/livewallpapers
 	git submodule update --init -- ./sources/samples 
 	git submodule update --init -- ./sources/top10 
 	git submodule update --init -- ./sources/tools 
