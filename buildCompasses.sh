@@ -76,7 +76,7 @@ then
 	git submodule update --init -- ./sources/tutorials
 else
 	echo
-	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
+	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
 
 _WAKELOCK_
