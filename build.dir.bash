@@ -47,7 +47,7 @@ WDR="$PWD"
 _WAKELOCK_
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
-	2> "$WDR/stnderr.build.${JID,,}.$NUM.log"
+	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"
 _WAKEUNLOCK_
 #	search: lowercase bash variable pattern replacement substitution site:tldp.org
 #	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
