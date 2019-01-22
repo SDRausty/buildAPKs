@@ -37,7 +37,10 @@ trap _SMTRPSIGNAL_ HUP INT TERM
 trap _SMTRPQUIT_ QUIT 
 
 cd "$HOME/buildAPKs"
-git submodule update --init -- ./scripts/shlibs
+if [[ ! -f "$HOME/buildAPKs/scripts/shlibs/.git" ]] 
+then
+	git submodule update --init ./scripts/shlibs
+fi
 JID=Entertainment		# job id/name
 . "$HOME/buildAPKs/scripts/shlibs/mod.sh"
 

@@ -88,27 +88,27 @@ then
 	exit 224
 fi
 printf "\\n\\e[1;38;5;116mBeginning build in %s\\n" "$PWD"
-if [ ! -e "./assets" ]
+if [[ ! -e "./assets" ]]
 then
 	mkdir -p ./assets
 fi
-if [ ! -d "./bin" ]
+if [[ ! -d "./bin" ]]
 then
 	mkdir -p ./bin
 fi
-if [ ! -d "./gen" ]
+if [[ ! -d "./gen" ]]
 then
 	mkdir -p ./gen
 fi
-if [ ! -d "./obj" ]
+if [[ ! -d "./obj" ]]
 then
 	mkdir -p ./obj
 fi
-if [ ! -d "./res" ]
+if [[ ! -d "./res" ]]
 then
 	mkdir -p ./res
 fi
-if [ ! -d "/storage/emulated/0/Download/builtAPKs/"$EXT$DAY"" ]
+if [[ ! -d "/storage/emulated/0/Download/builtAPKs/"$EXT$DAY"" ]]
 then
 	mkdir -p -p /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"
 fi
