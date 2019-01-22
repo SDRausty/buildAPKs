@@ -49,3 +49,6 @@
 [submodule "scripts/shlibs"]
 	path = scripts/shlibs
 	url = https://github.com/sdrausty/shlibs
+[submodule "sources/widgets"]
+	path = sources/widgets
+	url = https://github.com/sdrausty/buildAPKsWidgets
