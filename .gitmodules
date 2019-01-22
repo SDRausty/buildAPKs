@@ -43,9 +43,6 @@
 [submodule "sources/tutorials"]
 	path = sources/tutorials
 	url = https://github.com/sdrausty/buildAPKsTutorials
-[submodule "sources/widgets"]
-	path = sources/widgets
-	url = https://github.com/sdrausty/buildAPKsWidgets
 [submodule "scripts/maintenance"]
 	path = scripts/maintenance
 	url = https://github.com/sdrausty/maintenanceBuildAPKs
