@@ -42,6 +42,7 @@ then
 	git submodule update --init ./scripts/shlibs
 fi
 JID=Entertainment		# job id/name
+JI2=MyFirstAPKs			# job2 id/name
 . "$HOME/buildAPKs/scripts/shlibs/mod.sh"
 
 #EOF
