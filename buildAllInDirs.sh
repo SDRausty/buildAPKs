@@ -44,7 +44,7 @@ WDR="$PWD"
 _WAKELOCK_
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
-	_PRINTP_
+	echo -n "Populating $TMPDIR/buildAPKsLibs:  " 
 	mkdir -p "$TMPDIR"/buildAPKsLibs 
 	cd "$TMPDIR"/buildAPKsLibs 
 	find "$WDR"/libs -name "*.aar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
