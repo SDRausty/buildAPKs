@@ -108,9 +108,9 @@ if [[ ! -d "./res" ]]
 then
 	mkdir -p ./res
 fi
-if [[ ! -d "/storage/emulated/0/Download/builtAPKs/"$EXT$DAY"" ]]
+if [[ ! -d "/storage/emulated/0/Download/builtAPKs/$EXT$DAY" ]]
 then
-	mkdir -p -p /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"
+	mkdir -p "/storage/emulated/0/Download/builtAPKs/$EXT$DAY"
 fi
 printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started"
 aapt package -f \
@@ -119,14 +119,14 @@ aapt package -f \
 	-S res \
 	-m
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun"
-if [ -d "$TMPDIR"/buildAPKsLibs ] && [ -d "$WDR"/libs ] # directories exist
+if [[ -d "$TMPDIR/buildAPKsLibs" ]] && [[ -d "$WDR/libs" ]] # directories exist
 then # loads artifacts
-        ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs:"$WDR"/libs -sourcepath . "$(find . -type f -name "*.java")"
-elif [ -d "$TMPDIR"/buildAPKsLibs ]
+        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs":"$WDR/libs" -sourcepath . $(find . -type f -name "*.java")
+elif [[ -d "$TMPDIR/buildAPKsLibs" ]]
 then
-        ecj -d ./obj -classpath "$TMPDIR"/buildAPKsLibs -sourcepath . "$(find . -type f -name "*.java")"
+        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs" -sourcepath . $(find . -type f -name "*.java")
 else
-        ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
+        ecj -d ./obj -sourcepath . $(find . -type f -name "*.java")
 fi
 printf "\\e[1;38;5;149m%s;  \\e[1;38;5;113m%s\\n\\e[0m" "ecj: done" "dx: started"
 dx --dex --output=./bin/classes.dex ./obj
