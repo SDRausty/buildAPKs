@@ -52,3 +52,4 @@
 [submodule "sources/widgets"]
 	path = sources/widgets
 	url = https://github.com/sdrausty/buildAPKsWidgets
+
