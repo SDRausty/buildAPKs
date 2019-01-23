@@ -8,6 +8,7 @@ shopt -s nullglob globstar
 _SETRPERROR_() { # Run on script error.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
+	echo exit 201
 	exit 201
 }
 
@@ -22,12 +23,14 @@ _SETRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	_WAKEUNLOCK_
+	echo exit 211
  	exit 211 
 }
 
 _SETRPQUIT_() { # Run on quit.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
+	echo exit 221
  	exit 221 
 }
 

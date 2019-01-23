@@ -1,5 +1,7 @@
+git clone https://github.com/sdrausty/buildAPKs
 git clone https://github.com/sdrausty/buildAPKsAmusements
 git clone https://github.com/sdrausty/buildAPKsApps
+git clone https://github.com/sdrausty/buildAPKsArtifacts
 git clone https://github.com/sdrausty/buildAPKsBrowsers
 git clone https://github.com/sdrausty/buildAPKsClassifiedApps
 git clone https://github.com/sdrausty/buildAPKsClocks
@@ -9,7 +11,13 @@ git clone https://github.com/sdrausty/buildAPKsFlashlights
 git clone https://github.com/sdrausty/buildAPKsGames
 git clone https://github.com/sdrausty/buildAPKsLiveWallpapers
 git clone https://github.com/sdrausty/buildAPKsSamples
+git clone https://github.com/sdrausty/buildAPKsShowcase
 git clone https://github.com/sdrausty/buildAPKsTop10
 git clone https://github.com/sdrausty/buildAPKsTutorials
 git clone https://github.com/sdrausty/buildAPKsWidgets
-git clone https://github.com/sdrausty/buildTop10APKs
+git clone https://github.com/sdrausty/builtAPKs
+git clone https://github.com/sdrausty/debBuildAPKs
+git clone https://github.com/sdrausty/docsBuildAPKs
+git clone https://github.com/sdrausty/maintenanceBuildAPKs
+git clone https://github.com/sdrausty/mBuildAPKs
+git clone https://github.com/sdrausty/shlibs
