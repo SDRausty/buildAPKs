@@ -1,1 +1,1 @@
-../../buildEntertainment.sh
+../../buildEntertainment.bash

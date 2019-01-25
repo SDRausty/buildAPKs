@@ -58,12 +58,12 @@ else
 fi
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 _WAKEUNLOCK_
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 

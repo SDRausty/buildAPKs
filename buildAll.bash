@@ -39,11 +39,11 @@ trap _SATRPQUIT_ QUIT
 
 
 JID=Everything 
-"$HOME"/buildAPKs/pullBuildAPKsSubmodules.sh
+"$HOME"/buildAPKs/pullBuildAPKsSubmodules.bash
 cd "$HOME"/buildAPKs/sources
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"
 _WAKEUNLOCK_
 
