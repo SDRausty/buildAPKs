@@ -39,6 +39,6 @@ trap _SETRPQUIT_ QUIT
 cd "$HOME/buildAPKs"
 git submodule update --init -- ./scripts/shlibs
 JID=Browsers		# job id/name
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/mod.bash"
 
 #EOF

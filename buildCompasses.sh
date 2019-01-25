@@ -5,7 +5,7 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 _SCOTRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201

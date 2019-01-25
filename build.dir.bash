@@ -43,7 +43,7 @@ trap _SBDBTRPQUIT_ QUIT
 JID=InDir
 NUM="$(date +%s)"
 WDR="$PWD"
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 _WAKELOCK_
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.sh" "$JID" "$WDR" {} \; \
