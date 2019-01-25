@@ -1,0 +1,261 @@
+cat .gitmodules
+[submodule "debs"]
+	path = debs
+	url = https://github.com/sdrausty/debBuildAPKs
+[submodule "docs"]
+	path = docs
+	url = https://github.com/sdrausty/docsBuildAPKs
+[submodule "sources/entertainment"]
+	path = sources/entertainment
+	url = https://github.com/sdrausty/buildAPKsAmusements
+[submodule "sources/applications"]
+	path = sources/applications
+	url = https://github.com/sdrausty/buildAPKsApps
+[submodule "libs"]
+	path = libs
+	url = https://github.com/sdrausty/buildAPKsArtifacts
+[submodule "sources/browsers"]
+	path = sources/browsers
+	url = https://github.com/sdrausty/buildAPKsBrowsers
+[submodule "sources/clocks"]
+	path = sources/clocks
+	url = https://github.com/sdrausty/buildAPKsClocks
+[submodule "sources/compasses"]
+	path = sources/compasses
+	url = https://github.com/sdrausty/buildAPKsCompasses
+[submodule "sources/tools"]
+	path = sources/tools
+	url = https://github.com/sdrausty/buildAPKsDevTools
+[submodule "sources/flashlights"]
+	path = sources/flashlights
+	url = https://github.com/sdrausty/buildAPKsFlashlights
+[submodule "sources/games"]
+	path = sources/games
+	url = https://github.com/sdrausty/buildAPKsGames
+[submodule "sources/livewallpapers"]
+	path = sources/livewallpapers
+	url = https://github.com/sdrausty/buildAPKsLiveWallpapers
+[submodule "sources/samples"]
+	path = sources/samples
+	url = https://github.com/sdrausty/buildAPKsSamples
+[submodule "sources/top10"]
+	path = sources/top10
+	url = https://github.com/sdrausty/buildAPKsTop10
+[submodule "sources/tutorials"]
+	path = sources/tutorials
+	url = https://github.com/sdrausty/buildAPKsTutorials
+[submodule "scripts/maintenance"]
+	path = scripts/maintenance
+	url = https://github.com/sdrausty/maintenanceBuildAPKs
+[submodule "scripts/shlibs"]
+	path = scripts/shlibs
+	url = https://github.com/sdrausty/shlibs
+[submodule "sources/widgets"]
+	path = sources/widgets
+	url = https://github.com/sdrausty/buildAPKsWidgets
+
+find .git/modules/ -name config -exec cat {} \;
+du
+12	./.git/info
+64	./.git/hooks
+12	./.git/refs/heads
+8	./.git/refs/tags
+16	./.git/refs/remotes/origin
+24	./.git/refs/remotes
+52	./.git/refs
+3280	./.git/objects/pack
+8	./.git/objects/info
+16	./.git/objects/02
+16	./.git/objects/b3
+32	./.git/objects/f3
+16	./.git/objects/6a
+24	./.git/objects/bb
+32	./.git/objects/b2
+24	./.git/objects/96
+24	./.git/objects/52
+20	./.git/objects/84
+24	./.git/objects/80
+16	./.git/objects/b8
+12	./.git/objects/7e
+20	./.git/objects/8c
+16	./.git/objects/b0
+16	./.git/objects/cd
+24	./.git/objects/9f
+24	./.git/objects/82
+16	./.git/objects/55
+16	./.git/objects/a3
+32	./.git/objects/63
+16	./.git/objects/d7
+24	./.git/objects/c9
+24	./.git/objects/51
+16	./.git/objects/0b
+16	./.git/objects/dc
+16	./.git/objects/cf
+16	./.git/objects/a6
+16	./.git/objects/6f
+16	./.git/objects/ff
+24	./.git/objects/f4
+24	./.git/objects/be
+16	./.git/objects/08
+16	./.git/objects/43
+40	./.git/objects/7d
+100	./.git/objects/e4
+24	./.git/objects/c7
+20	./.git/objects/dd
+16	./.git/objects/17
+16	./.git/objects/0d
+16	./.git/objects/ce
+16	./.git/objects/29
+12	./.git/objects/01
+12	./.git/objects/f0
+12	./.git/objects/98
+24	./.git/objects/97
+16	./.git/objects/d1
+16	./.git/objects/45
+16	./.git/objects/57
+24	./.git/objects/bd
+12	./.git/objects/f2
+16	./.git/objects/4f
+16	./.git/objects/86
+16	./.git/objects/a2
+16	./.git/objects/27
+16	./.git/objects/1d
+24	./.git/objects/5b
+16	./.git/objects/df
+24	./.git/objects/da
+16	./.git/objects/fb
+16	./.git/objects/78
+20	./.git/objects/22
+16	./.git/objects/62
+16	./.git/objects/21
+20	./.git/objects/77
+16	./.git/objects/37
+16	./.git/objects/06
+16	./.git/objects/d0
+16	./.git/objects/5d
+16	./.git/objects/e6
+16	./.git/objects/ab
+16	./.git/objects/0c
+16	./.git/objects/59
+24	./.git/objects/70
+16	./.git/objects/92
+16	./.git/objects/5a
+16	./.git/objects/1f
+16	./.git/objects/25
+12	./.git/objects/ee
+12	./.git/objects/8a
+16	./.git/objects/8d
+40	./.git/objects/23
+16	./.git/objects/b4
+12	./.git/objects/a1
+12	./.git/objects/1b
+12	./.git/objects/3f
+12	./.git/objects/de
+20	./.git/objects/c3
+16	./.git/objects/bc
+12	./.git/objects/00
+76	./.git/objects/d2
+24	./.git/objects/31
+16	./.git/objects/61
+16	./.git/objects/89
+16	./.git/objects/b1
+16	./.git/objects/d3
+16	./.git/objects/5e
+16	./.git/objects/1a
+16	./.git/objects/7b
+16	./.git/objects/e2
+16	./.git/objects/2b
+16	./.git/objects/d9
+16	./.git/objects/a9
+24	./.git/objects/c0
+16	./.git/objects/8e
+16	./.git/objects/3c
+16	./.git/objects/73
+16	./.git/objects/7c
+16	./.git/objects/4e
+16	./.git/objects/af
+16	./.git/objects/ca
+16	./.git/objects/5f
+5432	./.git/objects
+16	./.git/logs/refs/remotes/origin
+24	./.git/logs/refs/remotes
+12	./.git/logs/refs/heads
+44	./.git/logs/refs
+56	./.git/logs
+5664	./.git
+8	./debs
+8	./docs
+8	./libs
+12	./scripts/build
+8	./scripts/maintenance
+8	./scripts/shlibs
+36	./scripts
+8	./sources/applications
+8	./sources/browsers
+8	./sources/clocks
+8	./sources/compasses
+8	./sources/entertainment
+8	./sources/flashlights
+8	./sources/games
+8	./sources/livewallpapers
+8	./sources/samples
+8	./sources/tools
+8	./sources/top10
+8	./sources/tutorials
+8	./sources/widgets
+112	./sources
+6068	.
+du *
+8	CHANGE.log
+40	LICENSE
+12	README.md
+4	_config.yml
+4	build.dir.bash
+4	buildAll.sh
+4	buildAllInDirs.sh
+4	buildApplications.sh
+4	buildBrowsers.sh
+4	buildClocks.sh
+4	buildCompasses.sh
+8	buildEntertainment.sh
+4	buildFlashlights.sh
+4	buildGames.sh
+4	buildHelloWorlds.sh
+4	buildLiveWallpapers.sh
+12	buildOne.sh
+4	buildSamples.sh
+4	buildTools.sh
+4	buildTop10.sh
+4	buildTutorials.sh
+4	buildWidgets.sh
+8	debs
+8	docs
+8	getbuildAPKs
+4	index.md
+8	libs
+4	pullBuildAPKsSubmodules.sh
+12	scripts/build
+8	scripts/maintenance
+8	scripts/shlibs
+36	scripts
+4	setupBuildAPKs.sh
+8	sources/applications
+8	sources/browsers
+8	sources/clocks
+8	sources/compasses
+8	sources/entertainment
+8	sources/flashlights
+8	sources/games
+8	sources/livewallpapers
+8	sources/samples
+8	sources/tools
+8	sources/top10
+8	sources/tutorials
+8	sources/widgets
+112	sources
+12	tree
+8	tree.md5
+8	tree.sha
+8	tree.sha256
+8	tree.sha512
+8	tree.tar.gz
