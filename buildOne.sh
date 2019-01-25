@@ -7,7 +7,6 @@ shopt -s nullglob globstar
 
 _STRPERROR_() { # Run on script error.
 	local RV="$?"
-	echo Signal $RV received!
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}" "$RV"
 	if [[ "$RV" = 1 ]] 
 	then 
@@ -42,7 +41,7 @@ _STRPEXIT_() { # Run on exit.
 		printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in $HOME!  See \`stnderr*.log\` file.\\n\\nRunning \`ls\`:\\n" "$PWD" "${0##*/}" "${0##*/}"
 	fi
 	sleep 1
-	printf "\e[1;38;5;151m%s\\n\\e[0m" "Cleaning up."
+	printf "\\e[1;38;5;151m%s\\n\\e[0m" "Cleaning up."
  	rm -rf ./bin 2>/dev/null ||:  
 	rm -rf ./gen 2>/dev/null ||:  
  	rm -rf ./obj 2>/dev/null ||:  
@@ -68,8 +67,8 @@ trap _STRPEXIT_ EXIT
 trap _STRPSIGNAL_ HUP INT TERM 
 trap _STRPQUIT_ QUIT 
 
-DAY=`date +%Y%m%d`
-NOW=`date +%s`
+DAY=$(date +%Y%m%d)
+NOW=$(date +%s)
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
@@ -121,12 +120,12 @@ aapt package -f \
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun"
 if [[ -d "$TMPDIR/buildAPKsLibs" ]] && [[ -d "$WDR/libs" ]] # directories exist
 then # loads artifacts
-        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs":"$WDR/libs" -sourcepath . $(find . -type f -name "*.java")
+        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs:$WDR/libs" -sourcepath . "$(find . -type f -name "*.java")"
 elif [[ -d "$TMPDIR/buildAPKsLibs" ]]
 then
-        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs" -sourcepath . $(find . -type f -name "*.java")
+        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs" -sourcepath . "$(find . -type f -name "*.java")"
 else
-        ecj -d ./obj -sourcepath . $(find . -type f -name "*.java")
+        ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
 fi
 printf "\\e[1;38;5;149m%s;  \\e[1;38;5;113m%s\\n\\e[0m" "ecj: done" "dx: started"
 dx --dex --output=./bin/classes.dex ./obj
@@ -138,15 +137,15 @@ aapt package -f \
 	-S ./res \
 	-A ./assets \
 	-F bin/step2.apk
-printf "\\e[1;38;5;113m%s\n\\e[0m" "Adding the classes.dex to the apk."
-cd bin
+printf "\\e[1;38;5;113m%s\\n\\e[0m" "Adding the classes.dex to the apk."
+cd bin || exit
 aapt add -f step2.apk classes.dex
 printf "\\e[1;38;5;114m%s\\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
-cp step2.apk /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step"$NOW".apk
-printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW"
-printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/"$EXT$DAY"/step%s.apk\\n" "$NOW" 
+cp step2.apk "/storage/emulated/0/Download/builtAPKs/$EXT$DAY/step$NOW.apk"
+printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$NOW" "$EXT$DAY"
+printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$NOW" "$EXT$DAY" 
 printf "\\e[?25h\\e[1;7;38;5;34mShare %s here; Share everwhere%s!\\e[0m\\n" "https://wiki.termux.com/wiki/Development" "🌍🌎🌏🌐"
 
 #EOF
