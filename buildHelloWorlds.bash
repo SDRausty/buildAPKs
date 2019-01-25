@@ -21,6 +21,6 @@ else
 fi
 
 find $HOME/buildAPKs/sources/samples/helloWorlds/  -name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.sh HelloWorlds {} \; 2>stnderr"$(date +%s)".log
+	-execdir $HOME/buildAPKs/buildOne.bash HelloWorlds {} \; 2>stnderr"$(date +%s)".log
 
 #EOF

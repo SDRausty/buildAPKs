@@ -5,7 +5,7 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 _SCOTRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildCompasses.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201
@@ -58,12 +58,12 @@ else
 fi
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-"$HOME"/buildAPKs/buildOne.sh "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 _WAKEUNLOCK_
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 

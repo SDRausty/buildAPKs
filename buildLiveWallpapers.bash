@@ -1,4 +1,4 @@
-#!/bin/env bash 
+#!/bin/env bash
 # Copyright 2017-2019 (c) all rights reserved 
 # by S D Rausty https://sdrausty.github.io
 #####################################################################
@@ -38,7 +38,7 @@ trap _SETRPQUIT_ QUIT
 
 cd "$HOME/buildAPKs"
 git submodule update --init -- ./scripts/shlibs
-JID=Games		# job id/name
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+JID=LiveWallpapers	# job id/name
+. "$HOME/buildAPKs/scripts/shlibs/mod.bash"
 
 #EOF

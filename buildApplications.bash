@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/bin/env bash 
 # Copyright 2017-2019 (c) all rights reserved 
 # by S D Rausty https://sdrausty.github.io
 #####################################################################
@@ -37,8 +37,8 @@ trap _SETRPSIGNAL_ HUP INT TERM
 trap _SETRPQUIT_ QUIT 
 
 cd "$HOME/buildAPKs"
+JID=Applications	# job id/name
 git submodule update --init -- ./scripts/shlibs
-JID=Tutorials		# job id/name
-. "$HOME/buildAPKs/scripts/shlibs/mod.sh"
+. "$HOME/buildAPKs/scripts/shlibs/mod.bash"
 
 #EOF

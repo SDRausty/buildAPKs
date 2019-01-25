@@ -5,7 +5,7 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.sh"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 _SCLTRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs buildClocks.sh ERROR:  Signal %s received!\\e[0m\\n" "$?"
 	exit 201
@@ -58,20 +58,20 @@ else
 fi
 _WAKELOCK_
 find "$HOME"/buildAPKs/sources/clocks -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.sh" "$JID" {} \; \
+	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/
-../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
-../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 # cd "$HOME"/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-# ../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+# ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/clockWidget/
-../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
-../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
-../../../../buildOne.sh Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 _WAKEUNLOCK_
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
