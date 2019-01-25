@@ -10,9 +10,9 @@ if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/sh
 then
 	printf "\\n\\nUpdating buildAPKs; \`%s\` might want to load sources from module repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com\\n" "${0##*/}"
 	git pull 
-	git submodule update --init -- ./docs
-	git submodule update --init -- ./scripts/maintenance
-	git submodule update --init -- ./scripts/shlibs
+	git submodule update --init ./docs
+	git submodule update --init ./scripts/maintenance
+	git submodule update --init ./scripts/shlibs
 	git submodule update --init --recursive ./sources/applications
 	git submodule update --init --recursive ./sources/browsers 
 	git submodule update --init --recursive ./sources/clocks
@@ -30,6 +30,7 @@ else
 	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
 	find "$HOME/buildAPKs" -type f -name .git
 	printf "\\n\\n	find . -type f -name .git -exec rm {} \\;\\n\\n"
+	sleep 1.28
 
 fi
 
