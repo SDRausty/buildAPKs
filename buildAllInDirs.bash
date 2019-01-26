@@ -40,19 +40,19 @@ trap _SAIDTRPQUIT_ QUIT
 JID=InDirs
 NUM=$(date +%s)
 WDR="$PWD"
-"$HOME"/buildAPKs/pullBuildAPKsSubmodules.bash
+"$HOME/buildAPKs/pullBuildAPKsSubmodules.bash"
 _WAKELOCK_
 if [ ! -e "$TMPDIR"/buildAPKsLibs ]
 then
 	echo -n "Populating $TMPDIR/buildAPKsLibs:  " 
-	mkdir -p "$TMPDIR"/buildAPKsLibs 
-	cd "$TMPDIR"/buildAPKsLibs 
-	find "$WDR"/libs -name "*.aar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
-	find "$WDR"/libs  -name "*.jar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
+	mkdir -p "$TMPDIR/buildAPKsLibs" 
+	cd "$TMPDIR/buildAPKsLibs" 
+	find "$WDR/libs" -name "*.aar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
+	find "$WDR/libs"  -name "*.jar" -exec ln -s {} \; 2>"$WDR"/stnderr"$NUM".log ||:
 	cd "$WDR"
 	 _PRINTDONE_
 fi
-/bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
+/bin/env /bin/find "$HOME/buildAPKs/sources/" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 
