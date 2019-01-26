@@ -37,7 +37,6 @@ trap _SAIDTRPSIGNAL_ HUP INT TERM
 trap _SAIDTRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-_WAKELOCK_
 JID=InDirs
 NUM=$(date +%s)
 WDR="$PWD"

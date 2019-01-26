@@ -72,7 +72,6 @@ cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-_WAKEUNLOCK_
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
 #EOF

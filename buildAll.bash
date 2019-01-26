@@ -37,7 +37,6 @@ trap _SATRPSIGNAL_ HUP INT TERM
 trap _SATRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-_WAKELOCK_
 JID=Everything 
 "$RDR/pullBuildAPKsSubmodules.bash"
 cd "$RDR/sources"

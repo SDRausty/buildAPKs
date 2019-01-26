@@ -64,7 +64,6 @@ cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compa
 "$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
 "$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-_WAKEUNLOCK_
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
 #EOF
