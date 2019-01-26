@@ -5,7 +5,6 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 _SAIDTRPERROR_() { # Run on script error.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
@@ -37,8 +36,9 @@ trap _SAIDTRPEXIT_ EXIT
 trap _SAIDTRPSIGNAL_ HUP INT TERM 
 trap _SAIDTRPQUIT_ QUIT 
 
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 JID=InDirs
-NUM="$(date +%s)"
+NUM=$(date +%s)
 WDR="$PWD"
 "$HOME"/buildAPKs/pullBuildAPKsSubmodules.bash
 _WAKELOCK_
@@ -55,6 +55,5 @@ fi
 /bin/env /bin/find "$HOME"/buildAPKs/sources/ -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-_WAKEUNLOCK_
 
 #EOF
