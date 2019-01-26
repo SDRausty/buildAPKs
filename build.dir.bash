@@ -39,14 +39,15 @@ trap _SBDBTRPEXIT_ EXIT
 trap _SBDBTRPSIGNAL_ HUP INT TERM 
 trap _SBDBTRPQUIT_ QUIT 
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-_WAKELOCK_
 JID=InDir
 NUM="$(date +%s)"
 WDR="$PWD"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+_WAKELOCK_
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"
+_WAKEUNLOCK_
 #	search: lowercase bash variable pattern replacement substitution site:tldp.org
 #	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 #EOF
