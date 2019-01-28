@@ -34,8 +34,8 @@ _SCOTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 git submodule update --init --recursive ./scripts/shlibs
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCOTRPEXIT_ EXIT
 trap _SCOTRPSIGNAL_ HUP INT TERM 

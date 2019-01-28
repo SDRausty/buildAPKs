@@ -31,13 +31,13 @@ _SAIDTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+git submodule update --init --recursive ./scripts/shlibs
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SAIDTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SAIDTRPEXIT_ EXIT
 trap _SAIDTRPSIGNAL_ HUP INT TERM 
 trap _SAIDTRPQUIT_ QUIT 
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-git submodule update --init --recursive ./scripts/shlibs
 JID=InDirs
 NUM=$(date +%s)
 WDR="$PWD"

@@ -34,6 +34,8 @@ _SBDBTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+git submodule update --init --recursive ./scripts/shlibs
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SBDBTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SBDBTRPEXIT_ EXIT
 trap _SBDBTRPSIGNAL_ HUP INT TERM 
@@ -42,8 +44,6 @@ trap _SBDBTRPQUIT_ QUIT
 JID=InDir
 NUM="$(date +%s)"
 WDR="$PWD"
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-git submodule update --init --recursive ./scripts/shlibs
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"

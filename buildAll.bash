@@ -31,13 +31,13 @@ _SATRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+git submodule update --init --recursive ./scripts/shlibs
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SATRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-git submodule update --init --recursive ./scripts/shlibs
 JID=Everything 
 "$RDR/pullBuildAPKsSubmodules.bash"
 cd "$RDR/sources"
