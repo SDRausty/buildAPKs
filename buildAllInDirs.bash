@@ -37,6 +37,7 @@ trap _SAIDTRPSIGNAL_ HUP INT TERM
 trap _SAIDTRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 JID=InDirs
 NUM=$(date +%s)
 WDR="$PWD"

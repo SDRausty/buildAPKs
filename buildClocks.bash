@@ -45,6 +45,7 @@ trap _SCLTRPSIGNAL_ HUP INT TERM
 trap _SCLTRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"

@@ -43,6 +43,7 @@ JID=InDir
 NUM="$(date +%s)"
 WDR="$PWD"
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 find "$@" -name AndroidManifest.xml \
 	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"

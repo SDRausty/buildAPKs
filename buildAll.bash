@@ -37,6 +37,7 @@ trap _SATRPSIGNAL_ HUP INT TERM
 trap _SATRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 JID=Everything 
 "$RDR/pullBuildAPKsSubmodules.bash"
 cd "$RDR/sources"

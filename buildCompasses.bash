@@ -40,6 +40,7 @@ trap _SCOTRPSIGNAL_ HUP INT TERM
 trap _SCOTRPQUIT_ QUIT 
 
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 DAY="$(date +%Y%m%d)"
 JID=Compasses 
 NUM="$(date +%s)"
@@ -52,7 +53,6 @@ then
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
 	cd "$HOME/buildAPKs"
 	git pull
-	git submodule update --init ./scripts/shlibs
 	git submodule update --init --recursive ./sources/compasses 
 	git submodule update --init --recursive ./sources/samples
 	git submodule update --init --recursive ./sources/tutorials
