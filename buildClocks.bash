@@ -39,13 +39,13 @@ _SCOTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+git submodule update --init --recursive ./scripts/shlibs
 trap '_SCLTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCLTRPEXIT_ EXIT
 trap _SCLTRPSIGNAL_ HUP INT TERM 
 trap _SCLTRPQUIT_ QUIT 
 
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
-git submodule update --init --recursive ./scripts/shlibs
 DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"
