@@ -28,7 +28,7 @@ then
 	git submodule update --init --recursive ./sources/widgets
 else
 	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
-	find "$HOME/buildAPKs" -type f -name .git
+	find "$HOME/buildAPKs/" -type f -name .git
 	printf "\\n\\n	find . -type f -name .git -exec rm {} \\;\\n\\n"
 	sleep 1.28
 

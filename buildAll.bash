@@ -39,10 +39,13 @@ trap _SATRPSIGNAL_ HUP INT TERM
 trap _SATRPQUIT_ QUIT 
 
 JID=Everything 
-"$RDR/pullBuildAPKsSubmodules.bash"
-cd "$RDR/sources"
+NUM="$(date +%s)"
+WDR="$RDR/sources"
+. "$RDR/pullBuildAPKsSubmodules.bash"
+cd "$WDR"
 find "$RDR/sources/" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
-	2> "$RDR/var/log/stnderr.build.${JID,,}.$(date +%s).log"
+	2> "$RDR/var/log/stnderr.build.${JID,,}.$NOW.log"
+. "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
 #EOF
