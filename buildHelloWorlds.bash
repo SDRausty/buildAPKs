@@ -57,8 +57,7 @@ fi
 find $HOME/buildAPKs/sources/samples/helloWorlds/ \
        	-name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.bash HelloWorlds {} \; \
-       	2>"stnderr.hello.worlds.$NUM.log"
-	2> "$HOME/buildAPKs/var/log/stnderr.hello.worlds.$NUM.log"
+	2>"$HOME/buildAPKs/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
 #EOF
