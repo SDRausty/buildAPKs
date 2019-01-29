@@ -39,9 +39,9 @@ trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 
-JID="" 
+JID="HelloWorlds" 
 NUM="$(date +%s)"
-WDR="$HOME/buildAPKs/sources/${JID,,}"
+WDR="$HOME/buildAPKs/sources/"
 cd $HOME/buildAPKs
 if [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]]
 then

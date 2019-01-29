@@ -42,7 +42,7 @@ JID=Everything
 NUM="$(date +%s)"
 WDR="$RDR/sources"
 . "$RDR/pullBuildAPKsSubmodules.bash"
-cd "$WDR"
+cd "$HOME/buildAPKs/"
 find "$RDR/sources/" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
 	2> "$RDR/var/log/stnderr.build.${JID,,}.$NOW.log"
