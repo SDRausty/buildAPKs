@@ -45,8 +45,8 @@ DAY="$(date +%Y%m%d)"
 JID=Compasses 
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
-cd "$HOME"/buildAPKs
-mkdir -p  "$HOME"/buildAPKs/var/log
+cd "$HOME/buildAPKs"
+mkdir -p "$HOME/buildAPKs/var/log"
 if [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
 then
 	echo
@@ -60,13 +60,14 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
-find "$HOME"/buildAPKs/sources/compasses -name AndroidManifest.xml \
+_WAKELOCK_
+find "$HOME/buildAPKs/sources/compasses" -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd /data/data/com.termux/files/home/buildAPKs/sources/samples/android-code/Compass/
-"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd /data/data/com.termux/files/home/buildAPKs/sources/samples/Compass/
-"$HOME"/buildAPKs/buildOne.bash "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$HOME/buildAPKs/sources/samples/android-code/Compass/"
+"$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$HOME/buildAPKs/sources/samples/Compass/"
+"$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
 #EOF

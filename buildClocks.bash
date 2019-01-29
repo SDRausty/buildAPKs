@@ -50,8 +50,8 @@ DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
-cd "$HOME"/buildAPKs
-mkdir -p  "$HOME"/buildAPKs/var/log
+cd "$HOME/buildAPKs"
+mkdir -p "$HOME/buildAPKs/var/log"
 if [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/livewallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
 then
 	echo
@@ -66,20 +66,22 @@ else
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
 fi
 _WAKELOCK_
-find "$HOME"/buildAPKs/sources/clocks -name AndroidManifest.xml \
+find "$HOME/buildAPKs/sources/clocks" -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME"/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/
+cd "$HOME/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/"
 ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME"/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/
+cd "$HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-# cd "$HOME"/buildAPKs/sources/widgets/Android-MonthCalendarWidget/
-# ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME"/buildAPKs/sources/widgets/clockWidget/
+cd "$HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/romannurik/"
 ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME"/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget
+cd "$HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/choose-a/"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$HOME/buildAPKs/sources/widgets/clockWidget/"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME"/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock
+cd "$HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
 
