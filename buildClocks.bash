@@ -68,10 +68,17 @@ cd "$HOME/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/"
 ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+<<<<<<< HEAD
 cd "$HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/romannurik/"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/Android-MonthCalendarWidget/choose-a/"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+=======
+cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/romannurik/"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/choose-a/"
+../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+>>>>>>> 33b6cea0c2e0822b0125de0f016a2d4dfd63bfa6
 cd "$HOME/buildAPKs/sources/widgets/clockWidget/"
 ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget"
