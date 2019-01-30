@@ -60,7 +60,6 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
 fi
-_WAKELOCK_
 find "$HOME/buildAPKs/sources/clocks" -name AndroidManifest.xml \
 	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
 	2>"$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
@@ -71,7 +70,7 @@ cd "$HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/"
 cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/choose-a/"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/romannurik/"
-./../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/clockWidget/"
 ../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget"
