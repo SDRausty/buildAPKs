@@ -34,13 +34,13 @@ _SCLTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+git pull
 git submodule update --init --recursive ./scripts/shlibs
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCLTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCLTRPEXIT_ EXIT
 trap _SCLTRPSIGNAL_ HUP INT TERM 
 trap _SCLTRPQUIT_ QUIT 
-
 DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"
@@ -52,7 +52,6 @@ then
 	echo
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
 	cd "$HOME/buildAPKs"
-	git pull
 	git submodule update --init --recursive ./sources/clocks
 	git submodule update --init --recursive ./sources/livewallpapers
 	git submodule update --init --recursive ./sources/widgets
