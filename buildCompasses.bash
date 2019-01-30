@@ -34,6 +34,7 @@ _SCOTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+cd "$HOME/buildAPKs"
 git pull
 git submodule update --init --recursive ./scripts/shlibs
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
@@ -46,7 +47,6 @@ export DAY="$(date +%Y%m%d)"
 JID=Compasses 
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
-cd "$HOME/buildAPKs"
 if [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
 then
 	echo
