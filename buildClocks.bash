@@ -41,7 +41,8 @@ trap '_SCLTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SCLTRPEXIT_ EXIT
 trap _SCLTRPSIGNAL_ HUP INT TERM 
 trap _SCLTRPQUIT_ QUIT 
-DAY="$(date +%Y%m%d)"
+
+export DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
