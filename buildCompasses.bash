@@ -46,7 +46,6 @@ JID=Compasses
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
 cd "$HOME/buildAPKs"
-mkdir -p "$HOME/buildAPKs/var/log"
 if [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
 then
 	echo

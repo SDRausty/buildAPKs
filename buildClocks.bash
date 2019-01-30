@@ -46,7 +46,6 @@ JID=Clocks
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
 cd "$HOME/buildAPKs"
-mkdir -p "$HOME/buildAPKs/var/log"
 if [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/livewallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
 then
 	echo
