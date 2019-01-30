@@ -5,8 +5,9 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-_STRPERROR_() { # Run on script error.
+_SBOTRPERROR_() { # Run on script error.
 	local RV="$?"
+	echo "$1 $2 $3"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}" "$RV"
 	if [[ "$RV" = 1 ]] 
 	then 
@@ -17,14 +18,14 @@ _STRPERROR_() { # Run on script error.
 	then 
 		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}"
 	fi
-	exit 220
+	exit 160
 }
 
-_STRPEXIT_() { # Run on exit.
+_SBOTRPEXIT_() { # Run on exit.
 	local RV="$?"
 	if [[ "$RV" != 0 ]]  
 	then 
-		echo "Signal $RV received in $PWD by ${0##*/}!  See \"\$RDR/var/log/stnderr*.log\" files."
+		echo "Signal $RV received in $PWD by ${0##*/}!  See \"$RDR/var/log/stnderr*.log\" files."
 	fi
 	if [[ "$RV" = 220 ]]  
 	then 
@@ -52,20 +53,20 @@ _STRPEXIT_() { # Run on exit.
 	exit 0
 }
 
-_STRPSIGNAL_() { # Run on signal.
+_SBOTRPSIGNAL_() { # Run on signal.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$?"
- 	exit 221 
+ 	exit 161 
 }
 
-_STRPQUIT_() { # Run on quit.
+_SBOTRPQUIT_() { # Run on quit.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$?"
- 	exit 222 
+ 	exit 162 
 }
 
-trap '_STRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
-trap _STRPEXIT_ EXIT
-trap _STRPSIGNAL_ HUP INT TERM 
-trap _STRPQUIT_ QUIT 
+trap '_SBOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap _SBOTRPEXIT_ EXIT
+trap _SBOTRPSIGNAL_ HUP INT TERM 
+trap _SBOTRPQUIT_ QUIT 
 
 DAY=$(date +%Y%m%d)
 NOW=$(date +%s)
@@ -144,8 +145,8 @@ printf "\\e[1;38;5;114m%s\\n" "Signing step2.apk"
 apksigner ../step2-debug.key step2.apk ../step2.apk
 cd ..
 cp step2.apk "/storage/emulated/0/Download/builtAPKs/$EXT$DAY/step$NOW.apk"
-printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$NOW" "$EXT$DAY"
-printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$NOW" "$EXT$DAY" 
+printf "\\e[1;38;5;115mCopied to /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$EXT$DAY" "$NOW"
+printf "\\e[1;38;5;149mYou can install it from /storage/emulated/0/Download/builtAPKs/%s/step%s.apk\\n" "$EXT$DAY" "$NOW" 
 printf "\\e[?25h\\e[1;7;38;5;34mShare %s here; Share everwhere%s!\\e[0m\\n" "https://wiki.termux.com/wiki/Development" "🌎🌍🌏🌐"
 
 #EOF
