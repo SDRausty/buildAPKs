@@ -36,7 +36,9 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
+export DAY="$(date +%Y%m%d)"
 cd "$HOME/buildAPKs"
+git pull
 git submodule update --init -- ./scripts/shlibs
 JID=Top10		# job id/name
 . "$HOME/buildAPKs/scripts/shlibs/mod.bash"

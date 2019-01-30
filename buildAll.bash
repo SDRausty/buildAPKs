@@ -31,13 +31,14 @@ _SATRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+git pull
 git submodule update --init --recursive ./scripts/shlibs
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SATRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
-
+export DAY="$(date +%Y%m%d)"
 JID=Everything 
 NUM="$(date +%s)"
 WDR="$RDR/sources"

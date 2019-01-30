@@ -39,6 +39,7 @@ trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 
+export DAY="$(date +%Y%m%d)"
 JID="HelloWorlds" 
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/"

@@ -67,8 +67,6 @@ trap '_SBOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SBOTRPEXIT_ EXIT
 trap _SBOTRPSIGNAL_ HUP INT TERM 
 trap _SBOTRPQUIT_ QUIT 
-
-DAY=$(date +%Y%m%d)
 NOW=$(date +%s)
 if [[ -z "${1:-}" ]] 
 then

@@ -41,7 +41,8 @@ trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SCOTRPEXIT_ EXIT
 trap _SCOTRPSIGNAL_ HUP INT TERM 
 trap _SCOTRPQUIT_ QUIT 
-DAY="$(date +%Y%m%d)"
+
+export DAY="$(date +%Y%m%d)"
 JID=Compasses 
 NUM="$(date +%s)"
 WDR="$HOME/buildAPKs/sources/${JID,,}"
