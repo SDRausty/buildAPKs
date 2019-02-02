@@ -12,7 +12,6 @@ _SATRPERROR_() { # Run on script error.
 }
 
 _SATRPEXIT_() { # Run on exit.
-	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
@@ -21,7 +20,6 @@ _SATRPEXIT_() { # Run on exit.
 _SATRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	_WAKEUNLOCK_
  	exit 211 
 }
 
@@ -31,19 +29,22 @@ _SATRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-git pull
-git submodule update --init --recursive ./scripts/shlibs
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SATRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 export DAY="$(date +%Y%m%d)"
+export RDR="$HOME/buildAPKs"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=Everything 
 NUM="$(date +%s)"
 WDR="$RDR/sources"
+. "$RDR/scripts/shlibs/lock.bash"
 . "$RDR/pullBuildAPKsSubmodules.bash"
 cd "$HOME/buildAPKs/"
+cd "$RDR"
+git pull
+git submodule update --init ./scripts/shlibs
 find "$RDR/sources/" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
 	2> "$RDR/var/log/stnderr.build.${JID,,}.$NOW.log"
