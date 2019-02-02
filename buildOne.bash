@@ -68,6 +68,7 @@ trap _SBOTRPEXIT_ EXIT
 trap _SBOTRPSIGNAL_ HUP INT TERM 
 trap _SBOTRPQUIT_ QUIT 
 NOW=$(date +%s)
+RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
