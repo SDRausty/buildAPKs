@@ -35,8 +35,8 @@ _SCLTRPQUIT_() { # Run on quit.
 }
 
 cd "$HOME/buildAPKs"
-git pull
-git submodule update --init --recursive ./scripts/shlibs
+git pull ||:
+git submodule update --init --recursive ./scripts/shlibs ||:
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCLTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCLTRPEXIT_ EXIT

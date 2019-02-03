@@ -40,8 +40,8 @@ JID=HelloWorlds
 NUM="$(date +%s)"
 JDR="$RDR/sources"
 cd "$RDR"
-git pull
-git submodule update --init ./scripts/shlibs
+git pull ||:
+git submodule update --init ./scripts/shlibs ||:
 . "$RDR/scripts/shlibs/lock.bash"
 . "$RDR/pullBuildAPKsSubmodules.bash"
 if [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]]

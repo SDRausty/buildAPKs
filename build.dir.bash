@@ -34,8 +34,8 @@ _SBDBTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-git pull
-git submodule update --init --recursive ./scripts/shlibs
+git pull ||:
+git submodule update --init --recursive ./scripts/shlibs ||:
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SBDBTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SBDBTRPEXIT_ EXIT
