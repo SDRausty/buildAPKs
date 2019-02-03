@@ -34,25 +34,25 @@ _SCLTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-cd "$RDR"
-(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCLTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCLTRPEXIT_ EXIT
 trap _SCLTRPSIGNAL_ HUP INT TERM 
 trap _SCLTRPQUIT_ QUIT 
 
+export DAY="$(date +%Y%m%d)"
+export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
+cd "$RDR"
+(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
+. "$RDR/scripts/shlibs/lock.bash"
 JID=Clocks
 NUM="$(date +%s)"
-JDR="$HOME/buildAPKs/sources/${JID,,}"
-if [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/livewallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
+JDR="$RDR/sources/${JID,,}"
+if [[ ! -f "$RDR/sources/clocks/.git" ]] || [[ ! -f "$RDR/sources/livewallpapers/.git" ]] || [[ ! -f "$RDR/sources/widgets/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
-	cd "$HOME/buildAPKs"
+	cd "$RDR"
 	git submodule update --init --recursive ./sources/clocks
 	git submodule update --init --recursive ./sources/livewallpapers
 	git submodule update --init --recursive ./sources/widgets
@@ -60,23 +60,23 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
 fi
-find "$HOME/buildAPKs/sources/clocks" -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
-	2>"$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/livewallpapers/android-clock-livewallpaper/"
-../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/16-bit-clock/16-bit-clock/"
-../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/choose-a/"
-../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/MonthCalendarWidget/romannurik/"
-../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/clockWidget/"
-../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget"
-../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock"
-../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+find "$RDR/sources/clocks" -name AndroidManifest.xml \
+	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	2>"$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/livewallpapers/android-clock-livewallpaper/"
+../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/16-bit-clock/16-bit-clock/"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/MonthCalendarWidget/choose-a/"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/MonthCalendarWidget/romannurik/"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/clockWidget/"
+../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/decimal-clock-widget/decimal-clock-widget"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/widgets/unix-time-clock-widget/unix-time-clock"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

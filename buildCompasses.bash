@@ -34,25 +34,25 @@ _SCOTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-cd "$RDR"
-(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
-. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCOTRPEXIT_ EXIT
 trap _SCOTRPSIGNAL_ HUP INT TERM 
 trap _SCOTRPQUIT_ QUIT 
 
+export DAY="$(date +%Y%m%d)"
+export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
+cd "$RDR"
+(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
+. "$RDR/scripts/shlibs/lock.bash"
 JID=Compasses 
 NUM="$(date +%s)"
-JDR="$HOME/buildAPKs/sources/${JID,,}"
-if [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
+JDR="$RDR/sources/${JID,,}"
+if [[ ! -f "$RDR/sources/compasses/.git" ]] || [[ ! -f "$RDR/sources/samples/.git" ]] || [[ ! -f "$RDR/sources/tutorials/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
-	cd "$HOME/buildAPKs"
+	cd "$RDR"
 	git submodule update --init --recursive ./sources/compasses 
 	git submodule update --init --recursive ./sources/samples
 	git submodule update --init --recursive ./sources/tutorials
@@ -60,13 +60,13 @@ else
 	echo
 	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
-find "$HOME/buildAPKs/sources/compasses" -name AndroidManifest.xml \
-	-execdir "$HOME/buildAPKs/buildOne.bash" "$JID" {} \; \
-	2>"$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/samples/android-code/Compass/"
-. "$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-cd "$HOME/buildAPKs/sources/samples/Compass/"
-. "$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
+find "$RDR/sources/compasses" -name AndroidManifest.xml \
+	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	2>"$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/samples/android-code/Compass/"
+. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+cd "$RDR/sources/samples/Compass/"
+. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

@@ -34,7 +34,7 @@ trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
+export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=HelloWorlds
 NUM="$(date +%s)"
@@ -42,22 +42,21 @@ JDR="$RDR/sources"
 cd "$RDR"
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$RDR/scripts/shlibs/lock.bash"
-. "$RDR/pullBuildAPKsSubmodules.bash"
-if [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]]
+if [[ ! -f "$RDR/sources/samples/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
-	cd "$HOME/buildAPKs"
+	cd "$RDR"
 	git submodule update --init ./sources/samples
 else
 	echo
 	echo "To update module ~/buildAPKs/sources/samples to the newest version remove the ~/buildAPKs/sources/samples/.git file and run ${0##*/} again."
 fi
 
-find $HOME/buildAPKs/sources/samples/helloWorlds/ \
+find "$RDR/sources/samples/helloWorlds" \
        	-name AndroidManifest.xml \
-	-execdir $HOME/buildAPKs/buildOne.bash HelloWorlds {} \; \
-	2>"$HOME/buildAPKs/var/log/stnderr.${JID,,}.$NUM.log"
+	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF
