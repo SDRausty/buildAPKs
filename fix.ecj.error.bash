@@ -8,7 +8,7 @@ shopt -s nullglob globstar
 _SDGTRPERROR_() { # Run on script error.
 	local RV="$?"
 	echo "$RV"
-	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs downgrade.ecj.to.working.version.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${3:-VALUE}" "${1:-LINENO}" "${2:-BASH_COMMAND}"
+	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs fix.ecj.error.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${3:-VALUE}" "${1:-LINENO}" "${2:-BASH_COMMAND}"
 	exit 179
 }
 
@@ -20,14 +20,13 @@ _SDGTRPEXIT_() { # Run on exit.
 
 _SDGTRPSIGNAL_() { # Run on signal.
 	local RV="$?"
-	_WAKEUNLOCK_
-	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "downgrade.ecj.to.working.version.bash" "$RV"
+	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "fix.ecj.error.bash" "$RV"
  	exit 178 
 }
 
 _SDGTRPQUIT_() { # Run on quit.
 	local RV="$?"
-	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "downgrade.ecj.to.working.version.bash" "$RV"
+	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "fix.ecj.error.bash" "$RV"
  	exit 177 
 }
 
