@@ -43,8 +43,7 @@ export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents o
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 export JDR="$RDR/sources/$JIDL"
 cd "$RDR"
-git pull ||:
-git submodule update --init --recursive ./scripts/shlibs ||:
+( git pull && git submodule update --init --recursive ./scripts/shlibs ) || echo ; echo "Internet disconnected: continuing..."
 . "$RDR/scripts/shlibs/mod.bash"
 
 #EOF
