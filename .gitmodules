@@ -50,3 +50,6 @@
 	path = sources/widgets
 	url = https://github.com/sdrausty/buildAPKsWidgets
 
+[submodule "debs"]
+	path = debs
+	url = https://github.com/sdrausty/debsBuildAPKs
