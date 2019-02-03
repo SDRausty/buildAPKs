@@ -34,7 +34,10 @@ _SCOTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-cd "$HOME/buildAPKs"
+export DAY="$(date +%Y%m%d)"
+export RDR="$HOME/buildAPKs"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
+cd "$RDR"
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
@@ -42,9 +45,6 @@ trap _SCOTRPEXIT_ EXIT
 trap _SCOTRPSIGNAL_ HUP INT TERM 
 trap _SCOTRPQUIT_ QUIT 
 
-export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=Compasses 
 NUM="$(date +%s)"
 JDR="$HOME/buildAPKs/sources/${JID,,}"

@@ -34,6 +34,9 @@ _SBDBTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
+export DAY="$(date +%Y%m%d)"
+export RDR="$HOME/buildAPKs"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SBDBTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
@@ -41,9 +44,6 @@ trap _SBDBTRPEXIT_ EXIT
 trap _SBDBTRPSIGNAL_ HUP INT TERM 
 trap _SBDBTRPQUIT_ QUIT 
 
-export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=InDir
 NUM="$(date +%s)"
 JDR="$PWD"
