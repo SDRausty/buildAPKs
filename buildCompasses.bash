@@ -44,6 +44,8 @@ trap _SCOTRPSIGNAL_ HUP INT TERM
 trap _SCOTRPQUIT_ QUIT 
 
 export DAY="$(date +%Y%m%d)"
+export RDR="$HOME/buildAPKs"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=Compasses 
 NUM="$(date +%s)"
 JDR="$HOME/buildAPKs/sources/${JID,,}"
