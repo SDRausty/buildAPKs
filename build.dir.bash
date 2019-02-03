@@ -43,6 +43,8 @@ trap _SBDBTRPSIGNAL_ HUP INT TERM
 trap _SBDBTRPQUIT_ QUIT 
 
 export DAY="$(date +%Y%m%d)"
+export RDR="$HOME/buildAPKs"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=InDir
 NUM="$(date +%s)"
 JDR="$PWD"
