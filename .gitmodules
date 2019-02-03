@@ -1,3 +1,6 @@
+[submodule "debs"]
+	path = debs
+	url = https://github.com/sdrausty/debsBuildAPKs
 [submodule "docs"]
 	path = docs
 	url = https://github.com/sdrausty/docsBuildAPKs
@@ -49,7 +52,3 @@
 [submodule "sources/widgets"]
 	path = sources/widgets
 	url = https://github.com/sdrausty/buildAPKsWidgets
-
-[submodule "debs"]
-	path = debs
-	url = https://github.com/sdrausty/debsBuildAPKs
