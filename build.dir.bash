@@ -34,7 +34,7 @@ _SBDBTRPQUIT_() { # Run on quit.
  	exit 221 
 }
 
-( git pull && git submodule update --init --recursive ./scripts/shlibs ) || echo ; echo "Internet disconnected: continuing..."
+(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SBDBTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SBDBTRPEXIT_ EXIT

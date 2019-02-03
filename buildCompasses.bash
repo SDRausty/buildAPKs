@@ -35,7 +35,7 @@ _SCOTRPQUIT_() { # Run on quit.
 }
 
 cd "$HOME/buildAPKs"
-( git pull && git submodule update --init --recursive ./scripts/shlibs ) || echo ; echo "Internet disconnected: continuing..."
+(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 trap _SCOTRPEXIT_ EXIT
