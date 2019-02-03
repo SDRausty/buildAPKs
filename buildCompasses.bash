@@ -46,7 +46,7 @@ trap _SCOTRPQUIT_ QUIT
 export DAY="$(date +%Y%m%d)"
 JID=Compasses 
 NUM="$(date +%s)"
-WDR="$HOME/buildAPKs/sources/${JID,,}"
+JDR="$HOME/buildAPKs/sources/${JID,,}"
 if [[ ! -f "$HOME/buildAPKs/sources/compasses/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/samples/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/tutorials/.git" ]]
 then
 	echo
@@ -66,6 +66,6 @@ cd "$HOME/buildAPKs/sources/samples/android-code/Compass/"
 . "$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/samples/Compass/"
 . "$HOME/buildAPKs/buildOne.bash" "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-. "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
+. "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

@@ -46,7 +46,7 @@ trap _SCLTRPQUIT_ QUIT
 export DAY="$(date +%Y%m%d)"
 JID=Clocks
 NUM="$(date +%s)"
-WDR="$HOME/buildAPKs/sources/${JID,,}"
+JDR="$HOME/buildAPKs/sources/${JID,,}"
 if [[ ! -f "$HOME/buildAPKs/sources/clocks/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/livewallpapers/.git" ]] || [[ ! -f "$HOME/buildAPKs/sources/widgets/.git" ]]
 then
 	echo
@@ -76,6 +76,6 @@ cd "$HOME/buildAPKs/sources/widgets/decimal-clock-widget/decimal-clock-widget"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
 cd "$HOME/buildAPKs/sources/widgets/unix-time-clock-widget/unix-time-clock"
 ../../../../buildOne.bash Clocks "$JID" 2> "$HOME/buildAPKs/var/log/stnderr.build.${JID,,}.$NUM.log"
-. "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
+. "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

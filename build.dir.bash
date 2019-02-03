@@ -45,11 +45,11 @@ trap _SBDBTRPQUIT_ QUIT
 export DAY="$(date +%Y%m%d)"
 JID=InDir
 NUM="$(date +%s)"
-WDR="$PWD"
+JDR="$PWD"
 find "$@" -name AndroidManifest.xml \
-	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$WDR" {} \; \
+	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$JDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr.build."${JID,,}".$(date +%s).log"
-. "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
+. "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 #	search: lowercase bash variable pattern replacement substitution site:tldp.org
 #	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 #EOF

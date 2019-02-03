@@ -41,7 +41,7 @@ export JIDL="${JID,,}"	# search.string: bash variable lower case site:tldp.org
 export NUM="$(date +%s)"
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-export WDR="$RDR/sources/$JIDL"
+export JDR="$RDR/sources/$JIDL"
 cd "$RDR"
 git pull # TODO: offline option 
 git submodule update --init --recursive ./scripts/shlibs # ditto

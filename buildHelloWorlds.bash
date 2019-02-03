@@ -38,7 +38,7 @@ export RDR="$HOME/buildAPKs"
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 JID=HelloWorlds
 NUM="$(date +%s)"
-WDR="$RDR/sources"
+JDR="$RDR/sources"
 cd "$RDR"
 git pull
 git submodule update --init ./scripts/shlibs
@@ -59,6 +59,6 @@ find $HOME/buildAPKs/sources/samples/helloWorlds/ \
        	-name AndroidManifest.xml \
 	-execdir $HOME/buildAPKs/buildOne.bash HelloWorlds {} \; \
 	2>"$HOME/buildAPKs/var/log/stnderr.${JID,,}.$NUM.log"
-. "$RDR/scripts/shlibs/faa.bash" "$JID" "$WDR" ||:
+. "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

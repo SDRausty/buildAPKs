@@ -77,9 +77,9 @@ else
 fi
 if [[ -z "${2:-}" ]] 
 then
-	WDR=""
+	JDR=""
 else
-	WDR="$2"
+	JDR="$2"
 fi
 if [[ "$PWD" = "$HOME" ]] 
 then
@@ -118,9 +118,9 @@ aapt package -f \
 	-S res \
 	-m
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun"
-if [[ -d "$TMPDIR/buildAPKsLibs" ]] && [[ -d "$WDR/libs" ]] # directories exist
+if [[ -d "$TMPDIR/buildAPKsLibs" ]] && [[ -d "$JDR/libs" ]] # directories exist
 then # loads artifacts
-        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs:$WDR/libs" -sourcepath . "$(find . -type f -name "*.java")"
+        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs:$JDR/libs" -sourcepath . "$(find . -type f -name "*.java")"
 elif [[ -d "$TMPDIR/buildAPKsLibs" ]]
 then
         ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs" -sourcepath . "$(find . -type f -name "*.java")"
