@@ -38,7 +38,7 @@ trap _SDGTRPQUIT_ QUIT
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
 cd "$RDR"
 (git pull && git submodule update --init ./debs) || (echo ; echo "Internet disconnected: continuing...")
-dpkg --purge ecj || dpkg --purge ecj4_6
+dpkg --purge ecj || dpkg --purge ecj4.6
 dpkg --install "$RDR/debs/ecj4.6_4.6.2_all.deb"
 
 #EOF
