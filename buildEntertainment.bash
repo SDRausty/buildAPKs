@@ -39,13 +39,7 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
-export DAY="$(date +%Y%m%d)"
-export RDR="$HOME/buildAPKs"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-cd "$RDR"
-git pull
-git submodule update --init ./scripts/shlibs
-JID=Entertainment	# job id/name
-. "$HOME/buildAPKs/scripts/shlibs/mod.bash"
+export JID=Entertainment	# job id/name
+. "$HOME/buildAPKs/scripts/initm.bash"
 
 #EOF
