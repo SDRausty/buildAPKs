@@ -8,15 +8,15 @@ shopt -s nullglob globstar
 _SBOTRPERROR_() { # Run on script error.
 	local RV="$?"
 	echo "$1 $2 $3"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}" "$RV"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
 	if [[ "$RV" = 1 ]] 
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}" "${0##*/}"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "${0##*/}" "$RDR" "${JID,,}" "$NUM"
 		ls
 	fi
 	if [[ "$RV" = 255 ]]
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`stnderr*.log\` files.\\e[0m\\n" "${0##*/}"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RDR" "${JID,,}" "$NUM"
 	fi
 	exit 160
 }
