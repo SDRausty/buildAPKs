@@ -40,13 +40,13 @@ trap _SCOTRPSIGNAL_ HUP INT TERM
 trap _SCOTRPQUIT_ QUIT 
 
 export DAY="$(date +%Y%m%d)"
+export JID=Compasses 
+export NUM="$(date +%s)"
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 cd "$RDR"
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
 . "$RDR/scripts/shlibs/lock.bash"
-JID=Compasses 
-NUM="$(date +%s)"
 JDR="$RDR/sources/${JID,,}"
 if [[ ! -f "$RDR/sources/compasses/.git" ]] || [[ ! -f "$RDR/sources/samples/.git" ]] || [[ ! -f "$RDR/sources/tutorials/.git" ]]
 then

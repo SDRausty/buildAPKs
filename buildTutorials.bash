@@ -36,7 +36,7 @@ trap _SETRPEXIT_ EXIT
 trap _SETRPSIGNAL_ HUP INT TERM 
 trap _SETRPQUIT_ QUIT 
 
-JID=Tutorials		# job id/name
+export JID=Tutorials		# job id/name
 . "$HOME/buildAPKs/scripts/initm.bash"
 
 #EOF

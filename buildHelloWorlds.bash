@@ -36,8 +36,8 @@ trap _SATRPQUIT_ QUIT
 export DAY="$(date +%Y%m%d)"
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-JID=HelloWorlds
-NUM="$(date +%s)"
+export JID=HelloWorlds
+export NUM="$(date +%s)"
 JDR="$RDR/sources"
 cd "$RDR"
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
