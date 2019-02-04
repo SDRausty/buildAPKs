@@ -25,7 +25,9 @@ _SBOTRPEXIT_() { # Run on exit.
 	local RV="$?"
 	if [[ "$RV" != 0 ]]  
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs signal %s received by %s in %s.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "$RV" "${0##*/}" "$PWD" "$RDR" "${JID,,}" "$NUM"
+		printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs signal %s received by %s in %s.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\n\\n" "$RV" "${0##*/}" "$PWD" "$RDR" "${JID,,}" "$NUM"
+		tail -n 16 "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+		printf "\\e[0m\\n\\n" 
 	fi
 	if [[ "$RV" = 220 ]]  
 	then 
