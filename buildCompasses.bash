@@ -62,11 +62,11 @@ else
 fi
 find "$RDR/sources/compasses" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
-	2>"$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/samples/android-code/Compass/"
-. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/samples/Compass/"
-. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

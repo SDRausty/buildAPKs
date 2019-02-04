@@ -62,21 +62,21 @@ else
 fi
 find "$RDR/sources/clocks" -name AndroidManifest.xml \
 	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
-	2>"$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/livewallpapers/android-clock-livewallpaper/"
-../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/16-bit-clock/16-bit-clock/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/MonthCalendarWidget/choose-a/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/MonthCalendarWidget/romannurik/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/clockWidget/"
-../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/decimal-clock-widget/decimal-clock-widget"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/unix-time-clock-widget/unix-time-clock"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.build.${JID,,}.$NUM.log"
+../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF
