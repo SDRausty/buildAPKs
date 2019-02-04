@@ -8,15 +8,15 @@ shopt -s nullglob globstar
 _SBOTRPERROR_() { # Run on script error.
 	local RV="$?"
 	echo "$1 $2 $3"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  See \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$SRDR" "${JID,,}" "$NUM"
 	if [[ "$RV" = 1 ]] 
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "${0##*/}" "$RDR" "${JID,,}" "$NUM"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "${0##*/}" "$SRDR" "${JID,,}" "$NUM"
 		ls
 	fi
 	if [[ "$RV" = 255 ]]
 	then 
-		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RDR" "${JID,,}" "$NUM"
+		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again; This error might have been corrected by clean up.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$SRDR" "${JID,,}" "$NUM"
 	fi
 	exit 160
 }
@@ -25,7 +25,7 @@ _SBOTRPEXIT_() { # Run on exit.
 	local RV="$?"
 	if [[ "$RV" != 0 ]]  
 	then 
-		echo "Signal $RV received in $PWD by ${0##*/}!  See \"$RDR/var/log/stnderr*.log\" files."
+		printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs signal %s received by %s in %s.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "$RV" "${0##*/}" "$PWD" "$SRDR" "${JID,,}" "$NUM"
 	fi
 	if [[ "$RV" = 220 ]]  
 	then 
@@ -68,7 +68,6 @@ trap _SBOTRPEXIT_ EXIT
 trap _SBOTRPSIGNAL_ HUP INT TERM 
 trap _SBOTRPQUIT_ QUIT 
 NOW=$(date +%s)
-RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
