@@ -3,7 +3,7 @@ buildAPKs
 
 BuildAPKs contains [source code](./sources) and [scripts](./scripts/build) to build APKs (Android Package Kits) on the [Termux](https://termux.com/) Android application. Quick setup instructions can be found here at https://sdrausty.github.io/docsBuildAPKs/setup and also https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
 
-You can try building hundreds of exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from this directory.  It is simple!  The minimal install size to start building your first apps (6) is about 6MB!  Have fun and enjoy compiling, hacking, modifying and running these select APKs!
+You can try building hundreds of exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from this directory.  It is simple!  The minimal install size to start building your first apps (6) is about 8MB!  Have fun and enjoy compiling, hacking, modifying and running these select APKs!
 
 **Cloning and updating [modules](https://gist.github.com/gitaarik/8735255) is automated into the [build\*.sh scripts.](https://github.com/sdrausty/buildAPKs/tree/master) Use `git pull` to update buildAPKs to its' newest version.** If you recieve a history error message from `git pull`, the simplest solution is `mv ~/buildAPKs ~/b0` and then reclone into the $HOME folder.  The `~/buildAPKs` directory can be a symbolic link to external storage space to save native space on device.
 
@@ -21,7 +21,7 @@ See https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevic
 
 Prefix these bash scripts by typing dot slash `./` on your Android smartphone and tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2).  The prompt should magically add `uild`; Then add a capitol `E`.  Press TAB TAB (x2) again.  This should build the following command on the command line `./buildEntertainment.bash` for you.  Press enter (return) in `~/buildAPKs/`.  Additional CLI information at [The Linux Documentation Project.](https://duckduckgo.com/?q=command+line+beginner+site%3Atldp.org)
 
-These built APKs will be deposited into Download/builtAPKs for installing on smartphone and tablet through browsers, and download and file managers.  The minimal install size to start building your first applications is about 6MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
+These built APKs will be deposited into Download/builtAPKs for installing on smartphone and tablet through browsers, and download and file managers.  The minimal install size to start building your first applications is about 8MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
 ===============
 
 The [`buildAll.sh`](https://raw.githubusercontent.com/sdrausty/buildAPKs/master/scripts/build/buildAll.sh) command can build hundreds of APKs on your device.  Maximum space allotment for complete build of everything included (755) is about 850MB for buildAPKs, plus about 74MB for the finished products deposited into /storage/emulated/0/Download/builtAPKs;  Seven hundred and fifty five (755) Android applications can be made from source code on device today.

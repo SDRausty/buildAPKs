@@ -39,6 +39,6 @@ export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)" # Set variable to contents of f
 cd "$RDR"
 (git pull && git submodule update --init ./debs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 dpkg --purge ecj ecj4.6
-dpkg --install "$RDR/debs/ecj_4.7.2-1_all.deb
+dpkg --install "$RDR/debs/ecj_4.7.2-1_all.deb"
 
 #EOF
