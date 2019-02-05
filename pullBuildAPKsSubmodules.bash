@@ -9,20 +9,20 @@ if [[ ! -f "$HOME/buildAPKs/docs/.git" ]] || [[ ! -f "$HOME/buildAPKs/scripts/sh
 then
 	printf "\\n\\nUpdating buildAPKs; \`%s\` might want to load sources from module repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com\\n" "${0##*/}"
 	git pull 
-	git submodule update --init ./scripts/shlibs
-	git submodule update --init --recursive ./sources/applications
-	git submodule update --init --recursive ./sources/browsers 
-	git submodule update --init --recursive ./sources/clocks
-	git submodule update --init --recursive ./sources/compasses 
-	git submodule update --init --recursive ./sources/entertainment
-	git submodule update --init --recursive ./sources/flashlights 
-	git submodule update --init --recursive ./sources/games 
-	git submodule update --init --recursive ./sources/livewallpapers
-	git submodule update --init --recursive ./sources/samples 
-	git submodule update --init --recursive ./sources/top10 
-	git submodule update --init --recursive ./sources/tools 
-	git submodule update --init --recursive ./sources/tutorials
-	git submodule update --init --recursive ./sources/widgets
+	git submodule update --init --remote ./scripts/shlibs
+	git submodule update --init --recursive --remote ./sources/applications
+	git submodule update --init --recursive --remote ./sources/browsers 
+	git submodule update --init --recursive --remote ./sources/clocks
+	git submodule update --init --recursive --remote ./sources/compasses 
+	git submodule update --init --recursive --remote ./sources/entertainment
+	git submodule update --init --recursive --remote ./sources/flashlights 
+	git submodule update --init --recursive --remote ./sources/games 
+	git submodule update --init --recursive --remote ./sources/livewallpapers
+	git submodule update --init --recursive --remote ./sources/samples 
+	git submodule update --init --recursive --remote ./sources/top10 
+	git submodule update --init --recursive --remote ./sources/tools 
+	git submodule update --init --recursive --remote ./sources/tutorials
+	git submodule update --init --recursive --remote ./sources/widgets
 else
 	printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
 	find "$HOME/buildAPKs/" -type f -name .git
