@@ -34,13 +34,13 @@ trap _SATRPEXIT_ EXIT
 trap _SATRPSIGNAL_ HUP INT TERM 
 trap _SATRPQUIT_ QUIT 
 export DAY="$(date +%Y%m%d)"
-export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 export JID=HelloWorlds
 export NUM="$(date +%s)"
-JDR="$RDR/sources"
+export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
+export JDR="$RDR/sources/${JID,,}"
+export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 cd "$RDR"
-(git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Internet disconnected: continuing...")
+(git pull && git submodule update --init ./scripts/shlibs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 . "$RDR/scripts/shlibs/lock.bash"
 if [[ ! -f "$RDR/sources/samples/.git" ]]
 then
