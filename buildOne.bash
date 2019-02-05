@@ -51,7 +51,7 @@ _SBOTRPEXIT_() { # Run on exit.
 	rm -rf ./gen 2>/dev/null ||:  
  	rm -rf ./obj 2>/dev/null ||:  
 	find . -name R.java -exec rm {} \; 2>/dev/null ||:  
-	printf "\\e[1;38;5;151mCompleted tasks in %s\\n\\n\\e[0m" "${PWD:33}"
+	printf "\\e[1;38;5;151mCompleted tasks in ~/%s\\n\\n\\e[0m" "${PWD:33}"
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit 0
@@ -89,7 +89,7 @@ then
 	echo "Cannot run in $HOME!  Signal 224 generated in $PWD."
 	exit 224
 fi
-printf "\\n\\e[1;38;5;116mBeginning build in %s\\n" "$PWD"
+printf "\\n\\e[1;38;5;116mBeginning build in ~/%s\\n\\n\\e[0m" "${PWD:33}"
 if [[ ! -e "./assets" ]]
 then
 	mkdir -p ./assets
