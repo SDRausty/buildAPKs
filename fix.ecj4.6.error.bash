@@ -41,5 +41,7 @@ cd "$RDR"
 dpkg --purge ecj ecj4.6
 dpkg --install "$RDR/debs/ecj4.6_4.6.2_all.deb"
 rm -f "$RDR/var/tmp/*err"
+echo "Error \`ecj\` fixed!"
+echo 
 
 #EOF

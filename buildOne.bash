@@ -14,6 +14,7 @@ _SBOTRPERROR_() { # Run on script error.
 		CER="conf.$NUM.err"
 		echo "$1 $2 $3 $RV" > "$RDR/var/tmp/$CER" # https://stackoverflow.com/questions/11162406/open-and-write-data-to-text-file-using-bash-shell-scripting
 		echo Fixing error...
+		echo Please wait a moment...
 		sleep 1.28
 		. "$RDR/fix.ecj4.6.error.bash"
 	fi
