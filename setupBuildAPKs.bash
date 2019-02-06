@@ -39,6 +39,11 @@ trap "_SUPTRPERROR_ $LINENO $BASH_COMMAND $?" ERR
 trap _SUPTRPEXIT_ EXIT
 trap _SUPTRPSIGNAL_ HUP INT TERM 
 trap _SUPTRPQUIT_ QUIT 
+declare -a ARGS="$@"	## Declare arguments as string.
+if [[ -z "${1:-}" ]]
+then
+	ARGS=""
+fi
 printf "\n\e[1;38;5;116m%s\n" "Beginning buildAPKs setup"
 declare COMMANDIF=""
 COMMANDIF="$(command -v au)" ||:
