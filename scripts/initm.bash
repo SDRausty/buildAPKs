@@ -35,7 +35,6 @@ trap '_SINMTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SINMTRPEXIT_ EXIT
 trap _SINMTRPSIGNAL_ HUP INT TERM 
 trap _SINMTRPQUIT_ QUIT 
-
 export DAY="$(date +%Y%m%d)"
 export JIDL="${JID,,}"	# search.string: bash variable lower case site:tldp.org
 export NUM="$(date +%s)"

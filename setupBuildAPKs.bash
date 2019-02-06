@@ -3,15 +3,14 @@
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
-VERSIONID="v2.2"
 
-_STRPERROR_() { # Run on script error.
+_SUPTRPERROR_() { # Run on script error.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh ERROR:  Signal $? received!\\e[0m\\n"
 	printf "\\e[?25h\\e[0m\\n"
 	exit 201
 }
 
-_STRPEXIT_() { # Run on exit.
+_SUPTRPEXIT_() { # Run on exit.
 	local RV="$?"
 	sleep 0.04
 	if [[ "$RV" = 0 ]] ; then
@@ -26,29 +25,25 @@ _STRPEXIT_() { # Run on exit.
 	exit
 }
 
-_STRPSIGNAL_() { # Run on signal.
+_SUPTRPSIGNAL_() { # Run on signal.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Signal $? received!\\e[0m\\n"
  	exit 211 
 }
 
-_STRPQUIT_() { # Run on quit.
+_SUPTRPQUIT_() { # Run on quit.
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Quit signal $? received!\\e[0m\\n"
  	exit 221 
 }
 
-trap "_STRPERROR_ $LINENO $BASH_COMMAND $?" ERR 
-trap _STRPEXIT_ EXIT
-trap _STRPSIGNAL_ HUP INT TERM 
-trap _STRPQUIT_ QUIT 
-  
-declare -a ARGS="$@"	## Declare arguments as string.
-if [[ -z "${1:-}" ]] 
-then
-	ARGS=""
-fi
+trap "_SUPTRPERROR_ $LINENO $BASH_COMMAND $?" ERR 
+trap _SUPTRPEXIT_ EXIT
+trap _SUPTRPSIGNAL_ HUP INT TERM 
+trap _SUPTRPQUIT_ QUIT 
+VERSIONID="$(cat $HOME/buildAPKs/var/conf/VERSIONID)" # Variable set to file contents.
 printf "\n\e[1;38;5;116m%s\n" "Beginning buildAPKs setup"
-COMMANDIF="$(au)" ||:
-if [[ "$COMMANDIF" = "au" ]] 
+declare COMMANDIF=""
+COMMANDIF="$(command -v au)" ||:
+if [[ "$COMMANDIF" = au ]] 
 then 
 	au aapt apksigner dx ecj findutils git
 else
@@ -56,4 +51,6 @@ else
 fi
 cd "$HOME"
 git clone https://github.com/sdrausty/buildAPKs
-bash "$HOME"/buildAPKs/buildMyFirstAPKs.sh
+bash ./buildAPKs/buildMyFirstAPKs.sh
+
+#EOF
