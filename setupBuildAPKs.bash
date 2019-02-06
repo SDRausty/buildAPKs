@@ -39,7 +39,6 @@ trap "_SUPTRPERROR_ $LINENO $BASH_COMMAND $?" ERR
 trap _SUPTRPEXIT_ EXIT
 trap _SUPTRPSIGNAL_ HUP INT TERM 
 trap _SUPTRPQUIT_ QUIT 
-VERSIONID="$(cat $HOME/buildAPKs/var/conf/VERSIONID)" # Variable set to file contents.
 printf "\n\e[1;38;5;116m%s\n" "Beginning buildAPKs setup"
 declare COMMANDIF=""
 COMMANDIF="$(command -v au)" ||:
