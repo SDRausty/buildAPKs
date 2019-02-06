@@ -8,6 +8,15 @@ shopt -s nullglob globstar
 _SBOTRPERROR_() { # Run on script error.
 	local RV="$?"
 	echo "$1 $2 $3"
+	if [[ "$2" = ecj ]]  
+	then 
+		mkdir -p "$RDR/var/tmp"
+		CER="conf.$NUM.err"
+		echo "$1 $2 $3 $RV" > "$RDR/var/tmp/$CER" # https://stackoverflow.com/questions/11162406/open-and-write-data-to-text-file-using-bash-shell-scripting
+		. "$RDR/fix.ecj4.6.error.bash"
+		echo Run the script again...
+		sleep 1.28
+	fi
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
 	if [[ "$RV" = 1 ]] 
 	then 
