@@ -15,10 +15,18 @@ _SBOTRPERROR_() { # Run on script error.
 		echo "$1 $2 $3 $RV" > "$RDR/var/tmp/$CER" # https://stackoverflow.com/questions/11162406/open-and-write-data-to-text-file-using-bash-shell-scripting
 		echo Fixing error...
 		echo Please wait a moment...
-		sleep 1.28
-		. "$RDR/fix.ecj4.6.error.bash"
+		sleep 0.64
+		if [[ "$(command getprop ro.build.version.sdk)" -gt 22 ]] 
+		then
+			echo installing ecj
+ 			. "$RDR/fix.ecj.error.bash"
+		else
+			echo installing ecj4.6
+ 			. "$RDR/fix.ecj4.6.error.bash"
+		fi
+	else
+		printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
 	fi
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
 	if [[ "$RV" = 1 ]] 
 	then 
 		printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 1 try running %s again; This error can be resolved by running %s in a directory that has the \`AndroidManifest.xml\` file.  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "${0##*/}" "$RDR" "${JID,,}" "$NUM"
