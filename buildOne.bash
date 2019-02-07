@@ -20,11 +20,11 @@ _SBOTRPERROR_() { # Run on script error.
 		then
 			echo Installing package ecj_4.7.2-1_all.deb...
  			. "$RDR/fix.ecj.error.bash"
-			echo "~/$SRDR/debs/ecj_4.7.2-1_all.deb installed;  Continuing..."
+			echo "Package ecj_4.7.2-1_all.deb installed; Continuing..."
 		else
-			echo "Installing ~/$SRDR/debs/ecj4.6_4.6.2_all.deb..." 
+			echo "Installing package ecj4.6_4.6.2_all.deb..." 
  			. "$RDR/fix.ecj4.6.error.bash"
-			echo "~/$SRDR/debs/ecj4.6_4.6.2_all.deb installed;  Continuing..."
+			echo "Package ecj4.6_4.6.2_all.deb installed; Continuing..."
 		fi
 	else
 		printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "${JID,,}" "$NUM"
