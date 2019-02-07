@@ -18,11 +18,11 @@ _SBOTRPERROR_() { # Run on script error.
 		sleep 0.64
 		if [[ "$(command getprop ro.build.version.sdk)" -gt 22 ]] 
 		then
-			echo Installing package ecj4.6 which should behave much better on device than the current version.
+			echo Installing package ecj_4.7.2-1_all.deb...
  			. "$RDR/fix.ecj.error.bash"
-			echo "~/$SRDR/debs/ecj4.6_4.6.2_all.deb installed;  Continuing..."
+			echo "~/$SRDR/debs/ecj_4.7.2-1_all.deb installed;  Continuing..."
 		else
-			echo "Installing ~/$SRDR/debs/ecj4.6_4.6.2_all.deb which should behave much better on device than the current version.  Continuing..." 
+			echo "Installing ~/$SRDR/debs/ecj4.6_4.6.2_all.deb..." 
  			. "$RDR/fix.ecj4.6.error.bash"
 			echo "~/$SRDR/debs/ecj4.6_4.6.2_all.deb installed;  Continuing..."
 		fi
