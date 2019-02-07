@@ -34,14 +34,13 @@ trap '_SDGTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SDGTRPEXIT_ EXIT
 trap _SDGTRPSIGNAL_ HUP INT TERM 
 trap _SDGTRPQUIT_ QUIT 
-
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)" # Set variable to contents of file.
 cd "$RDR"
-(git pull && git submodule update --init ./debs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
+(git pull && git submodule update --init ./debs/ecj4.6) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 dpkg --purge ecj ecj4.6
-dpkg --install "$RDR/debs/ecj4.6_4.6.2_all.deb"
+dpkg --install "$RDR/debs/ecj4.6/ecj4.6_4.6.2_all.deb"
 rm -f "$RDR/var/tmp/*err"
-echo "Error \`ecj\` fixed!"
+echo "Error repaired!"
 echo 
 
 #EOF
