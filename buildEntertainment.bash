@@ -13,7 +13,6 @@ _SETRPERROR_() { # Run on script error.
 }
 
 _SETRPEXIT_() { # Run on exit.
-	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
@@ -21,7 +20,6 @@ _SETRPEXIT_() { # Run on exit.
 
 _SETRPSIGNAL_() { # Run on signal.
 	local RV="$?"
-	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
 	echo exit 211
  	exit 211 

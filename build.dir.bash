@@ -13,7 +13,6 @@ _SBDBTRPERROR_() { # Run on script error.
 }
 
 _SBDBTRPEXIT_() { # Run on exit.
-	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
@@ -22,7 +21,6 @@ _SBDBTRPEXIT_() { # Run on exit.
 _SBDBTRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	_WAKEUNLOCK_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
  	exit 211 

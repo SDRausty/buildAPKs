@@ -44,5 +44,6 @@ export JDR="$RDR/sources/$JIDL"
 cd "$RDR"
 (git pull && git submodule update --init --recursive ./scripts/shlibs) || (echo ; echo "Cannot update: continuing...")
 . "$RDR/scripts/shlibs/mod.bash"
+_WAKEUNLOCK_
 
 #EOF
