@@ -43,16 +43,16 @@ export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents o
 export JDR="$RDR/sources/${JID,,}"
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 cd "$RDR"
-(git pull && git submodule update --init --remote ./scripts/shlibs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
+(git pull && git submodule update --init --recursive --remote ./scripts/shlibs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 . "$RDR/scripts/shlibs/lock.bash"
 if [[ ! -f "$RDR/sources/compasses/.git" ]] || [[ ! -f "$RDR/sources/samples/.git" ]] || [[ ! -f "$RDR/sources/tutorials/.git" ]]
 then
 	echo
 	echo "Updating buildAPKs; \`${0##*/}\` might want to load sources from submodule repositories into buildAPKs. This may take a little while to complete. Please be patient if this script wants to download source code from https://github.com"
 	cd "$RDR"
-	git submodule update --init --recursive ./sources/compasses 
-	git submodule update --init --recursive ./sources/samples
-	git submodule update --init --recursive ./sources/tutorials
+	git submodule update --init --recursive --remote ./sources/compasses 
+	git submodule update --init --recursive --remote ./sources/samples
+	git submodule update --init --recursive --remote ./sources/tutorials
 else
 	echo
 	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
