@@ -135,6 +135,10 @@ if [[ ! -d "./res" ]]
 then
 	mkdir -p ./res
 fi
+if [[ ! -d "/storage/emulated/0/Download/builtAPKs/$EXT$DAY" ]]
+then
+	mkdir -p "/storage/emulated/0/Download/builtAPKs/$EXT$DAY"
+fi
 printf "\\e[1;38;5;115m%s\\n\\e[0m" "aapt: started..."
 aapt package -f \
 	-M ./AndroidManifest.xml \
