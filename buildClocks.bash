@@ -44,7 +44,7 @@ export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents o
 export JDR="$RDR/sources/${JID,,}"
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 cd "$RDR"
-(git pull && git submodule update --init ./scripts/shlibs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
+(git pull && git submodule update --init --remote ./scripts/shlibs) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 . "$RDR/scripts/shlibs/lock.bash"
 if [[ ! -f "$RDR/sources/clocks/.git" ]] || [[ ! -f "$RDR/sources/livewallpapers/.git" ]] || [[ ! -f "$RDR/sources/widgets/.git" ]]
 then
