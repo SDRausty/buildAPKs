@@ -23,11 +23,11 @@ _SBOTRPERROR_() { # Run on script error.
 			if [[ "$(command getprop ro.build.version.sdk)" -gt 26 ]] 
 			then
 				echo Installing package ecj_4.7.2-1_all.deb...
- 				. "$RDR/fix.ecj.error.bash"
+ 				. "$RDR/debs/fix.ecj.error.bash"
 				echo "Package ecj_4.7.2-1_all.deb installed; Continuing..."
 			else
 				echo "Installing package ecj4.6_4.6.2_all.deb..." 
- 				. "$RDR/fix.ecj4.6.error.bash"
+ 				. "$RDR/debs/fix.ecj4.6.error.bash"
 				echo "Package ecj4.6_4.6.2_all.deb installed; Continuing..."
 			fi
 		fi
