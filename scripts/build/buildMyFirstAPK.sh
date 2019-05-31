@@ -1,1 +1,1 @@
-../../buildEntertainment.bash
+../../buildTop10.bash
