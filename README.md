@@ -24,7 +24,7 @@ Prefix these bash scripts by typing dot slash `./` on your Android smartphone an
 These built APKs will be deposited into Download/builtAPKs for installing on smartphone and tablet through browsers, and download and file managers.  The minimal install size to start building your first applications is about 8MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
 ===============
 
-The [`buildAll.sh`](https://raw.githubusercontent.com/sdrausty/buildAPKs/master/scripts/build/buildAll.sh) command can build hundreds of APKs on your device.  Maximum space allotment for complete build of everything included (755) is about 850MB for buildAPKs, plus about 74MB for the finished products deposited into /storage/emulated/0/Download/builtAPKs;  Seven hundred and fifty five (755) Android applications can be made from source code on device today.
+The [`buildAll.bash`](https://raw.githubusercontent.com/sdrausty/buildAPKs/master/scripts/build/buildAll.bash) command can build hundreds of APKs on your device.  Maximum space allotment for complete build of everything included (755) is about 850MB for buildAPKs, plus about 74MB for the finished products deposited into /storage/emulated/0/Download/builtAPKs;  Seven hundred and fifty five (755) Android applications can be made from source code on device today.
 
 Contribute to this project through both [the issues page](https://github.com/sdrausty/buildAPKs/issues) and [pull requests.](https://github.com/sdrausty/buildAPKs/pulls) Now you do not need Google Play, F-Droid and others to enjoy wonderfully working APKs on your smartphone and tablet thanks to [Termux](./pages/asac) on [Android](https://source.android.com/) and [Github.](https://github.com)
 

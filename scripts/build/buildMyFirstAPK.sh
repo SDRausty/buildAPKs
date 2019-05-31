@@ -1,1 +1,1 @@
-../../buildTop10.bash
+../../buildTools.bash
