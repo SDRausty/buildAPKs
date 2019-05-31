@@ -97,6 +97,14 @@ trap _SBOTRPEXIT_ EXIT
 trap _SBOTRPSIGNAL_ HUP INT TERM 
 trap _SBOTRPQUIT_ QUIT 
 NOW=$(date +%s)
+if [[ -z "${DAY:-}" ]] 
+then
+	DAY="$(date +%Y%m%d)"
+fi
+if [[ -z "${RDR:-}" ]] 
+then
+	RDR="${PWD##*/}"https://stackoverflow.com/questions/1371261/get-current-directory-name-without-full-path-in-a-bash-script
+fi
 if [[ -z "${1:-}" ]] 
 then
 	EXT=""
