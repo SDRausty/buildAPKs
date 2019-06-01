@@ -117,6 +117,14 @@ then
 else
 	JDR="$2"
 fi
+if [[ -z "${JID:-}" ]] 
+then
+	JID=""
+fi
+if [[ -z "${NUM:-}" ]] 
+then
+	NUM=""
+fi
 if [[ "$PWD" = "$HOME" ]] 
 then
 	echo "Cannot run in $HOME!  Signal 224 generated in $PWD."
