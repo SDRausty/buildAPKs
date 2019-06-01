@@ -7,6 +7,8 @@ shopt -s nullglob globstar
 
 _SBOTRPERROR_() { # Run on script error.
 	local RV="$?"
+	echo $RV
+	echo trap '_SBOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
 	echo "$1 $2 $3"
 	if [[ "$2" = ecj ]]  
 	then 
@@ -103,7 +105,7 @@ then
 fi
 if [[ -z "${RDR:-}" ]] 
 then
-	RDR="${PWD##*/}"https://stackoverflow.com/questions/1371261/get-current-directory-name-without-full-path-in-a-bash-script
+	RDR="${PWD##*/}" # https://stackoverflow.com/questions/1371261/get-current-directory-name-without-full-path-in-a-bash-script
 fi
 if [[ -z "${1:-}" ]] 
 then
@@ -113,13 +115,13 @@ else
 fi
 if [[ -z "${2:-}" ]] 
 then
-	JDR=""
+	JDR="$PWD"
 else
 	JDR="$2"
 fi
 if [[ -z "${JID:-}" ]] 
 then
-	JID=""
+	JID="${PWD##*/}"
 fi
 if [[ -z "${NUM:-}" ]] 
 then
@@ -164,10 +166,29 @@ aapt package -f \
 printf "\\e[1;38;5;148m%s;  \\e[1;38;5;114m%s\\n\\e[0m" "aapt: done" "ecj: begun..."
 if [[ -d "$TMPDIR/buildAPKsLibs" ]] && [[ -d "$JDR/libs" ]] # directories exist
 then # loads artifacts
-        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs:$JDR/libs" -sourcepath . "$(find . -type f -name "*.java")"
+	echo Loading artifacts from "$JDR/libs" \& "$TMPDIR/buildAPKsLibs".
+	CPATH="$(find $JDR/libs -type f -name "*.jar" -exec echo -n {} \:\  \;)"
+	CLPATH="${CPATH::-3}" # https://stackoverflow.com/questions/27658675/how-to-remove-last-n-characters-from-a-string-in-bash
+	CLAPATH="$(sed 's/\ \:\ /\:/g' <<< $CLPATH)"
+	CPATH="$(find $TMPDIR/buildAPKsLibs -type f -name "*.jar" -exec echo -n {} \:\  \;)"
+	CLPATH="${CPATH::-3}" # https://stackoverflow.com/questions/27658675/how-to-remove-last-n-characters-from-a-string-in-bash
+	CLASPATH="$(sed 's/\ \:\ /\:/g' <<< $CLPATH)"
+	CLASSPATH="$CLAPATH:$CLASPATH"
+	ecj -d ./obj -classpath "$CLASSPATH" -sourcepath . "$(find . -type f -name "*.java")"
+elif [[ -d "$JDR/libs" ]]
+then
+	echo Loading artifacts from "$JDR/libs".
+	CPATH="$(find $JDR/libs -type f -name "*.jar" -exec echo -n {} \:\  \;)"
+	CLPATH="${CPATH::-3}" # https://stackoverflow.com/questions/27658675/how-to-remove-last-n-characters-from-a-string-in-bash
+	CLAPATH="$(sed 's/\ \:\ /\:/g' <<< $CLPATH)"
+	ecj -d ./obj -classpath "$CLAPATH" -sourcepath . "$(find . -type f -name "*.java")"
 elif [[ -d "$TMPDIR/buildAPKsLibs" ]]
 then
-        ecj -d ./obj -classpath "$TMPDIR/buildAPKsLibs" -sourcepath . "$(find . -type f -name "*.java")"
+	echo Loading artifacts from "$TMPDIR/buildAPKsLibs".
+	CPATH="$(find $TMPDIR/buildAPKsLibs -type f -name "*.jar" -exec echo -n {} \:\  \;)"
+	CLPATH="${CPATH::-3}" # https://stackoverflow.com/questions/27658675/how-to-remove-last-n-characters-from-a-string-in-bash
+	CLAPATH="$(sed 's/\ \:\ /\:/g' <<< $CLPATH)"
+        ecj -d ./obj -classpath "$CLAPATH" -sourcepath . "$(find . -type f -name "*.java")"
 else
         ecj -d ./obj -sourcepath . "$(find . -type f -name "*.java")"
 fi
