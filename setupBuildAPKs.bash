@@ -5,7 +5,8 @@ set -Eeuo pipefail
 shopt -s nullglob globstar
 
 _SUPTRPERROR_() { # Run on script error.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh ERROR:  Signal $? received!\\e[0m\\n"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh ERROR:  Signal $RV received!\\e[0m\\n"
 	printf "\\e[?25h\\e[0m\\n"
 	exit 201
 }
@@ -26,12 +27,14 @@ _SUPTRPEXIT_() { # Run on exit.
 }
 
 _SUPTRPSIGNAL_() { # Run on signal.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Signal $? received!\\e[0m\\n"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Signal $RV received!\\e[0m\\n"
  	exit 211 
 }
 
 _SUPTRPQUIT_() { # Run on quit.
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Quit signal $? received!\\e[0m\\n"
+	local RV="$?"
+	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.sh WARNING:  Quit signal $RV received!\\e[0m\\n"
  	exit 221 
 }
 
