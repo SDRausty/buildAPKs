@@ -1,6 +1,6 @@
 #!/bin/env bash 
 # Copyright 2017-2019 (c) all rights reserved by S D Rausty 
-# Adapted from Adi Lima https://github.com/fx-adi-lima/android-tutorials
+# Adapted from https://github.com/fx-adi-lima/android-tutorials
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
