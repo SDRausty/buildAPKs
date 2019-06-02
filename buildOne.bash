@@ -19,8 +19,8 @@ _SBOTRPERROR_() { # Run on script error.
 		else
 			CER="conf.$NUM.err"
 			echo "$1 $2 $3 $RV" > "$RDR/var/tmp/$CER" # https://stackoverflow.com/questions/11162406/open-and-write-data-to-text-file-using-bash-shell-scripting
-			echo Fixing ecj error...
-			echo Please wait a moment...
+			printf "\\033[0;34m\\n%s\\033[1;37m\\n\\nThis may take a while time pending connection…\\n\\n\033[0m" "Attempting to fix ecj error https://github.com/termux/termux-packages/issues?q=is%3Aissue+ecj+error  Please wait moment…  "
+			printf '\033]2; Please wait moment…  \007'
 			sleep 0.64
 			if [[ "$(command getprop ro.build.version.sdk)" -gt 26 ]] 
 			then
