@@ -58,12 +58,12 @@ else
 	echo "To update module ~/buildAPKs/sources/compasses to the newest version remove the ~/buildAPKs/sources/compasses/.git file and run ${0##*/} again."
 fi
 find "$RDR/sources/compasses" -name AndroidManifest.xml \
-	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	-execdir "$RDR/build.one.bash" "$JID" {} \; \
 	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/samples/android-code/Compass/"
-. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+. "$RDR/build.one.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/samples/Compass/"
-. "$RDR/buildOne.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+. "$RDR/build.one.bash" "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF

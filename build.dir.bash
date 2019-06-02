@@ -50,7 +50,7 @@ then
 fi
 JDR="$PWD"
 find "$@" -name AndroidManifest.xml \
-	-execdir /bin/bash "$HOME/buildAPKs/buildOne.bash" "$JID" "$JDR" {} \; \
+	-execdir /bin/bash "$HOME/buildAPKs/build.one.bash" "$JID" "$JDR" {} \; \
 	2> "$HOME/buildAPKs/var/log/stnderr."${JID,,}".$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR"
 #	search: lowercase bash variable pattern replacement substitution site:tldp.org

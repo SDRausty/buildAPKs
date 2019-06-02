@@ -55,7 +55,7 @@ fi
 
 find "$RDR/sources/samples/helloWorlds" \
        	-name AndroidManifest.xml \
-	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	-execdir "$RDR/build.one.bash" "$JID" {} \; \
 	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 

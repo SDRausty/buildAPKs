@@ -59,22 +59,22 @@ else
 	echo "To update module ~/buildAPKs/sources/clocks to the newest version remove the ~/buildAPKs/sources/clocks/.git file and run ${0##*/} again."
 fi
 find "$RDR/sources/clocks" -name AndroidManifest.xml \
-	-execdir "$RDR/buildOne.bash" "$JID" {} \; \
+	-execdir "$RDR/build.one.bash" "$JID" {} \; \
 	2>"$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/livewallpapers/android-clock-livewallpaper/"
-../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/16-bit-clock/16-bit-clock/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/MonthCalendarWidget/choose-a/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/MonthCalendarWidget/romannurik/"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/clockWidget/"
-../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/decimal-clock-widget/decimal-clock-widget"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 cd "$RDR/sources/widgets/unix-time-clock-widget/unix-time-clock"
-../../../../buildOne.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
+../../../../build.one.bash Clocks "$JID" 2> "$RDR/var/log/stnderr.${JID,,}.$NUM.log"
 . "$RDR/scripts/shlibs/faa.bash" "$JID" "$JDR" ||:
 
 #EOF
