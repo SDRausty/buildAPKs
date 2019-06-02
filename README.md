@@ -1,7 +1,7 @@
 buildAPKs
 ===============
 
-BuildAPKs contains [source code](./sources) and [scripts](./scripts/build) to build APKs (Android Package Kits) on the [Termux](https://termux.com/) Android application.  Quick setup instructions can be found here at https://sdrausty.github.io/docsBuildAPKs/setup and also https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
+BuildAPKs has [source code](./sources) and [scripts](./scripts/build) in order to build APKs (Android Package Kits) on Android handhelds, and similar.  Quick setup instructions can be found here at https://sdrausty.github.io/docsBuildAPKs/setup and also https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
 
 You can try building hundreds of exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from this directory.  It is simple!  The minimal install size to start building your first apps (6) is about 10MB!  Have fun and enjoy compiling, hacking, modifying and running these select APKs!
 
