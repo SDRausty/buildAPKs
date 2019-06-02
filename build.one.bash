@@ -109,9 +109,9 @@ then
 fi
 if [[ -z "${1:-}" ]] 
 then
-	EXT=""
+	export EXT=""
 else
-	EXT="$1"
+	export EXT="$1"
 fi
 if [[ -z "${2:-}" ]] 
 then
