@@ -53,7 +53,7 @@ Computed on 20190114 branch master.
 Computed on 20190120 branch master.
 3648	.git
 4932	.
-RESET (reason : module errors )
+RESET: module errors 
 604	.git
 928	.
 AFTER `git pull`
@@ -84,6 +84,7 @@ Computed on 20190530 branch master.
 Size in KB
 8624	.git
 9020	.
+RESET: size diff
 Computed on 20190530 branch master.
 Size in KB
 704	.git
