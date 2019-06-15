@@ -1,1 +1,1 @@
-./scripts/build/buildEntertainment.bash
+scripts/build/buildClocks.bash

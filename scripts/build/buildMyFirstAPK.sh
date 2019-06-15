@@ -1,1 +1,1 @@
-buildEntertainment.bash
+buildCompasses.bash
