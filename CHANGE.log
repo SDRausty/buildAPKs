@@ -64,9 +64,14 @@ Size in KB
 8624	.git
 9020	.
 Computed on 20190602 branch master.
-RESET: size diff
+RESET: size 
 704	.git
 1220	.
 AFTER `git pull`
 3528	.git
 3908	.
+Computed on 20190615 branch master:
+RESET: modules & size 
+Size in KB
+1524	.git
+2016	.
