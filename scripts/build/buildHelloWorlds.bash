@@ -35,7 +35,7 @@ trap _SATRPSIGNAL_ HUP INT TERM
 trap _SATRPQUIT_ QUIT 
 
 export DAY="$(date +%Y%m%d)"
-export JAD=github.com/BuildAPKs/buildAPKsSamples
+export JAD=github.com/sdrausty/buildAPKsSamples
 export JID=hello.worlds
 export NUM="$(date +%s)"
 export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
