@@ -75,3 +75,8 @@ RESET: modules & size
 Size in KB
 1524	.git
 2016	.
+Computed on 20190615 branch master:
+AFTER `git clone`
+Size in KB
+3532	.git
+3768	.
