@@ -34,17 +34,17 @@ trap '_SINITRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SINITRPEXIT_ EXIT
 trap _SINITRPSIGNAL_ HUP INT TERM 
 trap _SINITRPQUIT_ QUIT 
-export RDR="$HOME/buildAPKs/"   
+
+export RDR="$HOME/buildAPKs"   
 if [[ -z "${JID:-}" ]] 
 then
 	. "$RDR/scripts/build/buildClocks.bash"
 	exit 0
 fi
 export DAY="$(date +%Y%m%d)"
-export JIDL="${JID,,}"	# search.string: bash variable lower case site:tldp.org
 export NUM="$(date +%s)"
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
-export JDR="$RDR/sources/$JIDL"
+export JDR="$RDR/sources/$JID"
 cd "$RDR"
 git pull 
 if [[ -f .gitmodules ]]
