@@ -53,10 +53,10 @@ then
 	then
 		(git submodule update --init --recursive --remote scripts/shlibs) || (printf "\\nCANNOT UPDATE ~/buildAPKs/scripts/shlibs: Continuing...\\n") 
 	else
-	       	(git submodule add https://github.com/shlibs/shlibs scripts/shlibs) || (printf "\\nCANNOT ADD MODULE: Continuing...\\n")
+		(git submodule add https://github.com/shlibs/shlibs scripts/shlibs) || (printf "\\nCANNOT ADD MODULE: Continuing...\\n")
 	fi
 else
-	       	(git submodule add https://github.com/shlibs/shlibs scripts/shlibs) || (printf "\\nCANNOT ADD MODULE: Continuing...\\n")
+	(git submodule add https://github.com/shlibs/shlibs scripts/shlibs) || (printf "\\nCANNOT ADD MODULE: Continuing...\\n")
 fi
 
 . "$RDR/scripts/shlibs/mod.bash"
