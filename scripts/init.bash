@@ -45,6 +45,10 @@ export DAY="$(date +%Y%m%d)"
 export NUM="$(date +%s)"
 export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
 export JDR="$RDR/sources/$JID"
+if [[ ! -d "/storage/emulated/0/Download/builtAPKs/$JID$DAY" ]]
+then
+	(mkdir -p "/storage/emulated/0/Download/builtAPKs/$JID$DAY") || (mkdir -p "$RDR/gen/$JID$DAY")
+fi
 cd "$RDR"
 git pull 
 if [[ -f .gitmodules ]]
