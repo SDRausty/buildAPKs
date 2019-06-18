@@ -21,7 +21,7 @@ See https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevic
 
 Prefix these bash scripts by typing dot slash `./` on your Android smartphone and tablet in Termux, i.e. type `./b` at the prompt ($), press TAB TAB (x2).  The prompt should magically add `uild`; Then add a capitol `E`.  Press TAB TAB (x2) again.  This should build the following command on the command line [`./buildEntertainment.bash`](https://raw.githubusercontent.com/sdrausty/buildAPKs/master/scripts/build/buildEntertainment.bash) for you.  Press enter (return) in `~/buildAPKs/`.  Additional CLI information at [The Linux Documentation Project.](https://duckduckgo.com/?q=command+line+beginner+site%3Atldp.org)
 
-The built APKs will be deposited into Download/builtAPKs for installing on smartphone and tablet through browsers, and download and file managers.  The minimal install size to start building your first applications is about 10MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
+The minimal install size to start building your first applications is about 10MB.  Have fun and enjoy compiling, hacking, modifying and running these select APKs on device!
 ===============
 
 The [`buildAll.bash`](https://raw.githubusercontent.com/sdrausty/buildAPKs/master/scripts/build/buildAll.bash) command can build hundreds of APKs on your device.  Maximum space allotment for complete build of everything included (755) is about 850MB for buildAPKs, plus about 74MB for the finished products deposited into /storage/emulated/0/Download/builtAPKs;  Seven hundred and fifty five (755) Android applications can be made from source code on device today.
