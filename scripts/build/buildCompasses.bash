@@ -7,8 +7,7 @@ shopt -s nullglob globstar
 
 _SCOTRPERROR_() { # Run on script error.
 	local RV="$?"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	echo exit 201
+	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs init.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${1:-VALUE}" "${2:-LINENO}" "${3:-BASH_COMMAND}"
 	exit 201
 }
 
@@ -21,18 +20,16 @@ _SCOTRPEXIT_() { # Run on exit.
 _SCOTRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	echo exit 211
  	exit 211 
 }
 
 _SCOTRPQUIT_() { # Run on quit.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	echo exit 221
  	exit 221 
 }
 
-trap '_SCOTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap '_SINITRPERROR_ $? $LINENO $BASH_COMMAND' ERR 
 trap _SCOTRPEXIT_ EXIT
 trap _SCOTRPSIGNAL_ HUP INT TERM 
 trap _SCOTRPQUIT_ QUIT 

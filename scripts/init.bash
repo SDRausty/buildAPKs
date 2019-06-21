@@ -7,8 +7,8 @@ shopt -s nullglob globstar
 
 _SINITRPERROR_() { # Run on script error.
 	local RV="$?"
-	echo "$RV"
-	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs init.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${3:-VALUE}" "${1:-LINENO}" "${2:-BASH_COMMAND}"
+	echo "$RV" init.bash
+	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs init.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${1:-VALUE}" "${2:-LINENO}" "${3:-BASH_COMMAND}"
 	exit 179
 }
 
@@ -30,7 +30,7 @@ _SINITRPQUIT_() { # Run on quit.
  	exit 177 
 }
 
-trap '_SINITRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap '_SINITRPERROR_ $? $LINENO $BASH_COMMAND' ERR 
 trap _SINITRPEXIT_ EXIT
 trap _SINITRPSIGNAL_ HUP INT TERM 
 trap _SINITRPQUIT_ QUIT 
