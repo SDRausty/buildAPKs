@@ -9,7 +9,7 @@ Can you try building hundreds of exciting, amazing and beautiful APKs by running
 
 Build Android APKs on device (smartphone and tablet).
 ===============
-Build Android APKs on device, on your smartphone and tablet with [Termux](https://github.com/termux/); Make applications for your Android smartphone and tablet! This repository contains source code for various Android applications that have been successfully built in [Termux](https://termux.com/).
+Build Android APKs on device, on your smartphone and tablet with [Termux](https://github.com/termux/termux-app); Make applications for your Android smartphone and tablet! This repository contains source code for various Android applications that have been successfully built in [Termux](https://termux.com/).
 
 Have you ever wanted to build your own application? Something that you can distribute over the Internet, and can be used on Android smartphones and tablets worldwide.  Would you dare to try to spend some time learning something new to do so?
 
