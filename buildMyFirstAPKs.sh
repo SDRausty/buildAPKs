@@ -1,1 +1,1 @@
-scripts/build/buildEntertainment.bash
+scripts/build/build.entertainment.bash
