@@ -38,9 +38,9 @@ export DAY="$(date +%Y%m%d)"
 export JAD=github.com/sdrausty/buildAPKsSamples
 export JID=hello.worlds
 export NUM="$(date +%s)"
-export RDR="$(cat $HOME/buildAPKs/var/conf/RDR)"   #  Set variable to contents of file.
+export RDR="$HOME/buildAPKs/" 
 export JDR="$RDR/sources/${JID,,}"
-export SRDR="${RDR:33}" # search.string: string manipulation site:www.tldp.org
+export SRDR="${RDR##*/}" # search.string: string manipulation site:www.tldp.org
 cd "$RDR"
 (git pull && git submodule update --init --recursive --remote ./scripts/shlibs 2>/dev/null) || (echo ; echo "Cannot update: continuing..." ; echo) # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 . "$RDR/scripts/shlibs/lock.bash"
