@@ -5,29 +5,29 @@
 set -Eeuo pipefail
 shopt -s nullglob globstar
 
-_SINITRPERROR_() { # Run on script error.
+_SINITRPERROR_() { # run on script error
 	local RV="$?"
 	echo "$RV" init.bash
-	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs init.bash ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${1:-VALUE}" "${2:-LINENO}" "${3:-BASH_COMMAND}"
-	exit 179
+	printf "\\e[?25h\\n\\e[1;48;5;138mBuildAPKs %s ERROR:  Generated script error %s near or at line number %s by \`%s\`!\\e[0m\\n" "${PWD##*/}" "${1:-UNDEF}" "${2:-LINENO}" "${3:-BASH_COMMAND}"
+	exit 147
 }
 
-_SINITRPEXIT_() { # Run on exit.
+_SINITRPEXIT_() { # run on exit
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit
 }
 
-_SINITRPSIGNAL_() { # Run on signal.
+_SINITRPSIGNAL_() { # run on signal
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "init.bash" "$RV"
- 	exit 178 
+ 	exit 148 
 }
 
-_SINITRPQUIT_() { # Run on quit.
+_SINITRPQUIT_() { # run on quit
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mBuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "init.bash" "$RV"
- 	exit 177 
+ 	exit 149 
 }
 
 trap '_SINITRPERROR_ $? $LINENO $BASH_COMMAND' ERR 
@@ -38,7 +38,7 @@ trap _SINITRPQUIT_ QUIT
 export RDR="$HOME/buildAPKs"   
 if [[ -z "${JID:-}" ]] 
 then
-	. "$RDR/scripts/build/buildClocks.bash"
+	. "$RDR/scripts/build/build.clocks.bash"
 	exit 0
 fi
 export DAY="$(date +%Y%m%d)"
