@@ -34,15 +34,24 @@ trap _SGTRPEXIT_ EXIT
 trap _SGTRPSIGNAL_ HUP INT TERM 
 trap _SGTRPQUIT_ QUIT 
 
-export RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
 	printf "\\n%s\\n" "GitHub username must be provided!"
 	exit 227
 fi
-USER="$1"
-mkdir -p "$RDR/sources/$USER"
-cd "$RDR/sources/$USER"
+export USER="$1"
+export DAY="$(date +%Y%m%d)"
+export JAD=""
+export JID="git.$USER"
+export NUM="$(date +%s)"
+export RDR="$HOME/buildAPKs"
+export JDR="$RDR/sources/$USER"
+. "$HOME/buildAPKs/scripts/shlibs/lock.bash"
+if [[ ! -d "repos" ]] 
+then
+	mkdir -p "$JDR"
+fi
+cd "$JDR"
 if [[ -f "repos" ]] 
 then
 	:
@@ -52,11 +61,12 @@ fi
 ARR=($(grep -B 5 Java repos |grep svn_url|awk -v x=2 '{print $x}'|sed 's/\,//g'|sed 's/\"//g'|xargs))
 for i in "${ARR[@]}"
 do
-	NUM="$(date +%s)"
-	printf "\\n%s\\n" "Getting $i/tarball/master -o ${i##*/}.$NUM.tar.gz:"
-	curl -L "$i"/tarball/master -o "${i##*/}.$NUM.tar.gz"
-	tar xvf "${i##*/}.$NUM.tar.gz"
+	LNUM="$(date +%s)"
+	printf "\\n%s\\n" "Getting $i/tarball/master -o ${i##*/}.$LNUM.tar.gz:"
+	curl -L "$i"/tarball/master -o "${i##*/}.$LNUM.tar.gz"
+	tar xvf "${i##*/}.$LNUM.tar.gz"
 done
-. "$HOME/buildAPKs/scripts/build/build.dir.bash"
+find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>> "$HOME/buildAPKs/log/stnderr."$JID".log" ||:
+_WAKEUNLOCK_
 
 #EOF
