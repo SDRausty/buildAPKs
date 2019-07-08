@@ -36,7 +36,7 @@ trap _SGTRPQUIT_ QUIT
 
 if [[ -z "${1:-}" ]] 
 then
-	printf "\\n%s\\n" "GitHub username must be provided!"
+	printf "\\n%s\\n" "GitHub username must be provided!" 
 	exit 227
 fi
 export USER="$1"
@@ -46,28 +46,28 @@ export JID="git.$USER"
 export NUM="$(date +%s)"
 export RDR="$HOME/buildAPKs"
 export JDR="$RDR/sources/github/$USER"
+STRING="ERROR FOUND:  Continuing... "
+printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning buildAPKs with build.github.bash:"
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 if [[ ! -d "$JDR" ]] 
 then
 	mkdir -p "$JDR"
 fi
 cd "$JDR"
-if [[ -f "repos" ]] 
+if [[ ! -f "repos" ]] 
 then
-	:
-else
 	curl -O https://api.github.com/users/$USER/repos 
 fi
 ARR=($(grep -B 5 Java repos |grep svn_url|awk -v x=2 '{print $x}'|sed 's/\,//g'|sed 's/\"//g'|xargs))
 for i in "${ARR[@]}"
 do
-if [[ ! -f " ${i##*/}.tar.gz" ]] 
+if [[ ! -f "${i##*/}.tar.gz" ]] 
 then
 	printf "\\n%s\\n" "Getting $i/tarball/master -o ${i##*/}.tar.gz:"
-	curl -L "$i"/tarball/master -o "${i##*/}.tar.gz" ||:
+	curl -L "$i"/tarball/master -o "${i##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
 fi
-tar xvf "${i##*/}.tar.gz" ||:
+tar xvf "${i##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
 done
-find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>> "$HOME/buildAPKs/log/stnderr."$JID".log" ||:
+find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>> "$HOME/buildAPKs/log/stnderr."$JID".log" || (printf "%s\\n\\n" "$STRING")
 
 #EOF
