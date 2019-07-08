@@ -66,7 +66,7 @@ then
 	printf "\\n%s\\n" "Getting $i/tarball/master -o ${i##*/}.tar.gz:"
 	curl -L "$i"/tarball/master -o "${i##*/}.tar.gz" ||:
 fi
-tar xvf "${i##*/}.tar.gz"
+tar xvf "${i##*/}.tar.gz" ||:
 done
 find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>> "$HOME/buildAPKs/log/stnderr."$JID".log" ||:
 
