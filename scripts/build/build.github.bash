@@ -50,7 +50,7 @@ export JAD=""
 export JID="git.$USER"
 export NUM="$(date +%s)"
 export JDR="$RDR/sources/github/$USER"
-export STRING="Error found by build.github.bash:  Continuing... "
+export STRING="ERROR FOUND; build.github.bash:  CONTINUING... "
 printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning buildAPKs with build.github.bash:"
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
 if [[ ! -d "$JDR" ]] 
