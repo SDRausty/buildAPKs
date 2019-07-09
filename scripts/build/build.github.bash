@@ -69,18 +69,18 @@ do # lets you delete partial downloads and repopulates from GitHub.  Directories
 if [[ ! -f "${NAME##*/}.tar.gz" ]] # tests if tar file exists
 then
 	printf "\\n%s\\n" "Getting $NAME/tarball/master -o ${NAME##*/}.tar.gz:"
-	curl -L "$NAME"/tarball/master -o "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
-	tar xvf "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
+	(curl -L "$NAME"/tarball/master -o "${NAME##*/}.tar.gz") || (printf "%s\\n\\n" "$STRING")
+	(tar xvf "${NAME##*/}.tar.gz") || (printf "%s\\n\\n" "$STRING")
 	_SFX_
-	find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
+	(find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log") || (printf "%s\\n\\n" "$STRING")
 elif [[ ! "${F1AR[@]}" =~ "${NAME##*/}" ]] # tests if directory exists
 # https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
 	then 
-		tar xvf "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
+		(tar xvf "${NAME##*/}.tar.gz") || (printf "%s\\n\\n" "$STRING")
 		_SFX_
-		find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
+		(find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log") || (printf "%s\\n\\n" "$STRING")
 else
-	find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
+	(find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log") || (printf "%s\\n\\n" "$STRING")
 fi
 done
 
