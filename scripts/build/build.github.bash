@@ -37,7 +37,7 @@ trap _SGTRPQUIT_ QUIT
 export RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
-	printf "\\n%s\\n" "GitHub username must be provided;  See \`cat ~/${RDR##*/}/conf/UNAMES\` for example usernames that build APKs on device with BuildAPKs!" 
+	printf "\\n%s\\n" "GitHub username must be provided;  See \`cat ~/${RDR##*/}/conf/UNAMES\` for usernames that build APKs on device with BuildAPKs!" 
 	exit 227
 fi
 export USER="$1"
