@@ -63,7 +63,7 @@ then
 	curl -O https://api.github.com/users/$USER/repos 
 fi
 JARR=($(grep -B 5 Java repos |grep svn_url|awk -v x=2 '{print $x}'|sed 's/\,//g'|sed 's/\"//g'|xargs))
-F1AR=$(find . -maxdepth 1 -type d)
+F1AR=($(find . -maxdepth 1 -type d))
 for NAME in "${JARR[@]}"
 do # lets you delete partial downloads and repopulates from GitHub.  Directories can be deleted.  They shall be repopulated from the tar files.
 if [[ ! -f "${NAME##*/}.tar.gz" ]] # tests if tar file exists
