@@ -66,17 +66,14 @@ JARR=($(grep -B 5 Java repos |grep svn_url|awk -v x=2 '{print $x}'|sed 's/\,//g'
 F1AR=$(find . -maxdepth 1 -type d)
 for NAME in "${JARR[@]}"
 do
-if [[ ! -f "${NAME##*/}.tar.gz" ]] 
+if [[ ! -f "${NAME##*/}.tar.gz" ]] # tests if tar file exists
 then
 	printf "\\n%s\\n" "Getting $NAME/tarball/master -o ${NAME##*/}.tar.gz:"
 	curl -L "$NAME"/tarball/master -o "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
-fi
-if [[ "${F1AR[@]}" = . ]]
-then 
 	tar xvf "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
 	_SFX_
 	find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
-elif [[ ! "${F1AR[@]}" =~ "${NAME##*/}" ]]
+elif [[ ! "${F1AR[@]}" =~ "${NAME##*/}" ]] # tests if directory exists
 # https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
 	then 
 		tar xvf "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
