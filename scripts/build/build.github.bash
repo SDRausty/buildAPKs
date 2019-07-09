@@ -34,6 +34,10 @@ trap _SGTRPEXIT_ EXIT
 trap _SGTRPSIGNAL_ HUP INT TERM 
 trap _SGTRPQUIT_ QUIT 
 
+_SFX_ () {
+	SFX="$(tar tf "${NAME##*/}.tar.gz" | head -n 1)"
+}
+
 export RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
@@ -77,7 +81,8 @@ else
 		tar xvf "${NAME##*/}.tar.gz" || (printf "%s\\n\\n" "$STRING")
 	fi
 fi
+_SFX_
+find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
 done
-find "$JDR" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || (printf "%s\\n\\n" "$STRING")
 
 #EOF
