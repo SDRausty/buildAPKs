@@ -36,7 +36,7 @@ trap _SGTRPQUIT_ QUIT
 
 _AT_ () {
 	CK=0
-	printf "%s\\n" "Checking  $USER $REPO:"
+	printf "%s\\n" "Checking $USER $REPO:"
 	_CK_
 	if [[ "$CK" != 1 ]]
 	then
