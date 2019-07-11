@@ -44,7 +44,7 @@ _AT_ () {
 			if [[ "$COMMIT" != "" ]] 
 			then
 				touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
-				if [[ "$OAUT" != "" ]] # see $RDR/.conf/github/OAUTH file 
+				if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file 
 				then
 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USER/$REPO/git/trees/$COMMIT?recursive=1")"
 				else
@@ -74,7 +74,7 @@ _AT_ () {
 
 _BUILDAPKS_ () { # https://developer.github.com/v3/repos/commits/	
 	printf "\\n%s\\n" "Getting $NAME/tarball/$COMMIT -o ${NAME##*/}.${COMMIT::7}.tar.gz:"
-	if [[ "$OAUT" != "" ]] # see $RDR/.conf/github/OAUTH file for information  
+	if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file for information  
 	then
 		curl -u "$OAUT" -L "$NAME"/tarball/$COMMIT -o "${NAME##*/}.${COMMIT::7}.tar.gz" || printf "%s\\n\\n" "$STRING"
 	else
@@ -91,7 +91,7 @@ _CK_ () {
 }
 
 _CT_ () { # https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell	
-	if [[ "$OAUT" != "" ]] # see $RDR/.conf/github/OAUTH file for information  
+	if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file for information  
 	then # https://unix.stackexchange.com/questions/117992/download-only-first-few-bytes-of-a-source-page
 	 	curl -u "$OAUT" -r 0-2 https://api.github.com/repos/$USER/$REPO/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
 	else
@@ -112,14 +112,14 @@ _FJDX_ () {
 export RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
-	printf "\\n%s\\n\\n" "GitHub username must be provided;  See \`cat ~/${RDR##*/}.conf/github/UNAMES\` for usernames that build APKs on device with BuildAPKs!" 
+	printf "\\n%s\\n\\n" "GitHub username must be provided;  See \`cat ~/${RDR##*/}/conf/UNAMES\` for usernames that build APKs on device with BuildAPKs!" 
 	exit 227
 fi
 export CK=0
 export USER="$1"
 export JDR="$RDR/sources/github/$USER"
 export JID="git.$USER"
-export OAUT="$(cat $RDR/.conf/github/OAUTH | head -n 1)"
+export OAUT="$(cat $RDR/conf/OAUTH | head -n 1)"
 export STRING="ERROR FOUND; build.github.bash:  CONTINUING... "
 printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning buildAPKs with build.github.bash:"
 . "$HOME/buildAPKs/scripts/shlibs/lock.bash"
@@ -134,7 +134,7 @@ then
 fi
 if [[ ! -f "repos" ]] 
 then
-	if [[ "$OAUT" != "" ]] # see $RDR/.conf/github/OAUTH file for information 
+	if [[ "$OAUT" != "" ]] # see $RDR/conf/OAUTH file for information 
 	then
 		curl -u "$OAUT" -O https://api.github.com/users/"$USER"/repos 
 	else
