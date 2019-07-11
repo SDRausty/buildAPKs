@@ -37,9 +37,32 @@ trap _SGTRPQUIT_ QUIT
 _AT_ () {
 	CK=0
 	REPO=$(awk -F/ '{print $NF}' <<< $NAME)
-	printf "%s\\n" "Checking $USER $REPO for last commit:"
-	COMMIT="$(_CT_)" ||:
-	_CK_ ||:
+	if [[ $UR = "" ]] # config file is not  present
+	then
+		printf "%s" "Checking $USER $REPO for last commit:  " 
+ 		COMMIT="$(_CT_)" ||:
+ 		_CK_ ||:
+		printf "%s\\n\\n" "Continuing..."
+		_ATT_ 
+	else
+		printf "%s" "Loading $USER $REPO config from ${UR}:  "
+		COMMIT=$(head -n 1 "$UR")
+ 		CK=$(tail -n 1  "$UR")
+		_PRINTCK_
+		_ATT_ 
+	fi
+}
+
+_PRINTCK_ () {
+	if [[ "$CK" = 1 ]]
+	then
+		printf "%s\\n\\n" "WARNING AndroidManifest.xml file not found!"
+	else
+		printf "%s\\n\\n" "Continuing..."
+	fi
+}
+
+_ATT_ () {
 	if [[ "$CK" != 1 ]]
 	then
 		if [[ ! -f "${NAME##*/}.${COMMIT::7}.tar.gz" ]] # tests if tar file exists
@@ -55,6 +78,7 @@ _AT_ () {
 				fi
 			 	if grep AndroidManifest.xml <<< $ISAND 
 				then
+					_AND_
 					_BUILDAPKS_
 				else
 					_NAND_
@@ -88,11 +112,11 @@ _BUILDAPKS_ () { # https://developer.github.com/v3/repos/commits/
 _CK_ () { 
 	if [[ -f "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck" ]]
 	then
-		CK=$(cat "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck")
+		CK=$(tail -n 1 "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck")
 	fi
 }
 
-_CT_ () { # https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell	
+_CT_ () { # https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell # get tar commits
 	if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file for information  
 	then # https://unix.stackexchange.com/questions/117992/download-only-first-few-bytes-of-a-source-page
 	 	curl -u "$OAUT" -r 0-2 https://api.github.com/repos/$USER/$REPO/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
@@ -111,10 +135,16 @@ _FJDX_ () {
 	find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || printf "%s\\n\\n" "$STRING"
 }
 
+_AND_ () {
+	touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "$COMMIT" > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "0" >> "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+}
 _NAND_ () {
 	touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	echo 1 > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "%s\\n" "Could not find an AndroidManifest.xml file in this Java language repository: NOT DOWNLOADING ${NAME##*/} tarball."
+	printf "%s\\n" "$COMMIT" > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "1" >> "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "\\n%s\\n" "Could not find an AndroidManifest.xml file in Java language repository $USER ${NAME##*/}: NOT DOWNLOADING ${NAME##*/} tarball."
 }
 
 export RDR="$HOME/buildAPKs"
@@ -153,6 +183,7 @@ JARR=($(grep -v JavaScript repos | grep -B 5 Java | grep svn_url | awk -v x=2 '{
 F1AR=($(find . -maxdepth 1 -type d)) # creates array of $JDR contents 
 for NAME in "${JARR[@]}"
 do # lets you delete partial downloads and repopulates from GitHub.  Directories can be deleted, too.  They are repopulated from the tarballs.  This creates a "blackboard" from $JDR which can be selectively reset when desired.
+	UR="$(find "$RDR"/.conf/github/ -name "$USER.${NAME##*/}.???????.ck")" ||:
 	_AT_ 
 done
 
