@@ -43,7 +43,6 @@ _AT_ () {
 			printf "%s\\n" "Querying $USER $REPO:"
 			if [[ "$COMMIT" != "" ]] 
 			then
-				touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
 				if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file 
 				then
 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USER/$REPO/git/trees/$COMMIT?recursive=1")"
@@ -54,8 +53,7 @@ _AT_ () {
 				then
 					_BUILDAPKS_
 				else
-					echo 1 > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
-					printf "%s\\n" "Could not find an AndroidManifest.xml file in this Java language repository: NOT DOWNLOADING ${NAME##*/} tarball."
+					_NAND_
 				fi
 			elif [[ ! "${F1AR[@]}" =~ "${NAME##*/}" ]] # tests if directory exists
 			then # https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
@@ -107,6 +105,12 @@ _FJDX_ () {
 	export SFX="$(tar tf "${NAME##*/}.${COMMIT::7}.tar.gz" | awk 'NR==1' )" || printf "%s\\n\\n" "$STRING"
 	tar xvf "${NAME##*/}.${COMMIT::7}.tar.gz" || printf "%s\\n\\n" "$STRING"
 	find "$JDR/$SFX" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/build/build.one.bash" "$JID" "$JDR" {} \; 2>>"$HOME/buildAPKs/log/stnderr.${JID,,}.log" || printf "%s\\n\\n" "$STRING"
+}
+
+_NAND_ () {
+	touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	echo 1 > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "Could not find an AndroidManifest.xml file in this Java language repository: NOT DOWNLOADING ${NAME##*/} tarball."
 }
 
 export RDR="$HOME/buildAPKs"
