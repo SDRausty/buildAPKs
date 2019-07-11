@@ -52,6 +52,7 @@ _AT_ () {
 				fi
 			 	if grep AndroidManifest.xml <<< $ISAND 
 				then
+					echo 0 > "$RDR/.conf/$USER.${NAME##*/}.${COMMIT::7}.ck"
 					_BUILDAPKS_
 				else
 					echo 1 > "$RDR/.conf/$USER.${NAME##*/}.${COMMIT::7}.ck"
