@@ -35,7 +35,12 @@ trap _SGTRPSIGNAL_ HUP INT TERM
 trap _SGTRPQUIT_ QUIT 
 
 _AT_ () {
+	CK=0
+	echo CK
+	echo $CK
 	_CK_
+	echo CK
+	echo $CK
 	if [[ "$CK" != 1 ]]
 	then
 		if [[ ! -f "${NAME##*/}.${COMMIT::7}.tar.gz" ]] # tests if tar file exists
@@ -119,7 +124,6 @@ then
 	printf "\\n%s\\n\\n" "GitHub username must be provided;  See \`cat ~/${RDR##*/}/conf/UNAMES\` for usernames that build APKs on device with BuildAPKs!" 
 	exit 227
 fi
-export CK=0
 export USER="$1"
 export JDR="$RDR/sources/github/$USER"
 export JID="git.$USER"
