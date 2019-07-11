@@ -36,11 +36,8 @@ trap _SGTRPQUIT_ QUIT
 
 _AT_ () {
 	CK=0
-	echo CK
-	echo $CK
+	printf "%s\\n" "Checking  $USER $REPO:"
 	_CK_
-	echo CK
-	echo $CK
 	if [[ "$CK" != 1 ]]
 	then
 		if [[ ! -f "${NAME##*/}.${COMMIT::7}.tar.gz" ]] # tests if tar file exists
