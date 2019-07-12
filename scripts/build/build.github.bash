@@ -37,15 +37,15 @@ trap _SGTRPQUIT_ QUIT
 _AT_ () {
 	CK=0
 	REPO=$(awk -F/ '{print $NF}' <<< $NAME)
-	if [[ $UR = "" ]] # config file is not  present
+	if [[ $UR = "" ]] # config file is not present
 	then
-		printf "%s" "Checking $USER $REPO for last commit:  " 
+		printf "%s" "Checking $USENAME $REPO for last commit:  " 
  		COMMIT="$(_CT_)" ||:
  		_CK_ ||:
-		printf "%s\\n\\n" "Continuing..."
+		printf "%s\\n" "Continuing..."
 		_ATT_ 
-	else
-		printf "%s" "Loading $USER $REPO config from ${UR}:  "
+	else # load config file for repository
+		printf "%s" "Loading $USENAME $REPO config from ${UR}:  "
 		COMMIT=$(head -n 1 "$UR")
  		CK=$(tail -n 1  "$UR")
 		_PRINTCK_
@@ -56,9 +56,9 @@ _AT_ () {
 _PRINTCK_ () {
 	if [[ "$CK" = 1 ]]
 	then
-		printf "%s\\n\\n" "WARNING AndroidManifest.xml file not found!"
+		printf "%s\\n" "WARNING AndroidManifest.xml file not found!"
 	else
-		printf "%s\\n\\n" "Continuing..."
+		printf "%s\\n" "Continuing..."
 	fi
 }
 
@@ -67,14 +67,14 @@ _ATT_ () {
 	then
 		if [[ ! -f "${NAME##*/}.${COMMIT::7}.tar.gz" ]] # tests if tar file exists
 		then
-			printf "%s\\n" "Querying $USER $REPO for AndroidManifest.xml file:"
+			printf "%s\\n" "Querying $USENAME $REPO for AndroidManifest.xml file:"
 			if [[ "$COMMIT" != "" ]] 
 			then
 				if [[ "$OAUT" != "" ]] # see $RDR/conf/github/OAUTH file 
 				then
-					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USER/$REPO/git/trees/$COMMIT?recursive=1")"
+					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1")"
 				else
-					ISAND="$(curl -i "https://api.github.com/repos/$USER/$REPO/git/trees/$COMMIT?recursive=1")"
+					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1")"
 				fi
 			 	if grep AndroidManifest.xml <<< $ISAND 
 				then
@@ -144,7 +144,7 @@ _NAND_ () {
 	touch "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
 	printf "%s\\n" "$COMMIT" > "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
 	printf "%s\\n" "1" >> "$RDR/.conf/github/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "\\n%s\\n" "Could not find an AndroidManifest.xml file in Java language repository $USER ${NAME##*/}: NOT DOWNLOADING ${NAME##*/} tarball."
+	printf "\\n%s\\n" "Could not find an AndroidManifest.xml file in Java language repository $USER ${NAME##*/}:  NOT DOWNLOADING ${NAME##*/} tarball."
 }
 
 export RDR="$HOME/buildAPKs"
@@ -154,6 +154,7 @@ then
 	exit 227
 fi
 export USER="${1,,}"
+export USENAME="$1"
 export JDR="$RDR/sources/github/$USER"
 export JID="git.$USER"
 export OAUT="$(cat $RDR/conf/OAUTH | head -n 1)"
@@ -172,6 +173,7 @@ then
 fi
 if [[ ! -f "repos" ]] 
 then
+	printf "%s\\n" "Downloading GitHub $USENAME repositories information:  "
 	if [[ "$OAUT" != "" ]] # see $RDR/conf/OAUTH file for information 
 	then
 		curl -u "$OAUT" -O https://api.github.com/users/"$USER"/repos 
@@ -183,7 +185,7 @@ JARR=($(grep -v JavaScript repos | grep -B 5 Java | grep svn_url | awk -v x=2 '{
 F1AR=($(find . -maxdepth 1 -type d)) # creates array of $JDR contents 
 for NAME in "${JARR[@]}"
 do # lets you delete partial downloads and repopulates from GitHub.  Directories can be deleted, too.  They are repopulated from the tarballs.  This creates a "blackboard" from $JDR which can be selectively reset when desired.
-	UR="$(find "$RDR"/.conf/github/ -name "$USER.${NAME##*/}.???????.ck")" ||:
+	UR="$(find "$RDR"/.conf/github/ -name "$USER.${NAME##*/}.???????.ck")" ||: # https://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script
 	_AT_ 
 done
 
