@@ -38,7 +38,6 @@ _AND_ () { # write configuration file for git repository tarball if AndroidManif
 	export CK=0
 	printf "%s\\n" "$COMMIT" > "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
 	printf "%s\\n" "0" >> "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
-
 	if [[ -z "${1:-}" ]] 
 	then
 		printf "\\n%s\\n" "Found AndroidManifest.xml file in Java language repository $USER ${NAME##*/}:  Writing ~/${RDR##*/}/sources/github/${JDR##*/}/.config/$USER.${NAME##*/}.${COMMIT::7}.ck file for git repository ${NAME##*/}."
