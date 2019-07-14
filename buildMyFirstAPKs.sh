@@ -1,1 +1,1 @@
-scripts/build/build.entertainment.bash
+scripts/init/setup.buildAPKs.bash
