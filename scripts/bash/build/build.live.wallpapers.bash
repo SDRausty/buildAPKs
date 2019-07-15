@@ -36,6 +36,6 @@ trap _SETRPQUIT_ QUIT
 
 export JAD=github.com/BuildAPKs/buildAPKs.live.wallpapers 
 export JID=live.wallpapers # job id/name
-. "$HOME/buildAPKs/scripts/init/init.bash"
+. "$HOME/buildAPKs/scripts/bash/init/init.bash"
 
 #EOF

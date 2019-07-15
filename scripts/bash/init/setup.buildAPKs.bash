@@ -43,7 +43,7 @@ trap _SUPTRPEXIT_ EXIT
 trap _SUPTRPSIGNAL_ HUP INT TERM 
 trap _SUPTRPQUIT_ QUIT 
 
-declare -a ARGS="$@" # Declare arguments as string.
+declare -a ARGS="$@"
 if [[ -z "${1:-}" ]]
 then
 	ARGS=""
@@ -55,12 +55,12 @@ declare COMMANDIF=""
 COMMANDIF="$(command -v au)" || (printf "%s\\n\\n" "$STRING") 
 if [[ "$COMMANDIF" = au ]] 
 then 
-	(au aapt apksigner dx ecj findutils git) || (printf "%s\\n\\n" "$STRING2") 
+	(au aapt apksigner curl dx ecj findutils git) || (printf "%s\\n\\n" "$STRING2") 
 else
-	(pkg install aapt apksigner dx ecj findutils git) || (printf "%s\\n\\n" "$STRING2") 
+	(pkg install aapt apksigner curl dx ecj findutils git) || (printf "%s\\n\\n" "$STRING2") 
 fi
 cd "$HOME"
-	(git clone https://github.com/BuildAPKs/buildAPKs) || (printf "%s\\n\\n" "$STRING2") 
-./buildAPKs/scripts/build/build.entertainment.bash
+(git clone https://github.com/BuildAPKs/buildAPKs) || (printf "%s\\n\\n" "$STRING2") 
+./buildAPKs/scripts/bash/build/build.entertainment.bash
 
 #EOF
