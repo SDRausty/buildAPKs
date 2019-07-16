@@ -1,1 +1,1 @@
-setup.buildAPKs.bash
+scripts/sh/init/setup.BuildAPKs.sh
