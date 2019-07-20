@@ -2,7 +2,9 @@ amazon
 android
 android-apk
 android-app
+android-apps
 android-application
+android-applications
 android-demo
 android-development
 android-device
@@ -10,8 +12,11 @@ android-sample
 android-smartphone
 apk
 chromebook
+hack
+hacker
 hacking
 hacks
+java
 mobile
 mobile-app
 open-source
@@ -22,4 +27,5 @@ smartphone-app
 tablet
 termux
 tutorial
+tutorials
 tutorial-sourcecode
