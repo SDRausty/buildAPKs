@@ -10,6 +10,9 @@ android-architecture
 android-demo
 android-development
 android-device
+android-keyboard
+android-keystore
+android-kitkat
 android-lib
 android-library
 android-sample
@@ -108,6 +111,5 @@ utils
 validation
 view
 viewpager
-weather
 webview
 widget
