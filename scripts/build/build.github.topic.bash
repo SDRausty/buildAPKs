@@ -1,1 +1,0 @@
-../bash/build/build.github.topic.bash
