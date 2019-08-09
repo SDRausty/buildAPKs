@@ -1,8 +1,7 @@
 #!/bin/env sh 
 # Copyright 2019 (c) all rights reserved 
 # by BuildAPKs https://buildapks.github.io/buildAPKs/
-# Contributeur : https://github.com/SDRausty
-# Invocation : $HOME/buildAPKs/scripts/sh/init/setup.sh sources/
+# Invocation : ~/buildAPKs/scripts/sh/init/setup.sh 
 #####################################################################
 set -e
 
@@ -16,6 +15,6 @@ done
 cd "$HOME"
 (git clone https://github.com/BuildAPKs/buildAPKs) || (printf "%s\\n\\n" "$STRINGC") 
 (git clone https://github.com/BuildAPKs/buildAPKs.entertainment) || (printf "%s\\n\\n" "$STRINGC") 
-"$HOME/buildAPKs/scripts/sh/build/build.dir.sh" "$HOME/buildAPKs/sources/entertainment"
+bash "$HOME/buildAPKs/scripts/bash/build/build.entertainment.bash"
 
 #EOF
