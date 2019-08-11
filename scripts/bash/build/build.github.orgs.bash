@@ -36,36 +36,36 @@ trap _SGTRPQUIT_ QUIT
 
 _AND_ () { # write configuration file for git repository tarball if AndroidManifest.xml file is found in git repositoryr.
 	export CK=0
-	printf "%s\\n" "$COMMIT" > "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "%s\\n" "0" >> "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "$COMMIT" > "$JDR/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "0" >> "$JDR/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck"
 	if [[ -z "${1:-}" ]] 
 	then
-		printf "%s\\n" "Found AndroidManifest.xml file in Java language repository $USER ${NAME##*/} ${COMMIT::7}:  Writing ~/${RDR##*/}/sources/github/${JDR##*/}/.config/$USER.${NAME##*/}.${COMMIT::7}.ck file for git repository ${NAME##*/}."
+		printf "%s\\n" "Found AndroidManifest.xml file in Java language repository $ORG ${NAME##*/} ${COMMIT::7}:  Writing ~/${RDR##*/}/sources/github/${JDR##*/}/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck file for git repository ${NAME##*/}."
 	else
-		printf "%s\\n" "Found AndroidManifest.xml file in Java language repository $USER ${NAME##*/} ${COMMIT::7}:  Downloading ${NAME##*/} tarball and writing ~/${RDR##*/}/sources/github/${JDR##*/}/.config/$USER.${NAME##*/}.${COMMIT::7}.ck file for git repository ${NAME##*/}."
+		printf "%s\\n" "Found AndroidManifest.xml file in Java language repository $ORG ${NAME##*/} ${COMMIT::7}:  Downloading ${NAME##*/} tarball and writing ~/${RDR##*/}/sources/github/${JDR##*/}/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck file for git repository ${NAME##*/}."
 	fi
 }
 
 _NAND_ () { # write configuration file for repository if AndroidManifest.xml file is NOT found in git repository.  
-	printf "%s\\n" "$COMMIT" > "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "%s\\n" "1" >> "$JDR/.config/$USER.${NAME##*/}.${COMMIT::7}.ck"
-	printf "\\n%s\\n\\n" "Could not find an AndroidManifest.xml file in Java language repository $USER ${NAME##*/} ${COMMIT::7}:  NOT downloading ${NAME##*/} tarball."
+	printf "%s\\n" "$COMMIT" > "$JDR/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck"
+	printf "%s\\n" "1" >> "$JDR/.config/$ORG.${NAME##*/}.${COMMIT::7}.ck"
+	printf "\\n%s\\n\\n" "Could not find an AndroidManifest.xml file in Java language repository $ORG ${NAME##*/} ${COMMIT::7}:  NOT downloading ${NAME##*/} tarball."
 }
 
 _AT_ () {
 	CK=0
 	REPO=$(awk -F/ '{print $NF}' <<< "$NAME") # https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell 
-	NPCK="$(find "$JDR/.config/" -name "$USER.${NAME##*/}.???????.ck")" ||: # https://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script
+	NPCK="$(find "$JDR/.config/" -name "$ORG.${NAME##*/}.???????.ck")" ||: # https://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script
 	for CKFILE in "$NPCK" 
 	do
  	if [[ $CKFILE = "" ]] # configuration file is not found
  	then
- 		printf "%s" "Checking $USENAME $REPO for last commit:  " 
+ 		printf "%s" "Checking $ONAME $REPO for last commit:  " 
   		COMMIT="$(_GC_)" ||:
  		printf "%s\\n" "Found ${COMMIT::7}; Continuing..."
  		_ATT_ 
  	else # load configuration information from file 
- 		printf "%s" "Loading $USENAME $REPO config from $CKFILE:  "
+ 		printf "%s" "Loading $ONAME $REPO config from $CKFILE:  "
  		COMMIT=$(head -n 1 "$NPCK")
   		CK=$(tail -n 1  "$NPCK")
 		_PRINTCK_ 
@@ -79,14 +79,14 @@ _ATT_ () {
 	then
 		if [[ ! -f "${NAME##*/}.${COMMIT::7}.tar.gz" ]] # tar file exists
 		then # https://stackoverflow.com/questions/3685970/check-if-a-bash-array-contains-a-value
-			printf "%s\\n" "Querying $USENAME $REPO ${COMMIT::7} for AndroidManifest.xml file:"
+			printf "%s\\n" "Querying $ONAME $REPO ${COMMIT::7} for AndroidManifest.xml file:"
 			if [[ "$COMMIT" != "" ]] 
 			then
 				if [[ "$OAUT" != "" ]] # see $RDR/conf/OAUTH file 
 				then
- 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 420 ||:)"
+ 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$ONAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 420 ||:)"
 				else
- 					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 420 ||:)"
+ 					ISAND="$(curl -i "https://api.github.com/repos/$ONAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 420 ||:)"
 				fi
 			 	if grep AndroidManifest.xml <<< "$ISAND" 
 				then
@@ -129,9 +129,9 @@ _FJDX_ () {
 _GC_ () { 
 	if [[ "$OAUT" != "" ]] # see $RDR/conf/OAUTH file for information  
 	then # https://unix.stackexchange.com/questions/117992/download-only-first-few-bytes-of-a-source-page
-	 	curl -u "$OAUT" https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
+	 	curl -u "$OAUT" https://api.github.com/repos/"$ORG/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
 	else
-	 	curl -r 0-1 https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
+	 	curl -r 0-1 https://api.github.com/repos/"$ORG/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
 	fi
 }
 
@@ -147,18 +147,17 @@ _PRINTCK_ () {
 export RDR="$HOME/buildAPKs"
 if [[ -z "${1:-}" ]] 
 then
-	printf "\\e[1;7;38;5;202m\\n\\n%s\\n\\e[0m\\n" "GitHub organisation name must be provided;  See \`~/${RDR##*/}/conf/ONAMES\` for organisation names that build APKs on device with BuildAPKs!  To build all the organisation  names contained in this file run \`for i in \$(cat ~/${RDR##*/}/conf/ONAMES) ; do ~/${RDR##*/}/scripts/bash/build/build.github.bash \$i ; done\`.  File \`~/${RDR##*/}/conf/OAUTH\` has important information should you choose to run this command regarding bandwidth supplied by GitHub. "
+	printf "\\e[1;7;38;5;202m%s\\n\\e[0m\\n" "GitHub organisation name must be provided;  See \`~/${RDR##*/}/conf/ONAMES\` for organisation names that build APKs on device with BuildAPKs!  To build all the organisation  names contained in this file run \`for i in \$(cat ~/${RDR##*/}/conf/ONAMES) ; do ~/${RDR##*/}/scripts/bash/build/build.github.orgs.bash \$i ; done\`.  File \`~/${RDR##*/}/conf/OAUTH\` has important information should you choose to run this command regarding bandwidth supplied by GitHub. "
 	exit 227
 fi
-export UON="${1%/}"
-export UONE="${UON##*/}"
-export USENAME="$UONE"
-export USER="${USENAME,,}"
-export JDR="$RDR/sources/github/orgs/$USER"
-export JID="git.$USER"
+export ON="${1%/}"
+export ONAME="${ON##*/}"
+export ORG="${ONAME,,}"
+export JDR="$RDR/sources/github/orgs/$ORG"
+export JID="git.$ORG"
 export OAUT="$(cat "$RDR/conf/OAUTH" | awk 'NR==1')"
-export STRING="ERROR FOUND; build.github.bash $1:  CONTINUING... "
-printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning BuildAPKs with build.github.bash $1:"
+export STRING="${0##*/}: ERROR FOUND; build.github.orgs.bash $1:  CONTINUING..."
+printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "${0##*/}: Beginning BuildAPKs build.github.orgs.bash $1:"
 . "$HOME/buildAPKs/scripts/bash/shlibs/lock.bash"
 if [[ ! -d "$JDR" ]] 
 then
@@ -168,16 +167,16 @@ cd "$JDR"
 if [[ ! -d "$JDR/.config" ]] 
 then
 	mkdir -p "$JDR/.config"
-	printf "%s\\n\\n" "This directory contains results from query for \`AndroidManifest.xml\` files in GitHub $USENAME repositores.  " > "$JDR/.config/README.md" 
+	printf "%s\\n\\n" "This directory contains results from query for \`AndroidManifest.xml\` files in GitHub $ONAME repositores.  " > "$JDR/.config/README.md" 
 fi
 if [[ ! -f "repos" ]] 
 then
-	printf "%s\\n" "Downloading GitHub $USENAME repositories information:  "
+	printf "%s\\n" "Downloading GitHub $ONAME repositories information:  "
 	if [[ "$OAUT" != "" ]] # see $RDR/conf/OAUTH file for information 
 	then
-		curl -u "$OAUT" "https://api.github.com/orgs/$USER/repos?per_page=15000" > repos
+		curl -u "$OAUT" "https://api.github.com/orgs/$ORG/repos?per_page=15000" > repos
 	else
-		curl "https://api.github.com/orgs/$USER/repos?per_page=15000" > repos 
+		curl "https://api.github.com/orgs/$ORG/repos?per_page=15000" > repos 
 	fi
 fi
 JARR=($(grep -v JavaScript repos | grep -B 5 Java | grep svn_url | awk -v x=2 '{print $x}' | sed 's/\,//g' | sed 's/\"//g')) # creates array of Java language repositories
@@ -187,4 +186,4 @@ do #  This creates a "slate" within each github/$JDR that can be selectively res
 	_AT_ 
 done
 
-#EOF
+#build.github.orgs.bash
