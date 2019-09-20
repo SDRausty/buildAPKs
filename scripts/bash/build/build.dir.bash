@@ -55,4 +55,4 @@ find "$@" -name AndroidManifest.xml -execdir /bin/bash "$HOME/buildAPKs/scripts/
 #	search: lowercase bash variable pattern replacement substitution site:tldp.org
 #	http://www.tldp.org/LDP/abs/html/bashver4.html#CASEMODPARAMSUB
 
-#EOF
+# build.dir.bash EOF
