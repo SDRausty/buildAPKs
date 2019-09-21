@@ -43,7 +43,6 @@ _2GSU_() {
 _GSMU_() {	
 	printf "\\n\\nUpdating buildAPKs; \`%s\` shall attempt to load sources from Github submodule repositories into ~/buildAPKs.  This may take a little while to complete.  Please be patient while \`%s\` downloads source code from https://github.com\\n" "${0##*/}" "${0##*/}"
 	(git pull 2>/dev/null && printf "\\nPlease wait: loading submodules...\\n") || (printf "\\nCannot update ~/buildAPKs: continuing...\\n")
-	_GSU_ ./docs
 	_GSU_ ./scripts/bash/shlibs
 	_GSU_ ./sources/applications
 	_GSU_ ./sources/browsers 
@@ -52,7 +51,7 @@ _GSMU_() {
 	_GSU_ ./sources/entertainment
 	_GSU_ ./sources/flashlights 
 	_GSU_ ./sources/games 
-	_GSU_ ./sources/livewallpapers
+	_GSU_ ./sources/livewall.papers
 	_GSU_ ./sources/samples 
 	_GSU_ ./sources/top10 
 	_GSU_ ./sources/tools 
