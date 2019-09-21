@@ -1,5 +1,6 @@
 #!/bin/env bash 
-# Copyright 2017-2019 (c) all rights reserved by S D Rausty 
+# Copyright 2017-2019 (c) all rights reserved by BuildAPKs 
+# See LICENSE for details https://buildapks.github.io/docsBuildAPKs/
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
@@ -44,15 +45,21 @@ trap _SUPTRPSIGNAL_ HUP INT TERM
 trap _SUPTRPQUIT_ QUIT 
 
 declare -a ARGS="$@"
+declare COMMANDR
+declare COMMANDIF
+declare STRING1
+declare STRING2
+declare RDR
+export RDR="$HOME/buildAPKs"
+STRING1="COMMAND \`au\` enables rollback, available at https://wae.github.io/au/ IS NOT FOUND: Continuing... "
+STRING2="Cannot update ~/${RDR##*/} prerequisite: Continuing..."
+printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning buildAPKs setup:"
+COMMANDR="$(command -v au)" || (printf "%s\\n\\n" "$STRING1") 
+COMMANDIF="${COMMANDR##*/}"
 if [[ -z "${1:-}" ]]
 then
 	ARGS=""
 fi
-STRING="COMMAND \`au\` enables rollback, available at https://github.com/sdrausty/au IS NOT FOUND: Continuing... "
-STRING2="Cannot update ~/buildAPKs prerequisites: Continuing..."
-printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "Beginning buildAPKs setup:"
-declare COMMANDIF=""
-COMMANDIF="$(command -v au)" || (printf "%s\\n\\n" "$STRING") 
 if [[ "$COMMANDIF" = au ]] 
 then 
 	(au aapt apksigner curl dx ecj findutils git) || (printf "%s\\n\\n" "$STRING2") 
@@ -61,6 +68,6 @@ else
 fi
 cd "$HOME"
 (git clone https://github.com/BuildAPKs/buildAPKs) || (printf "%s\\n\\n" "$STRING2") 
-./buildAPKs/scripts/bash/build/build.entertainment.bash
+bash "$RDR/scripts/bash/build/build.entertainment.bash"
 
 # setup.buildAPKs.bash EOF
