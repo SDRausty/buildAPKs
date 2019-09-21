@@ -186,4 +186,4 @@ do #  This creates a "slate" within each github/$JDR that can be selectively res
 	_AT_ 
 done
 
-#build.github.orgs.bash
+# build.github.orgs.bash EOF
