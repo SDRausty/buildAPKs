@@ -35,7 +35,8 @@ trap _SPREPTRPEXIT_ EXIT
 trap _SPREPTRPSIGNAL_ HUP INT TERM 
 trap _SPREPTRPQUIT_ QUIT 
 
-_AF_ () { # finds and removes superfluous files
+_AFR_ () { # finds and removes superfluous files
+	printf "\\n%s\\n" "Preparing directory $JDR/$1/"
 	for name in "${FLIST[@]}" 
 	do
  		find "$JDR/$1/" -type f -name "$name" -delete
@@ -44,6 +45,5 @@ _AF_ () { # finds and removes superfluous files
 
 declare -a FLIST # declare array for all superfluous files
 FLIST=( "*.apk"  "*.aar" "*.jar" ".gitignore" "Android.kpf" "ant.properties" "build.gradle" "build.xml" ".classpath" "default.properties" "gradle-wrapper.jar" "gradle-wrapper.properties" "gradlew" "gradlew.bat" "lint.xml" "local.properties" "makefile" "makefile.linux_pc" "org.eclipse.jdt.core.prefs" "pom.xml" "proguard.cfg" "proguard-project.txt" ".project" "project.properties" "R.java" ".settings" "settings.gradle")
-_AF_ "$@" 
 
 # prep.bash EOF
