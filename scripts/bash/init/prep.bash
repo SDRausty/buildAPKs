@@ -36,14 +36,14 @@ trap _SPREPTRPSIGNAL_ HUP INT TERM
 trap _SPREPTRPQUIT_ QUIT 
 
 _AFR_ () { # finds and removes superfluous files
-	printf "\\n%s\\n" "Preparing directory $JDR/$1/"
-	for name in "${FLIST[@]}" 
+	printf "\\n%s\\n" "Preparing directory $JDR/$SFX"
+	for NAME in "${FLIST[@]}" 
 	do
- 		find "$JDR/$1/" -type f -name "$name" -delete
+ 		find "$JDR/$SFX/" -type f -name "$NAME" -delete
 	done
 }
 
 declare -a FLIST # declare array for all superfluous files
-FLIST=( "*.apk"  "*.aar" "*.jar" ".gitignore" "Android.kpf" "ant.properties" "build.gradle" "build.xml" ".classpath" "default.properties" "gradle-wrapper.jar" "gradle-wrapper.properties" "gradlew" "gradlew.bat" "lint.xml" "local.properties" "makefile" "makefile.linux_pc" "org.eclipse.jdt.core.prefs" "pom.xml" "proguard.cfg" "proguard-project.txt" ".project" "project.properties" "R.java" ".settings" "settings.gradle")
+FLIST="( "*.apk"  "*.aar" "*.jar" ".gitignore" "Android.kpf" "ant.properties" "build.gradle" "build.xml" ".classpath" "default.properties" "gradle-wrapper.jar" "gradle-wrapper.properties" "gradlew" "gradlew.bat" "lint.xml" "local.properties" "makefile" "makefile.linux_pc" "org.eclipse.jdt.core.prefs" "pom.xml" "proguard.cfg" "proguard-project.txt" ".project" "project.properties" "R.java" ".settings" "settings.gradle")"
 
 # prep.bash EOF

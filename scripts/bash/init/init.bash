@@ -38,7 +38,7 @@ trap _SINITRPQUIT_ QUIT
 export RDR="$HOME/buildAPKs"   
 if [[ -z "${JID:-}" ]] 
 then
-	. "$RDR/scripts/bash/build/build.clocks.bash"
+	. "$RDR/scripts/bash/build/build.entertainment.bash"
 	exit 0
 fi
 if [[ ! -d "$RDR"/cache/tarballs ]]
@@ -64,6 +64,7 @@ else
 	fi
 fi
 
+. "$RDR/scripts/bash/init/prep.bash"
 . "$RDR/scripts/bash/shlibs/mod.bash"
 
 # init.bash EOF
