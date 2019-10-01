@@ -7,14 +7,14 @@ set -e
 
 declare -A SBMS # Declare associative array for available submoldules. 
 RDR="$HOME/buildAPKs/"
-SBMS=([scripts/bash/shlibs]="$HOME/buildAPKs/scripts/bash/shlibs/.git" [sources/applications]="$HOME/buildAPKs/sources/applications/.git" [sources/browsers]="$HOME/buildAPKs/sources/browsers/.git" [sources/clocks]="$HOME/buildAPKs/sources/clocks/.git" [sources/compasses]="$HOME/buildAPKs/sources/compasses/.git" [sources/entertainment]="$HOME/buildAPKs/sources/entertainment/.git" [sources/flashlights4]="$HOME/buildAPKs/sources/flashlights4/.git" [sources/games]="$HOME/buildAPKs/sources/games/.git" [sources/live.wallpapers]="$HOME/buildAPKs/sources/live.wallpapers/.git" [sources/samples4]="$HOME/buildAPKs/sources/samples4/.git" [sources/samps]="$HOME/buildAPKs/sources/samps/.git" [sources/top10]="$HOME/buildAPKs/sources/top10/.git" [sources/tools]="$HOME/buildAPKs/sources/tools/.git" [sources/torches]="$HOME/buildAPKs/sources/torches/.git" [sources/tutorials]="$HOME/buildAPKs/sources/tutorials/.git" [sources/widgets]="$HOME/buildAPKs/sources/widgets/.git")
+SBMS=([scripts/frags]="$RDR/scripts/frags/.git" [scripts/bash/shlibs]="$RDR/scripts/bash/shlibs/.git" [sources/applications]="$RDR/sources/applications/.git" [sources/browsers]="$RDR/sources/browsers/.git" [sources/clocks]="$RDR/sources/clocks/.git" [sources/compasses]="$RDR/sources/compasses/.git" [sources/entertainment]="$RDR/sources/entertainment/.git" [sources/flashlights4]="$RDR/sources/flashlights4/.git" [sources/games]="$RDR/sources/games/.git" [sources/live.wallpapers]="$RDR/sources/live.wallpapers/.git" [sources/samples4]="$RDR/sources/samples4/.git" [sources/samps]="$RDR/sources/samps/.git" [sources/top10]="$RDR/sources/top10/.git" [sources/tools]="$RDR/sources/tools/.git" [sources/torches]="$RDR/sources/torches/.git" [sources/tutorials]="$RDR/sources/tutorials/.git" [sources/widgets]="$RDR/sources/widgets/.git")
 
 _2GSU_() {
 	if [[ "$SBMI" = "" ]] 
 	then
  		printf "\\n\\nTo update the modules in ~/buildAPKs to the newest version remove these .git files:\\n\\n"
 	 	sleep 1.28
- 		find "$HOME/buildAPKs/" -type f -name .git
+ 		find "$RDR" -type f -name .git
  		printf "\\n\\nYou can use \`find\` to update the modules in ~/buildAPKs/sources to the newest version:\\n\\n"
  		printf "	$ find ~/buildAPKs/ -type f -name .git -exec rm {} \\;"
  		printf "\\n\\nThen execute %s again, and %s shall attempt to update all of them.\\n\\n" "${0##*/}" "${0##*/}"
