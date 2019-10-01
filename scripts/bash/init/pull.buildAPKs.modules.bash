@@ -12,7 +12,7 @@ SBMS=([scripts/frags]="$RDR/scripts/frags/.git" [scripts/bash/shlibs]="$RDR/scri
 _2GSU_() {
 	if [[ "$SBMI" = "" ]] 
 	then
- 		printf "\\n\\nTo update the modules in ~/${RDR##*} to the newest version remove these .git files:\\n\\n"
+ 		printf "\\nTo update the modules in ~/${RDR##*} to the newest version remove these .git files:\\n\\n"
 	 	sleep 1.28
  		find "$RDR" -type f -name .git
  		printf "\\n\\nYou can use \`find\` to update the modules in ~/${RDR##*}sources to the newest version:\\n\\n"
@@ -37,7 +37,7 @@ _CK4MS_() { # ChecKs 4 ModuleS
 }
 
 _GSMU_() {	
-	printf "\\n\\nUpdating ${RDR##*}; \`%s\` shall attempt to load sources from Github submodule repositories into ~/${RDR##*}.  This may take a little while to complete.  Please be patient while \`%s\` downloads source code from https://github.com\\n" "${0##*/}" "${0##*/}"
+	printf "\\nUpdating ${RDR##*}; \`%s\` shall attempt to load sources from Github submodule repositories into ~/${RDR##*}.  This may take a little while to complete.  Please be patient while \`%s\` downloads source code from https://github.com\\n" "${0##*/}" "${0##*/}"
 	(git pull 2>/dev/null && printf "\\nPlease wait; Updating ~/${RDR##*}...\\n") || (printf "\\nCannot update ~/${RDR##*}: Continuing...\\n")
 	_GSU_ ./scripts/bash/shlibs
 	_GSU_ ./sources/applications
