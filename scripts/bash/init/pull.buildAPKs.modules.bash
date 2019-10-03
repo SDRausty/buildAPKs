@@ -96,6 +96,10 @@ _GSU_() { # update submodules to latest version
 }
 
 cd "$RDR/"
+if [[ ! -d "$RDR/sources" ]]
+then
+	mkdir -p "$RDR/sources"
+fi
 _CK4MS_
 _2GSU_
 
