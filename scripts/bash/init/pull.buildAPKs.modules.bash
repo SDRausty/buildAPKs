@@ -38,11 +38,6 @@ trap _SPTRPEXIT_ EXIT
 trap '_SPTRPSIGNAL_ $? $LINENO $BASH_COMMAND'  HUP INT TERM
 trap '_SPTRPQuIT_ $? $LINENO $BASH_COMMAND' QUIT 
 
-declare -A GBMS # declare associative array for available submoldules
-RDR="$HOME/buildAPKs"
-SADD="https://github.com"
-GBMS=([scripts/bash/shlibs]="shlibs/shlibs.bash" [sources/applications]="SDRausty/buildAPKsApps"  [sources/apps]="BuildAPKs/buildAPKs.apps" [sources/browsers]="SDRausty/buildAPKsBrowsers" [sources/clocks]="BuildAPKs/buildAPKs.clocks" [sources/compasses]="BuildAPKs/buildAPKs.compasses" [sources/entertainment]="BuildAPKs/buildAPKs.entertainment" [sources/flashlights4]="BuildAPKs/buildAPKs.flashlights" [sources/gamez]="BuildAPKs/buildAPKs.games"  [sources/gaming]="SDRausty/buildAPKsGames" [sources/live.wallpapers]="BuildAPKs/buildAPKs.live.wallpapers" [sources/samples4]="SDRausty/buildAPKsSamples" [sources/samps]="BuildAPKs/buildAPKs.samples" [sources/top10]="SDRausty/buildAPKsTop10" [sources/tools]="BuildAPKs/buildAPKs.developers.tools" [sources/torches]="SDRausty/buildAPKsFlashlights" [sources/tutorials]="SDRausty/buildAPKsTutorials" [sources/widgets]="SDRausty/buildAPKsWidgets")
-
 _2GSU_() {
 	if [[ "$SBMI" = "" ]] 
 	then
@@ -53,18 +48,18 @@ _2GSU_() {
 		done
  		printf "\\nUse find to update the modules in ~/buildAPKs/sources/ to the newest version:\\n\\n"
  		printf "	find ~/buildAPKs/ -type f -name .git -delete"
- 		printf "\\n\\nThen run %s again, and %s shall attempt to update them all!\\n" "${0##*/}" "${0##*/}"
+ 		printf "\\n\\nThen run %s again, and %s shall attempt to update them all.\\n" "${0##*/}" "${0##*/}"
 	else
 		_GSMU_
 	fi
-	printf "\\nBuildAPKs %s: DONE!\\n" "${0##*/}"
+	printf "\\nBuildAPKs %s: DONE!\\n" "${0##*/} pull.buildAPKs.modules.bash"
 }
 
 _CK4MS_() { # ChecKs 4 ModuleS 
 	SBMI=""
 	for ALOC in "${!GBMS[@]}" 
 	do
-		if [[ ! -f "${RDR}/$ALOC/.git" ]] 
+		if [[ ! -f "$RDR/$ALOC/.git" ]] 
 		then
 			SBMI=1
 			break
@@ -72,23 +67,37 @@ _CK4MS_() { # ChecKs 4 ModuleS
 	done
 }
 
+_GSA_() { # update submodules to latest version
+	((printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Adding $SIAD/${GBMS[$LOC]} to ~/buildAPKs/$LOC..." && git submodule add "$SIAD/${GBMS[$LOC]}" "$LOC") && (printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs/$LOC..." && git submodule update --init --recursive --remote "$LOC" )) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot add and update ~/buildAPKs/$LOC:  Continuing...") 
+}
+
 _GSMU_() {	
-	printf "Updating buildAPKs; \`%s\` shall attempt to load sources from Github submodule repositories into ~/buildAPKs.  This may take a little while to complete.  Please be patient while \`%s\` downloads source code from https://github.com\\n\\n" "${0##*/}" "${0##*/}"
- 	(printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs..." && git pull) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot update ~/buildAPKs:  Continuing...")
+	printf "Updating buildAPKs; \`%s\` shall attempt to load sources from Github submodule repositories into ~/buildAPKs.  This may take a little while to complete.  Please be patient while \`%s\` downloads source code from %s\\n\\n" "${0##*/}" "${0##*/}" "$SIAD"
+ 	(printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs..." && git pull && _GSUSHLIBS_ ) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot update ~/buildAPKs:  Continuing...")
 	for LOC in "${!GBMS[@]}" 
 	do
 		_GSU_ 
+		if [[ -f "$RDR/$LOC/.gitmodules" ]] || [[ -f "$RDR/$LOC/ma.bash" ]]
+		then
+			_IAR_ "$RDR/$LOC/"
+		fi
 	done
 }
 
-_GSA_() { # update submodules to latest version
-	((printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Adding https://github.com/${GBMS[$LOC]} to ~/buildAPKs/$LOC..." && git submodule add https://github.com/${GBMS[$LOC]} $LOC) && (printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs/$LOC..." && git submodule update --init --recursive --remote $LOC )) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot add and update ~/buildAPKs/$LOC:  Continuing...") 
-}
-
 _GSU_() { # update submodules to latest version
-	((printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs/$LOC..." && git submodule update --init --recursive --remote $LOC ) || ( _GSA_ )) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot update ~/buildAPKs/$LOC:  Continuing...") # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
+	((printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs/$LOC..." && git submodule update --init --recursive --remote "$LOC" ) || ( _GSA_ )) ||  (printf "\\e[1;7;38;5;66m%s\\e[0m\\n" "Cannot update ~/buildAPKs/$LOC:  Continuing...") # https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/
 }
 
+_GSUSHLIBS_() {	
+	(printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Updating ~/buildAPKs/scripts/bash/shlibs..." && git submodule update --init --recursive --remote scripts/bash/shlibs) || (printf "\\e[1;7;38;5;96m%s\\e[0m\\n" "Adding ~/buildAPKs/scripts/bash/shlibs..." && git submodule add "$SIAD"/shlibs/shlibs.bash scripts/bash/shlibs)
+}
+
+declare -A GBMS # declare associative array for available submoldules
+GBMS=([sources/applications]="SDRausty/buildAPKsApps"  [sources/apps]="BuildAPKs/buildAPKs.apps" [sources/browsers]="SDRausty/buildAPKsBrowsers" [sources/clocks]="BuildAPKs/buildAPKs.clocks" [sources/compasses]="BuildAPKs/buildAPKs.compasses" [sources/entertainment]="BuildAPKs/buildAPKs.entertainment" [sources/flashlights4]="BuildAPKs/buildAPKs.flashlights" [sources/gamez]="BuildAPKs/buildAPKs.games"  [sources/gaming]="SDRausty/buildAPKsGames" [sources/live.wallpapers]="BuildAPKs/buildAPKs.live.wallpapers" [sources/samples4]="SDRausty/buildAPKsSamples" [sources/samps]="BuildAPKs/buildAPKs.samples" [sources/top10]="SDRausty/buildAPKsTop10" [sources/tools]="BuildAPKs/buildAPKs.developers.tools" [sources/torches]="SDRausty/buildAPKsFlashlights" [sources/tutorials]="SDRausty/buildAPKsTutorials" [sources/widgets]="SDRausty/buildAPKsWidgets")
+RDR="$HOME/buildAPKs"
+SIAD="https://github.com"
+
+. "$RDR"/scripts/bash/init/prep.bash
 cd "$RDR/"
 if [[ ! -d "$RDR/sources" ]]
 then
