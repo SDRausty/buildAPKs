@@ -7,7 +7,7 @@ f027c7e35204ec55bff3fa115a60c86388b0c410  ./conf/ONAMES
 c22ebb7c69b04dcbe2627adde6a3b0ee355028a0  ./conf/TNAMES
 2a27233de43ba37be6b38cfa1f6c1364ab6afc11  ./conf/UNAMES
 1e3a2df6ced9899aa2c959a6031e0f6d1391e704  ./conf/VERSIONID
-874f02111dc723abe431ee6485244f3f491498b1  ./make.sums.bash
+5f75c205826c170b078be929c79ab1d22e747fa8  ./do.trees.bash
 c1789e5c6681aba796651c6595010ccaf183a857  ./scripts/bash/build/build.apps.bash
 5bc08629072b3bba2e37ad8647a5656d8894fcb0  ./scripts/bash/build/build.buildAPKs.bash
 e7ea063d622f8a09ef85d928650d1da150f5434b  ./scripts/bash/build/build.clocks.bash
@@ -32,7 +32,7 @@ c5def8a5dad75fc0ec6e900221a44237c85197da  ./scripts/bash/build/buildTutorials.ba
 271d0d378df52af27c80659c91ff0f6192487e46  ./scripts/bash/init/ecjtdebs/fix.ecj.error.bash
 7a5173ebd7f4f12a228e45d4f5ba10de2d4bd696  ./scripts/bash/init/ecjtdebs/fix.ecj4.6.error.bash
 62883b8807846365998035ed99342749e8e4a5b1  ./scripts/bash/init/init.bash
-cfceda4b76f2c8ad76c3feefbc0118fd50364562  ./scripts/bash/init/pull.buildAPKs.modules.bash
+c3418e9712bdf0eb97d8a323a6723b42face1d44  ./scripts/bash/init/pull.buildAPKs.modules.bash
 14cb0af54e07a9aa15bb0336cee51bd80caba4c7  ./scripts/bash/init/setup.buildAPKs.bash
 d66154da604e4b55f3f30ae22e38075aacfacda5  ./scripts/sh/build/build.dir.sh
 669a524c407222067b6e7110c45011ec116e5071  ./scripts/sh/build/build.sh
