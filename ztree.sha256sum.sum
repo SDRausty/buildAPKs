@@ -7,7 +7,7 @@ f937d9366c49d26cb04008e46e3758fe140a00d084db1d42a9db292f79ae1282  ./conf/NUNAMES
 ad037a985c7cd8bb37d26b5ab0036ebafa7f32159f3e50ffd285cac1c014cd93  ./conf/TNAMES
 5c85c5375ab108278f41fe6ee908fdf5c6718fd35f9521d83043301735b102a1  ./conf/UNAMES
 ae53e4b1516e261d5ff76c3935f1a4e6883becabee7194fffe093685e3bb83bd  ./conf/VERSIONID
-2012fafb5687a2ad697fdc72259902d2cc3b33e096a4c2f3661db798b5b87883  ./do.trees.bash
+e93e61a8669102b57a65d77d635c684e64c1dffd5ee2e4498438df1530fd435a  ./do.trees.bash
 574fca292659c14869891bf44e845fd31bcb389089b7326f83caa4367cd98ea3  ./scripts/bash/build/build.apps.bash
 552269fd5ec2418940c4c3a5d528577e1b18e2d33af504ed606c61bbff41172b  ./scripts/bash/build/build.buildAPKs.bash
 bdc5f205a088ae586e4dde9bd5ffa42ed4572dc98f53cf14688740a959d54451  ./scripts/bash/build/build.clocks.bash
@@ -18,7 +18,7 @@ b9b73e16f6c0c843dab9d2b95515bcc1ad893bae5739b96be8c05b748b2c9b49  ./scripts/bash
 4b4714e80c10a89aef5924107c4e22a3e692a8f79a90c9844f1b46b184cf7c1d  ./scripts/bash/build/build.games.bash
 ad6a2a59981f0d9abda49b064a11d7a7c0b7087992c8ae3a713aeda7bf87eb2b  ./scripts/bash/build/build.in.dir.bash
 3801913b9b7d05a349b7bc60bf92cc10efc2cddaae5b4e48d941ba498991a7cc  ./scripts/bash/build/build.live.wallpapers.bash
-27d352d518478102136d76c8a751002d203f0ce8b0fcae5e20dd88e868eeab0f  ./scripts/bash/build/build.one.bash
+71b316236fb0a8e3ac2a1cbaf3349eb39f190b656acaf57b6f1bae0054c60715  ./scripts/bash/build/build.one.bash
 a518eea98c3482289266c9a06ef6392e663f11abe3be190c5979cef1e45d758a  ./scripts/bash/build/build.samples.bash
 0f43b9d6a5d2ac323311722cc4cf62551a0e6491683cfbd0381361c8333d9ef6  ./scripts/bash/build/buildAll.bash
 4c98781e4c47ab55144fc08d72b633acc38c7d662f64f5c102aa5747ba685e31  ./scripts/bash/build/buildApplications.bash
