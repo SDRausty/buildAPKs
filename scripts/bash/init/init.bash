@@ -42,10 +42,6 @@ then
 	. "$RDR"/scripts/bash/build/build.entertainment.bash
 	exit 0
 fi
-if [[ ! -f "$RDR"/scripts/bash/shlibs/.git ]] 
-then
-	git pull || printf "\\nCANNOT UPDATE ~/%s: Continuing...\\n\\n" "${RDR##*/}"
-fi
 if [[ ! -f "$RDR"/.gitmodules ]] 
 then
 	touch "$RDR"/.gitmodules
@@ -53,5 +49,5 @@ fi
 . "$RDR"/scripts/bash/init/ushlibs.bash 
 . "$RDR"/scripts/bash/init/rshlibs.bash 
 . "$RDR"/scripts/bash/shlibs/buildAPKs/prep.bash
-. "$RDR"/scripts/bash/shlibs/buildAPKs/mod.bash
+. "$RDR"/scripts/bash/shlibs/buildAPKs/init/mod.bash
 # init.bash EOF
