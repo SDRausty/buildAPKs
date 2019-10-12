@@ -36,30 +36,22 @@ trap _SINITRPSIGNAL_ HUP INT TERM
 trap _SINITRPQUIT_ QUIT 
 
 export RDR="$HOME/buildAPKs"   
+cd "$RDR"
 if [[ -z "${JID:-}" ]] 
 then
 	. "$RDR"/scripts/bash/build/build.entertainment.bash
 	exit 0
 fi
-cd "$RDR"
-if [[ ! -f scripts/bash/shlibs/.git ]] 
+if [[ ! -f "$RDR"/scripts/bash/shlibs/.git ]] 
 then
-	(git pull) || (printf "\\nCANNOT UPDATE ~/%s: Continuing...\\n\\n" "${RDR##*/}")
+	git pull || printf "\\nCANNOT UPDATE ~/%s: Continuing...\\n\\n" "${RDR##*/}"
 fi
-if [[ ! -f .gitmodules ]] 
+if [[ ! -f "$RDR"/.gitmodules ]] 
 then
-	touch .gitmodules
+	touch "$RDR"/.gitmodules
 fi
-if grep shlibs .gitmodules 1>/dev/null
-then
-	(git submodule update --init --recursive --remote scripts/bash/shlibs) || (printf "\\nCANNOT UPDATE ~/%s/scripts/bash/shlibs: Continuing...\\n\\n" "${RDR##*/}") 
-else
-	(git submodule add https://github.com/shlibs/shlibs.bash scripts/bash/shlibs && git submodule update --init --recursive --remote scripts/bash/shlibs) || (printf "\\nCANNOT ADD AND UPDATE MODULE ~/%s/scripts/bash/shlibs: Continuing...\\n\\n" "${RDR##*/}")
-fi
-if [[ ! -d "scripts/bash/shlibs" ]] 
-then
-	(git clone https://github.com/shlibs/shlibs.bash scripts/bash/shlibs && git clone https://github.com/shlibs/shlibs.buildAPKs.bash scripts/bash/shlibs/buildAPKs) || (printf "\\nCANNOT CLONE MODULES %s AND %s INTO~/%s/scripts/bash/shlibs AND ~/%s/scripts/bash/shlibs/buildAPKs: Continuing...\\n\\n" "https://github.com/shlibs/shlibs.bash" "https://github.com/shlibs/shlibs.buildAPKs.bash" "${RDR##*/}" "${RDR##*/}")
-fi
+. "$RDR"/scripts/bash/init/ushlibs.bash 
+. "$RDR"/scripts/bash/init/rshlibs.bash 
 . "$RDR"/scripts/bash/shlibs/buildAPKs/prep.bash
 . "$RDR"/scripts/bash/shlibs/buildAPKs/mod.bash
 # init.bash EOF
