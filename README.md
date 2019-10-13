@@ -1,4 +1,4 @@
-[buildAPKs](https://github.com/BuildAPKs/buildAPKs)
+[buildAPKs](https://github.com/SDRausty/buildAPKs)
 
 BuildAPKs has [source code](https://github.com/BuildAPKs) and [scripts](https://github.com/BuildAPKs/buildAPKs/tree/master/scripts/) in order to build APKs (Android Package Kits) on Android handhelds, and similar.  Quick setup instructions can be found here at https://sdrausty.github.io/docsBuildAPKs/setup and also https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
 
