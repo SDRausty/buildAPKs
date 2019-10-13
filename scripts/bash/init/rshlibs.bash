@@ -38,15 +38,9 @@ trap _SRSTRPQUIT_ QUIT
 _IFSHLIBS_() { 
 	if [[ ! -d "$RDR"/scripts/bash/shlibs ]] 
 	then
-		git clone https://github.com/shlibs/shlibs.bash scripts/bash/shlibs && git clone https://github.com/shlibs/shlibs.buildAPKs.bash scripts/bash/shlibs/buildAPKs || printf "\\nCannot clone modules %s and %s into~/%s/scripts/bash/shlibs and ~/%s/scripts/bash/shlibs/buildAPKs: Continuing...\\n\\n" "https://github.com/shlibs/shlibs.bash" "https://github.com/shlibs/shlibs.buildAPKs.bash" "${RDR##*/}" "${RDR##*/}"
+		git clone https://github.com/shlibs/shlibs.bash scripts/bash/shlibs || printf "\\nCannot clone module %s into~/%s/scripts/bash/shlibs: Continuing...\\n\\n" "https://github.com/shlibs/shlibs.bash" "${RDR##*/}"
 	fi
 }
 
-export RDR="$HOME/buildAPKs"   
-cd "$RDR"
-if [[ ! -f "$RDR"/scripts/bash/shlibs/.git ]] 
-then
-	git pull || printf "\\nCannot update ~/%s: Continuing...\\n\\n" "${RDR##*/}"
-fi
 _IFSHLIBS_
 # rshlibs.bash EOF
