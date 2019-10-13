@@ -1,6 +1,6 @@
 [buildAPKs](https://github.com/BuildAPKs/buildAPKs)
 
-BuildAPKs has [source code](https://github.com/BuildAPKs) and [scripts](https://github.com/BuildAPKs/buildAPKs/tree/master/scripts/) in order to build APKs (Android Package Kits) on Android handhelds, and similar.  Quick setup instructions can be found here at https://buildapks.github.io/docsBuildAPKs/setup and also https://buildapks.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
+BuildAPKs has [source code](https://github.com/BuildAPKs) and [scripts](https://github.com/BuildAPKs/buildAPKs/tree/master/scripts/) in order to build APKs (Android Package Kits) on Android handhelds, and similar.  Quick setup instructions can be found here at https://sdrausty.github.io/docsBuildAPKs/setup and also https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice right here.
 
 You can try building hundreds of exciting, amazing and beautiful APKs by running [shell scripts](https://www.google.com/search?q=shell+scripts) from [this directory](https://github.com/BuildAPKs/buildAPKs/tree/master/scripts/bash/build).  It is simple!  The minimal install size to start building your first apps (6) is about 10MB!  Have fun and enjoy compiling, hacking, modifying and running these select APKs!
 
@@ -14,7 +14,7 @@ Have you ever wanted to build your own application? Something that you can distr
 
 [BuildAPKs](https://github.com/BuildAPKs) is a repository of source code designed just for this purpose.  Source code is the way programs are written in a human understandable language for applications to compile and then to be run on an Android device.  These programs have been tested and were built successfully on device, a smartphone.  First successful builds on Sun May 28 2017 in [Termux](https://github.com/termux/) (Android 6.0.1 aarch64).
 
-See https://buildapks.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice for quick setup instructions and https://sdrausty.github.io/docsBuildAPKs for the documentation website for this project.  
+See https://sdrausty.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice for quick setup instructions and https://sdrausty.github.io/docsBuildAPKs for the documentation website for this project.  
 
 This command: `for i in $(cat ~/buildAPKs/conf/UNAMES) ; do ~/buildAPKs/scripts/bash/build/build.github.bash $i ; done`shall attempt to build [UNAMES](https://raw.githubusercontent.com/BuildAPKs/buildAPKs/master/conf/UNAMES), all known GitHub usernames, while: `for i in $(cat ~/buildAPKs/conf/TNAMES) ; do ~/buildAPKs/scripts/bash/build/build.github.bash $i ; done`shall attempt to build [TNAMES](https://raw.githubusercontent.com/BuildAPKs/buildAPKs/master/conf/TNAMES), all known GitHub topics @GitHub.  Please submit a [pull request](https://github.com/BuildAPKs/buildAPKs/pulls) if you want a name added to these listings.
 
