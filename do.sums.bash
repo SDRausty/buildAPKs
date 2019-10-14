@@ -6,6 +6,7 @@
 # To check the files use; sha512sum -c ztree.sha512.sum
 #####################################################################
 set -eu
+git pull
 rm -f *.sum
 FILELIST=( $(find . -type f | grep -v .git | sort) )
 CHECKLIST=(sha512sum)
@@ -22,7 +23,6 @@ do
 	printf  "\\n%s\\n" "Checking $SCHECK..."
 	$SCHECK -c ztree.${SCHECK::-3}.sum
 done
-git pull
 git add .
 git commit
 git push
