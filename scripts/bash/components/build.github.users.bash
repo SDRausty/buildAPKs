@@ -56,9 +56,9 @@ _ATT_ () {
 			then
 				if [[ "$OAUT" != "" ]] # see $RDR/conf/GAUTH file 
 				then
- 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 4096 || printf "%s\\n" "Error found; Continuing...")"
+ 					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 16384 || printf "%s\\n" "Error found; Continuing...")"
 				else
- 					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 4096 || printf "%s\\n" "Error found; Continuing...")"
+ 					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -n 16384 || printf "%s\\n" "Error found; Continuing...")"
 				fi
 			 	if grep AndroidManifest.xml <<< "$ISAND" 
 				then
@@ -100,7 +100,7 @@ _CKAT_ () {
  	if [[ $CKFILE = "" ]] # configuration file is not found
  	then
  		printf "%s" "Checking $USENAME $REPO for last commit:  " 
-  		COMMIT="$(_GC_)" ||:
+  		COMMIT="$(_GC_)" || printf "%s\\n\\n" "$STRING"
  		printf "%s\\n" "Found ${COMMIT::7}; Continuing..."
  		_ATT_ 
  	else # load configuration information from file 
@@ -115,15 +115,15 @@ done
 
 _FJDX_ () { 
 	export SFX="$(tar tf "${NAME##*/}.${COMMIT::7}.tar.gz" | awk 'NR==1' )" || printf "%s\\n\\n" "$STRING"
-  	(tar xvf "${NAME##*/}.${COMMIT::7}.tar.gz" | grep AndroidManifest.xml);  _IAR_ "$JDR/$SFX" || printf "%s\\n\\n" "$STRING"
+	(tar xvf "${NAME##*/}.${COMMIT::7}.tar.gz" | grep AndroidManifest.xml || printf "%s\\n\\n" "$STRING") ; _IAR_ "$JDR/$SFX" || printf "%s\\n\\n" "$STRING"
 }
 
 _GC_ () { 
 	if [[ "$OAUT" != "" ]] # see $RDR/conf/GAUTH file for information  
 	then # https://unix.stackexchange.com/questions/117992/download-only-first-few-bytes-of-a-source-page
-	 	curl -u "$OAUT" https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
+	 	curl -u "$OAUT" https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' 
 	else
-	 	curl -r 0-1 https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' ||:
+	 	curl -r 0-1 https://api.github.com/repos/"$USER/$REPO"/commits -s 2>&1 | head -n 3 | tail -n 1 | awk '{ print $2 }' | sed 's/"//g' | sed 's/,//g' 
 	fi
 }
 
