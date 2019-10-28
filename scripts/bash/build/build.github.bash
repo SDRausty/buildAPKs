@@ -30,9 +30,9 @@ _ATT_ () {
 			then
 				if [[ "$OAUT" != "" ]] # see $RDR/var/conf/GAUTH file 
 				then
-					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -512)" || printf "%s\\n" "Error in ISAND _ATT_ ${0##*/} found; Continuing..."
+					ISAND="$(curl -u "$OAUT" -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -1024)" || printf "\\e[2;2;38;5;208m%s\\e[0m\\n" "ERROR FOUND in _ATT_ ISAND ${0##*/}; Continuing..."
 				else
- 					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -512 )" || printf "%s\\n" "Error in ISAND _ATT_ ${0##*/} found; Continuing..."
+ 					ISAND="$(curl -i "https://api.github.com/repos/$USENAME/$REPO/git/trees/$COMMIT?recursive=1" -s 2>&1 | head -1024)" || printf "\\e[2;2;38;5;208m%s\\e[0m\\n" "ERROR FOUND in _ATT_ ISAND ${0##*/}; Continuing..."
 				fi
 			 	if grep AndroidManifest.xml <<< "$ISAND" 
 				then
@@ -93,9 +93,11 @@ _CUTE_ () { # check whether username is an organization
 	read TYPE < <(curl "https://api.github.com/users/$USENAME/repos" -s 2>&1 | head -n 25 | tail -n 1 | grep -o Organization) # https://stackoverflow.com/questions/2559076/how-do-i-redirect-output-to-a-variable-in-shell/
 	if [[ "$TYPE" == Organization ]]
 	then
-		export ISUSER=orgs
+		export ISUSER=users
+		export ISOTUR=orgs
 	else
 		export ISUSER=users
+		export ISOTUR=users
 	fi
 }
 
@@ -145,18 +147,20 @@ export STRING="ERROR FOUND; ${0##*/} $1:  CONTINUING... "
 printf "\\n\\e[1;38;5;116m%s\\n\\e[0m" "${0##*/}: Beginning BuildAPKs with build.github.bash $1:"
 . "$RDR"/scripts/bash/shlibs/buildAPKs/fandm.bash
 . "$RDR"/scripts/bash/shlibs/buildAPKs/prep.bash
-if grep -iw "$USENAME" "$RDR"/var/conf/PNAMES
+if grep -iw "$USENAME" "$RDR"/var/conf/[PZ]NAMES
 then
 	JDR="$RDR/sources/github/users/$USER"
 	mkdir -p "$JDR"
 	touch "$JDR"/repos
-	printf "Username %s is found in %s: Not processing username %s!  File %s has more information.\\e[0m\\n" "$USENAME" "~/${RDR##*/}/var/conf/PNAMES" "$USENAME" "~/${RDR##*/}/var/conf/README.md" | tee "$JDR"/README.md
+	printf "\\e[7;38;5;208mUsername %s is found in %s: See preceeding output.  Not processing username %s!  Remove the username from the corresponding file(s) and the user's build directory in %s to proccess %s.  File %s has more information:\\n\\n\\e[0m" "$USENAME" "~/${RDR##*/}/var/conf/[PZ]NAMES" "$USENAME" "~/${RDR##*/}/sources/github/{orgs,users}" "$USENAME" "~/${RDR##*/}/var/conf/README.md" | tee "$JDR"/README.md
+	cat "$RDR/var/conf/README.md" 
+	printf "\\e[7;38;5;208m\\nUsername %s is found in %s: Not processing username %s!  Remove the username from the corresponding file(s) and the user's build directory in %s to proccess %s.  Scroll up to read the %s file.\\e[0m\\n" "$USENAME" "~/${RDR##*/}/var/conf/[PZ]NAMES" "$USENAME" "~/${RDR##*/}/sources/github/{orgs,users}" "$USENAME" "~/${RDR##*/}/var/conf/README.md" | tee "$JDR"/README.md
 	exit 0
 else
 	_CUTE_
 fi
-export JDR="$RDR/sources/github/$ISUSER/$USER"
-export JID="git.$ISUSER.$USER"
+export JDR="$RDR/sources/github/$ISOTUR/$USER"
+export JID="git.$ISOTUR.$USER"
 if [[ ! -d "$JDR" ]] 
 then
 	mkdir -p "$JDR"
