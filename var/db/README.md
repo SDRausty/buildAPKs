@@ -30,7 +30,6 @@ These files are located in ~/buildAPKs/var/db/ and their purpose is outlined in 
 | ONAMES       | organization names whose APKs build in buildAPKs on device |
 | PNAMES †     | pending names that are NOT downloaded and built, but might transition to ONAMES, UNAMES and ma.bash |
 | QNAMES ∆     | accounts that have AndroidManifest.xml file(s) |
-| RNAMES ∆†    | DEPRECIATED: accounts that have AndroidManifest.xml file(s), but did not build any APKs with buildAPKs |
 | README.md    | this file |
 | TNAMES       | GitHub topics that build with buildAPKs on device |
 | UNAMES       | user names that have APK projects that build with buildAPKs on device |
