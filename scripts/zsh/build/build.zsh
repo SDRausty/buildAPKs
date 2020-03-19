@@ -1,4 +1,4 @@
-#!/bin/env sh 
+#!/usr/bin/env zsh 
 # Copyright 2019 (c) all rights reserved 
 # by BuildAPKs https://buildapks.github.io/buildAPKs/
 # Contributeur : https://github.com/HemanthJabalpuri

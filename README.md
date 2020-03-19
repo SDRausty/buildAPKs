@@ -32,9 +32,9 @@ __Cloning and updating [submodules](https://gist.github.com/gitaarik/8735255) is
 
 The ` ~/buildAPKs/sources/github ` and ` ~/buildAPKs/var ` directories can be symbolic links to external storage space to save native space on device.  For example, a ` github/var ` directory can be created and each can be symlinked with ln -s.  Prefix the <code> build*.bash </code> scripts with bash to run buildAPKs in external storage, i.e. [`$ bash buildFlashlights.bash`](https://raw.githubusercontent.com/SDRausty/buildAPKs/master/scripts/bash/build/buildFlashlights.bash). Build Android APKs on device (smartphone and tablet).
 
-This command: ` for i in $(cat ~/buildAPKs/var/db/UNAMES) ; do ~/buildAPKs/build.github.bash $i ; done ` will attempt to build [UNAMES](https://raw.githubusercontent.com/SDRausty/buildAPKs/master/var/db/UNAMES), all known GitHub usernames. 
+This command: ` for i in $(cat ~/buildAPKs/var/db/UNAMES) ; do ~/buildAPKs/build.github.bash $i ; done ` will attempt to build [UNAMES](https://raw.githubusercontent.com/SDRausty/db.BuildAPKs/master/UNAMES), all known GitHub usernames. 
 
-While this command: ` for i in $(cat ~/buildAPKs/var/db/TNAMES) ; do ~/buildAPKs/scripts/github/build/build.github.bash $i ; done ` will attempt to build [TNAMES](https://raw.githubusercontent.com/SDRausty/buildAPKs/master/var/db/TNAMES), all known GitHub topics @GitHub.  
+While this command: ` for i in $(cat ~/buildAPKs/var/db/TNAMES) ; do ~/buildAPKs/scripts/github/build/build.github.bash $i ; done ` will attempt to build [TNAMES](https://raw.githubusercontent.com/SDRausty/db.BuildAPKs/master/TNAMES), all known GitHub topics @GitHub.  
 
 Submit a [pull request](https://github.com/BuildAPKs/db.BuildAPKs/pulls) at db.BuildAPKs if you would like names added to these listings.  The [db.BuildAPKs ](https://github.com/BuildAPKs/db.BuildAPKs/tree/master/)[README.md](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/README.md) has more information about the new database buildAPKs uses.
 
