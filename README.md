@@ -1,4 +1,4 @@
-<link rel="prerender" href="https://termuxarch.github.io/TermuxArch/">
+<link rel="prerender" href="https://sdrausty.github.io/buildAPKs/">
 
 ## [buildAPKs](https://github.com/SDRausty/buildAPKs)
 
@@ -34,7 +34,7 @@ The ` ~/buildAPKs/sources/github ` and ` ~/buildAPKs/var ` directories can be sy
 
 This command: ` for i in $(cat ~/buildAPKs/var/db/UNAMES) ; do ~/buildAPKs/build.github.bash $i ; done ` will attempt to build [UNAMES](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/UNAMES), all known GitHub usernames. 
 
-While this command: ` for i in $(cat ~/buildAPKs/var/db/TNAMES) ; do ~/buildAPKs/scripts/github/build/build.github.bash $i ; done ` will attempt to build [TNAMES](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/TNAMES), all known GitHub topics @GitHub.  
+While this command: ` for i in $(cat ~/buildAPKs/var/db/TNAMES) ; do ~/buildAPKs/scripts/bash/github/build.github.topics.bash $i ; done ` will attempt to build [TNAMES](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/TNAMES), all known GitHub topics @GitHub.  
 
 Submit a [pull request](https://github.com/BuildAPKs/db.BuildAPKs/pulls) at db.BuildAPKs if you would like names added to these listings.  The [db.BuildAPKs ](https://github.com/BuildAPKs/db.BuildAPKs/tree/master/)[README.md](https://raw.githubusercontent.com/BuildAPKs/db.BuildAPKs/master/README.md) has more information about the new database buildAPKs uses.
 
