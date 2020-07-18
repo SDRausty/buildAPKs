@@ -7,31 +7,34 @@ shopt -s nullglob globstar
 
 _SBOTRPERROR_() { # run on script error
 	local RV="$?"
-	echo $RV build.one.bash  
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s build.one.bash ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "$JID" 
-	[ "$RV" = 255 ] && printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again if the error includes R.java and similar; This error might have been corrected by clean up.  More information in \`%s/var/log/stnderr.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RDR" "$JID" 
+	printf "buildAPKs %s WARNING:  ERROR %s received by build.one.bash!\n" "${0##*/}" "$RV" 
+	[[ $(awk 'NR==1' "$RDR/.conf/QUIET") == false ]] && printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s build.one.bash ERROR:  Signal %s received!  More information in \`%s/var/log/stnderr.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RV" "$RDR" "$JID" 
+	[[ $(awk 'NR==1' "$RDR/.conf/QUIET") == false ]] && [ "$RV" = 255 ] && printf "\\e[?25h\\e[1;7;38;5;0mOn Signal 255 try running %s again if the error includes R.java and similar; This error might have been corrected by clean up.  More information in \`%s/var/log/stnderr.%s.log\` file.\\e[0m\\n" "${0##*/}" "$RDR" "$JID" 
  	_CLEANUP_
 	exit 160
 }
 
 _SBOTRPEXIT_() { # run on exit
 	local RV="$?"
-	[ "$RV" != 0 ] && [ "$RV" != 224 ] && printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs signal %s received by %s in %s by build.one.bash.  More information in \`%s/var/log/stnderr.%s.log\` file.\\n\\n" "$RV" "${0##*/}" "$PWD" "$RDR" "$JID" && (printf "%s\\e[0m\\n" "Running: VAR=\"\$(grep -C 2 -ie error -ie errors \"$RDR/var/log/stnderr.$JID.log\")\" && VAR=\"\$(grep -v \\-\\- <<< \$VAR)\" && head <<< \$VAR && tail <<< \$VAR ") && VAR="$(grep -C 2 -ie error -ie errors "$RDR/var/log/stnderr.$JID.log")" && VAR="$(grep -v \\-\\- <<< $VAR)" && head <<< $VAR && tail <<< $VAR && printf "\\n\\n" 
-	[ "$RV" = 223 ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 223 generated in %s; Try running %s again; This error can be resolved by running %s in a directory that has an \`AndroidManifest.xml\` file.  More information in \`stnderr*.log\` files.\\n\\nRunning \`ls\`:\\e[0m\\n" "$PWD" "${0##*/}" "${0##*/}" && ls
-	[ "$RV" = 224 ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in folder %s; %s exiting...\\e[0m\\n" "$PWD" "$PWD" "${0##*/} build.one.bash"
-	[ "$RV" != 224 ] &&  _CLEANUP_
+	[[ $(awk 'NR==1' "$RDR/.conf/QUIET") == false ]] && [ "$RV" != 0 ] && [ "$RV" != 224 ] && printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs signal %s received by %s in %s by build.one.bash.  More information in \`%s/var/log/stnderr.%s.log\` file.\\n\\n" "$RV" "${0##*/}" "$PWD" "$RDR" "$JID" && (printf "%s\\e[0m\\n" "Running: VAR=\"\$(grep -C 2 -ie error -ie errors \"$RDR/var/log/stnderr.$JID.log\")\" && VAR=\"\$(grep -v \\-\\- <<< \$VAR)\" && head <<< \$VAR && tail <<< \$VAR ") && VAR="$(grep -C 2 -ie error -ie errors "$RDR/var/log/stnderr.$JID.log")" && VAR="$(grep -v \\-\\- <<< $VAR)" && head <<< $VAR && tail <<< $VAR && printf "\\n\\n" 
+	[[ $(awk 'NR==1' "$RDR/.conf/QUIET") == false ]] && [ "$RV" = 223 ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 223 generated in %s; Try running %s again; This error can be resolved by running %s in a directory that has an \`AndroidManifest.xml\` file.  More information in \`stnderr*.log\` files.\\n\\nRunning \`ls\`:\\e[0m\\n" "$PWD" "${0##*/}" "${0##*/}" && ls
+	[[ $(awk 'NR==1' "$RDR/.conf/QUIET") == false ]] && [ "$RV" = 224 ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in folder %s; %s exiting...\\e[0m\\n" "$PWD" "$PWD" "${0##*/} build.one.bash"
+ 	_CLEANUP_
 	printf "\\e[?25h\\e[0m"
 	set +Eeuo pipefail 
 	exit 0
 }
 
 _SBOTRPSIGNAL_() { # run on signal
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received by build.one.bash!\\e[0m\\n" "${0##*/}" "$?" 
+	local RV="$?"
+	printf "buildAPKs %s WARNING:  SIGNAL %s received by build.one.bash!\n" "${0##*/}" "$RV" 
+ 	_CLEANUP_
  	exit 161 
 }
 
 _SBOTRPQUIT_() { # run on quit
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received by build.one.bash!\\e[0m\\n" "${0##*/}" "$?"
+	local RV="$?"
+	printf "buildAPKs %s WARNING:  QUIT SIGNAL %s received by build.one.bash!\n" "${0##*/}" "$RV"
  	_CLEANUP_
  	exit 162 
 }
@@ -42,33 +45,35 @@ trap _SBOTRPSIGNAL_ HUP INT TERM
 trap _SBOTRPQUIT_ QUIT 
 
 _CLEANUP_ () {
-	sleep 0.032 # add device latency support 
+	sleep 0."$(shuf -i 24-72 -n 1)" # add device latency support 
 	printf "\\e[1;38;5;151m%s\\n\\e[0m" "Completing tasks..."
 	rm -f *-debug.key 
  	rm -rf ./bin ./gen ./obj 
+	[ -d ./assets ] && rmdir --ignore-fail-on-non-empty ./assets
+	[ -d ./res ] && rmdir --ignore-fail-on-non-empty ./res
 	find . -name R.java -exec rm -f { } \;
-	printf "\\e[1;38;5;151mCompleted tasks in %s\\n\\n\\e[0m" "$PWD"
+	printf "\\e[1;38;5;151mCompleted tasks in ~/%s/.\\n\\n\\e[0m" "$(cut -d"/" -f7-99 <<< $PWD)"
 }
 # if root directory is undefined, define the root directory as ~/buildAPKs 
 [ -z "${RDR:-}" ] && RDR="$HOME/buildAPKs"
 . "$RDR"/scripts/bash/shlibs/buildAPKs/copy.apk.bash
-# if working directory is $HOME or buildAPKs exit 
+# if working directory is $HOME or buildAPKs, exit 
 [ "$PWD" = "$HOME" ] || [ "${PWD##*/}" = buildAPKs ] && exit 224
-printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in %s\\n\\e[0m" "$PWD"
-# if variables are undefined, then define these variables
+printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in ~/%s/:\\n\\e[0m" "$(cut -d"/" -f7-99 <<< $PWD)"
+# if variables are undefined, define variables
 [ -z "${DAY:-}" ] && DAY="$(date +%Y%m%d)"
 [ -z "${2:-}" ] && JDR="$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html 
 [ -z "${NUM:-}" ] && NUM=""
-# if it does not exist, then create it 
+# if it does not exist, create it 
 [ ! -e "./assets" ] && mkdir -p ./assets
 [ ! -e "./bin" ] && mkdir -p ./bin
 [ ! -e "./gen" ] && mkdir -p ./gen
 [ ! -e "./obj" ] && mkdir -p ./obj
 [ ! -e "./res" ] && mkdir -p ./res
-LIBAU="$(awk 'NR==1' "$RDR/.conf/LIBAUTH")" # load true/false from $RDR/.conf/LIBAUTH file, see the LIBAUTH file for more information to enable loading of artifacts and libraries into the build process. 
+LIBAU="$(awk 'NR==1' "$RDR/.conf/LIBAUTH")" # load true/false from .conf/LIBAUTH file.  File LIBAUTH has information about loading artifacts and libraries into the build process. 
 if [[ "$LIBAU" == true ]]
-then # load artifacts and libraries into the build process.
+then # load artifacts and libraries into the build process
 	printf "\\e[1;34m%s" "Loading artifacts and libraries into the compilation:  "
 	BOOTCLASSPATH=""
 	SYSJCLASSPATH=""
@@ -146,11 +151,14 @@ aapt package -f \
 	-S res \
 	-A assets \
 	-F bin/"$PKGNAM".apk 
-printf "\\e[1;38;5;113m%s\\e[1;38;5;107m\\n" "Adding classes.dex to $PKGNAM.apk..."
+[[ $(head -n 1 "$RDR/.conf/DOSO") = 1 ]] && printf "%s\\n" "To build and include \`*.so\` files in the APK build change the 1 in file ~/${RDR##*/}/.conf/DOSO to a 0."
+[[ $(head -n 1 "$RDR/.conf/DOSO") = 0 ]] && (. "$RDR"/scripts/bash/shlibs/buildAPKs/doso.bash || printf "%s\\n" "Signal generated doso.bash ${0##*/} build.one.bash. ")
 cd bin 
-aapt add -f "$PKGNAM.apk" classes.dex 
+[[ ! -d lib ]] && mkdir -p lib 
+printf "\\e[1;38;5;113m%s\\e[1;38;5;107m\\n" "Adding classes.dex $(find lib -type f -name "*.so") to $PKGNAM.apk..."
+aapt add -v -f "$PKGNAM.apk" classes.dex $(find lib -type f -name "*.so") 
 printf "\\e[1;38;5;114m%s\\e[1;38;5;108m\\n" "Signing $PKGNAM.apk..."
-apksigner ../"$PKGNAM-debug.key" "$PKGNAM.apk" ../"$PKGNAM.apk"
+apksigner sign --cert "$RDR/opt/key/certificate.pem" --key "$RDR/opt/key/key.pk8" "$PKGNAM.apk" 
 cd ..
 _COPYAPK_ || printf "%s\\n" "Unable to copy APK file ${0##*/} build.one.bash; Continuing..." 
 printf "\\e[?25h\\e[1;7;38;5;34mShare %s everwhere%s!\\e[0m\\n" "https://wiki.termux.com/wiki/Development" "🌎🌍🌏🌐"
