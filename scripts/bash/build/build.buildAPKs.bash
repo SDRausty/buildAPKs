@@ -1,51 +1,24 @@
 #!/usr/bin/env bash
-# Copyright 2017-2020 (c) all rights reserved 
-# by BuildAPKs https://BuildAPKs.github.io
-#####################################################################
+# Copyright 2019-2020 (c) all rights reserved by SDRausty; see LICENSE
+# https://sdrausty.github.io published courtesy https://pages.github.com
+################################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
-
-_SETRPERROR_() { # Run on script error.
-	local RV="$?"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s ERROR:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
-	exit 201
-}
-
-_SETRPEXIT_() { # Run on exi
-	printf "\\e[?25h\\e[0m"
-	set +Eeuo pipefail 
-	exit
-}
-
-_SETRPSIGNAL_() { # Run on signal.
-	local RV="$?"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
- 	exit 211 
-}
-
-_SETRPQUIT_() { # Run on quit.
-	local RV="$?"
-	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs %s WARNING:  Quit signal %s received!\\e[0m\\n" "${0##*/}" "$RV"
- 	exit 221 
-}
-
-trap '_SETRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
-trap _SETRPEXIT_ EXIT
-trap _SETRPSIGNAL_ HUP INT TERM 
-trap _SETRPQUIT_ QUIT 
-
+declare -a LIST # declare array for build scripts 
+export RDR="$HOME/buildAPKs"
+. "$RDR/scripts/bash/shlibs/trap.bash" 67 68 69 "${0##*/} build.buildAPKs.bash"
 export NUM="$(date +%s)"
 export RDR="$HOME/buildAPKs"
 export SDR="/scripts/bash/build"
-export OAUT="$(cat "$RDR/.conf/GAUTH" | awk 'NR==1')" # load login:token key from .conf/GAUTH file; This file has information about enabling OAUTH authentication.
-declare -a LIST # declare array for all build scripts 
-LIST=("$RDR$SDR/build.apps.bash" "$RDR$SDR/build.clocks.bash" "$RDR$SDR/build.compasses.bash" "$RDR$SDR/build.developers.tools.bash" "$RDR$SDR/build.entertainment.bash" "$RDR$SDR/build.flashlights.bash" "$RDR$SDR/build.games.bash" "$RDR$SDR/build.live.wallpapers.bash" "$RDR$SDR/build.samples.bash" "$RDR$SDR/buildApplications.bash" "$RDR$SDR/buildBrowsers.bash" "$RDR$SDR/buildFlashlights.bash" "$RDR$SDR/buildGames.bash" "$RDR$SDR/buildSamples.bash" "$RDR$SDR/buildTop10.bash" "$RDR$SDR/buildTutorials.bash" "$RDR$SDR/buildWidgets.bash") 
-. "$RDR"/scripts/bash/shlibs/lock.bash wake.start 
-. "$RDR"/scripts/bash/shlibs/buildAPKs/bnchn.bash bch.st 
+export OAUT="$(cat "$RDR/.conf/GAUTH" | awk 'NR==1')" # load login:token key from file.  File RDR/.conf/GAUTH has more information about enabling OAUTH authentication.
+. "$RDR/scripts/bash/shlibs/lock.bash" wake.start 
+. "$RDR/scripts/bash/shlibs/buildAPKs/bnchn.bash" bch.st 
+. "$RDR/scripts/bash/shlibs/buildAPKs/init/build.buildAPKs.modules.bash"
+LIST=($(find "$RDR/scripts/bash/build/" -type f -name "*.bash" -not -name "build.buildAPKs.bash" -not -name "build.in.dir.bash" -not -name "buildAll.bash"))
 for NAME in "${LIST[@]}"
 do
 	"$NAME"
 done
-. "$RDR"/scripts/bash/shlibs/lock.bash wake.stop 
-. "$RDR"/scripts/bash/shlibs/buildAPKs/bnchn.bash bch.gt 
+. "$RDR/scripts/bash/shlibs/lock.bash" wake.stop 
+. "$RDR/scripts/bash/shlibs/buildAPKs/bnchn.bash" bch.gt 
 # build.buildAPKs.bash EOF
