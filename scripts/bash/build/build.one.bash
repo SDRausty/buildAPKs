@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Copyright 2019-2020 (c) all rights reserved by SDRausty; see LICENSE
-# https://sdrausty.github.io published courtesy https://pages.github.com
-# Adapted from https://github.com/fx-adi-lima/android-tutorials
+# Copyright 2017-2020 (c) all rights reserved by BuildAPKs
+# See LICENSE for details https://buildapks.github.io/docsBuildAPKs/
 #####################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
 [ -z "${RDR:-}" ] && RDR="$HOME/buildAPKs"
-[ "$PWD" = "$HOME" ] || [ "$PWD" = "$RDR" ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in folder %s; %s exiting...\\e[0m\\n" "$PWD" "$PWD" "${0##*/} build.one.bash" && exit 224
+[ "$PWD" = "$PREFIX" ] || [ "$PWD" = "$HOME" ] || [ "$PWD" = "$RDR" ] && printf "\\e[?25h\\e[1;7;38;5;0mSignal 224 generated in %s;  Cannot run in folder %s; %s exiting...\\e[0m\\n" "$PWD" "$PWD" "${0##*/} build.in.dir.bash" && exit 224
 
 _SBOTRPERROR_() { # run on script error
 	local RV="$?"
@@ -66,12 +65,13 @@ printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in ~/%s/:\\n\\e[0m" "$(cut -d"/"
 [ -z "${2:-}" ] && JDR="$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html 
 [ -z "${NUM:-}" ] && NUM=""
+tree || ls -R
 # if it does not exist, create it 
-[ ! -e "./assets" ] && mkdir -p ./assets
-[ ! -e "./bin" ] && mkdir -p ./bin
-[ ! -e "./gen" ] && mkdir -p ./gen
-[ ! -e "./obj" ] && mkdir -p ./obj
-[ ! -e "./res" ] && mkdir -p ./res
+[ ! -e ./assets ] && mkdir -p ./assets
+[ ! -e ./bin/lib ] && mkdir -p ./bin/lib 
+[ ! -e ./gen ] && mkdir -p ./gen
+[ ! -e ./obj ] && mkdir -p ./obj
+[ ! -e ./res ] && mkdir -p ./res
 LIBAU="$(awk 'NR==1' "$RDR/.conf/LIBAUTH")" # load true/false from .conf/LIBAUTH file.  File LIBAUTH has information about loading artifacts and libraries into the build process. 
 if [[ "$LIBAU" == true ]]
 then # load artifacts and libraries into the build process
@@ -156,9 +156,9 @@ aapt package -f \
 	-A assets \
 	-F bin/"$PKGNAME".apk 
 cd bin 
-[[ $(head -n 1 "$RDR/.conf/DOSO") = 1 ]] && printf "%s\\n" "To build and include \`*.so\` files in the APK build change the 1 in file ~/${RDR##*/}/.conf/DOSO to a 0."
-[[ $(head -n 1 "$RDR/.conf/DOSO") = 0 ]] && (. "$RDR"/scripts/bash/shlibs/buildAPKs/doso.bash || printf "\\e[1;48;5;166m%s\\e[0m\\n" "Signal generated doso.bash ${0##*/} build.one.bash. ")
-[[ ! -d lib ]] && mkdir -p lib 
+ISDOSO="$(head -n 1 "$RDR/.conf/DOSO")"
+[[ $ISDOSO = 0 ]] && (. "$RDR"/scripts/bash/shlibs/buildAPKs/doso.bash || printf "\\e[1;48;5;166m%s\\e[0m\\n" "Signal generated doso.bash ${0##*/} build.one.bash. ")
+[[ $ISDOSO = 1 ]] && printf "%s\\n" "To build and include \`*.so\` files in the APK build change the 1 in file ~/${RDR##*/}/.conf/DOSO to a 0.  The command \`build.native.bash\` builds native APKs on device."
 printf "\\e[1;38;5;113m%s\\e[1;38;5;107m\\n" "Adding classes.dex $(find lib -type f -name "*.so") to $PKGNAME.apk..."
 aapt add -v -f "$PKGNAME.apk" classes.dex $(find lib -type f -name "*.so") 
 printf "\\e[1;38;5;114m%s" "Signing $PKGNAME.apk: "

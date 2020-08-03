@@ -14,7 +14,8 @@ _SUPTRPERROR_() { # Run on script error.
 _SUPTRPEXIT_() { # Run on exit.
 	local RV="$?"
 	sleep 0.0$(shuf -i 24-72 -n 1) # add device latency support 
-	if [[ "$RV" = 0 ]] ; then
+	if [[ "$RV" = 0 ]] 
+	then
 		printf "\\e[1;7;38;5;155m%s %s \\e[0m\\e[1;34m: \\e[1;32m%s\\e[0m\\n\\n\\e[0m" "${0##*/}" "$ARGS" "DONE 🏁 "
 		printf "\\e]2; %s: %s \\007" "${0##*/} $ARGS" "DONE 🏁 "
 	else
@@ -61,7 +62,7 @@ declare RDR
 export RDR="$HOME/buildAPKs"
 STRING1="COMMAND \`au\` enables rollback, available at https://wae.github.io/au/ IS NOT FOUND: Continuing... "
 STRING2="Cannot update ~/${RDR##*/} prerequisite: Continuing..."
-PKGS=(aapt apksigner curl dx ecj git)
+PKGS=(aapt apksigner curl dx ecj git tree)
 if [[ -z "${1:-}" ]]
 then
 	ARGS=""
