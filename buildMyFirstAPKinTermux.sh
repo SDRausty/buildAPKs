@@ -1,1 +1,1 @@
-scripts/build/buildMyFirstAPKinTermux.sh
+scripts/bash/build/build.entertainment.bash
