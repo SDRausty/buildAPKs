@@ -1,5 +1,5 @@
-#!/usr/bin/env bash 
-# Copyright 2017-2020 (c) all rights reserved by SDRausty 
+#!/usr/bin/env bash
+# Copyright 2017-2021 (c) all rights reserved by BuildAPKs
 # See LICENSE for details https://buildapks.github.io/docsBuildAPKs/
 #####################################################################
 set -Eeuo pipefail
@@ -13,8 +13,8 @@ _SUPTRPERROR_() { # Run on script error.
 
 _SUPTRPEXIT_() { # Run on exit.
 	local RV="$?"
-	sleep 0.0$(shuf -i 24-72 -n 1) # add device latency support 
-	if [[ "$RV" = 0 ]] 
+	sleep 0.0$(shuf -i 24-72 -n 1) # add device latency support
+	if [[ "$RV" = 0 ]]
 	then
 		printf "\\e[1;7;38;5;155m%s %s \\e[0m\\e[1;34m: \\e[1;32m%s\\e[0m\\n\\n\\e[0m" "${0##*/}" "$ARGS" "DONE 🏁 "
 		printf "\\e]2; %s: %s \\007" "${0##*/} $ARGS" "DONE 🏁 "
@@ -23,33 +23,39 @@ _SUPTRPEXIT_() { # Run on exit.
 		printf "\\033]2; %s: %s %s \\007" "${0##*/} $ARGS" "[Exit Signal $RV]" "DONE 🏁 "
 	fi
 	printf "\\e[?25h\\e[0m"
-	set +Eeuo pipefail 
+	set +Eeuo pipefail
 	exit
 }
 
 _SUPTRPSIGNAL_() { # Run on signal.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.bash WARNING:  Signal %s received!\\e[0m\\n" "$RV"
- 	exit 211 
+ 	exit 211
 }
 
 _SUPTRPQUIT_() { # Run on quit.
 	local RV="$?"
 	printf "\\e[?25h\\e[1;7;38;5;0mbuildAPKs setupBuildAPKs.bash WARNING:  Quit signal %s received!\\e[0m\\n" "$RV"
- 	exit 221 
+ 	exit 221
 }
 
-trap '_SUPTRPERROR_ $LINENO $BASH_COMMAND $?' ERR 
+trap '_SUPTRPERROR_ $LINENO $BASH_COMMAND $?' ERR
 trap _SUPTRPEXIT_ EXIT
-trap _SUPTRPSIGNAL_ HUP INT TERM 
-trap _SUPTRPQUIT_ QUIT 
+trap _SUPTRPSIGNAL_ HUP INT TERM
+trap _SUPTRPQUIT_ QUIT
 
 _INPKGS_() {
-	if [[ "$COMMANDIF" = au ]] 
-	then 
+	if [[ "$COMMANDIF" = au ]]
+	then
 		au "${PKGS[@]}" || printf "\\e[1;38;5;117m%s\\e[0m\\n" "$STRING2"
 	else
-		apt install "${PKGS[@]}" || printf "\\e[1;37;5;116m%s\\e[0m\\n" "$STRING2"
+	if [[ -z "${COMMANDAPTUP:-}" ]]
+	then
+		COMMANDAPTUP=0
+		( apt update && apt upgrade -y && apt install -y "${PKGS[@]}" ) || printf "\\e[1;37;5;116m%s\\e[0m\\n" "$STRING2"
+	else
+ 		apt install -y "${PKGS[@]}" || printf "\\e[1;37;5;116m%s\\e[0m\\n" "$STRING2"
+	fi
 	fi
 }
 
@@ -62,26 +68,48 @@ declare RDR
 export RDR="$HOME/buildAPKs"
 STRING1="COMMAND \`au\` enables rollback, available at https://wae.github.io/au/ IS NOT FOUND: Continuing... "
 STRING2="Cannot update ~/${RDR##*/} prerequisite: Continuing..."
-PKGS=(aapt apksigner curl dx ecj git tree)
+PKGS=(aapt apksigner curl dx ecj git)
 if [[ -z "${1:-}" ]]
 then
 	ARGS=""
 fi
 printf "\\e[1;38;5;115m%s\\e[0m\\n" "Beginning buildAPKs setup:"
-COMMANDR="$(command -v au)" || (printf "%s\\n\\n" "$STRING1") 
+COMMANDR="$(command -v au)" || (printf "%s\\n\\n" "$STRING1")
 COMMANDIF="${COMMANDR##*/}"
 for PKG in "${PKGS[@]}"
 do
 	COMMANDP="$(command -v "$PKG")" || printf "Command %s not found: Continuing...\\n" "$PKG" # test if command exists
 	COMMANDPF="${COMMANDP##*/}"
-	if [[ "$COMMANDPF" != "$PKG" ]] 
-	then 
+	if [[ "$COMMANDPF" != "$PKG" ]]
+	then
 		_INPKGS_
 	fi
 done
 if [[ ! -d "$RDR" ]]
 then
-	cd && git clone --depth 1 git://github.com/SDRausty/buildAPKs --branch master --single-branch || printf "\\e[1;38;5;117m%s\\e[0m\\n" "$STRING2"
+	cd && git clone --depth 1 https://github.com/SDRausty/buildAPKs --branch master --single-branch || printf "\\e[1;38;5;117m%s\\e[0m\\n" "$STRING2"
+fi
+if [[ -z "${PREFIX:-}" ]]
+then
+if [ ! -e "/etc/profile.d/buildAPKs.sh" ]
+then
+	cat > "/etc/profile.d/buildAPKs.sh" <<- EOM
+	if [ -d "$HOME/buildAPKs/bin/" ]
+	then
+	PATH="\$PATH:\$HOME/buildAPKs/bin/"
+	fi
+	EOM
+fi
+else
+if [ ! -e "$PREFIX/etc/profile.d/buildAPKs.sh" ]
+then
+	cat > "$PREFIX/etc/profile.d/buildAPKs.sh" <<- EOM
+	if [ -d "$HOME/buildAPKs/bin/" ]
+	then
+	PATH="\$PATH:\$HOME/buildAPKs/bin/"
+	fi
+	EOM
+fi
 fi
 export JAD=github.com/BuildAPKs/buildAPKs.entertainment	# job address
 export JID=entertainment	# job id/name

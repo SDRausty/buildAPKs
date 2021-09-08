@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Copyright 2019-2020 (c) all rights reserved by SDRausty; see LICENSE
-# https://sdrausty.github.io published courtesy https://pages.github.com
+# Copyright 2019-2021 (c) all rights reserved by BuildAPKs; see LICENSE
+# https://buildapks.github.io published courtesy https://pages.github.com
 ################################################################################
 set -Eeuo pipefail
 shopt -s nullglob globstar
