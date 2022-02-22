@@ -68,7 +68,7 @@ _PRINTSGE_ () {
 printf "\\e[0m\\n\\e[1;38;5;116mBeginning build in ~/%s/:\\n\\e[0m" "$(cut -d"/" -f7-99 <<< "$PWD")"
 # if variables are undefined, define variables
 find . -maxdepth 1 -type f -name "*.apk" -delete
-find . -type f -print | sed 's@.*/@@' | sort
+tree 2>/dev/null || find . -type f -print | sed 's@.*/@@' | sort
 [ -z "${DAY:-}" ] && DAY="$(date +%Y%m%d)"
 [ -z "${2:-}" ] && JDR="$PWD"
 [ -z "${JID:-}" ] && JID="${PWD##*/}" # https://www.tldp.org/LDP/abs/html/parameter-substitution.html
@@ -126,7 +126,7 @@ NOW=$(date +%s)
 PKGNAM="$(grep -o "package=.*" AndroidManifest.xml | cut -d\" -f2)"
 [ -f ./output/"$PKGNAM.apk"  ] && rm ./output/"$PKGNAM.apk"
 PKGNAME="$PKGNAM.$NOW"
-COMMANDIF="$(command -v getprop)" ||:
+COMMANDIF="$(command -v getprop)" || _PRINTSGE_ COMMANDIF
 if [[ "$COMMANDIF" = "" ]]
 then
 	MSDKVERSION="14"
@@ -162,13 +162,13 @@ then
 else
 	printf "%s\\n" "To build and include \`*.so\` files in the APK build change the 1 in file ~/${RDR##*/}/.conf/DOSO to a 0.  The command \`build.native.bash\` builds native APKs on device and will do this when run."
 fi
-printf "\\e[1;38;5;113m%s\\e[1;38;5;107m\\n" "Adding classes.dex $(find lib -type f -name "*.so") to $PKGNAME.apk..."
-aapt add -v -f "$PKGNAME.apk" classes.dex $(find lib -type f -name "*.so")
+SOFILES="$(find lib -type f -name "*.so")"
+printf "\\e[1;38;5;113m%s\\e[1;38;5;107m\\n" "Adding classes.dex $SOFILES to $PKGNAME.apk..."
+aapt add -v -f "$PKGNAME.apk" classes.dex $SOFILES
+mv "$PKGNAME.apk" "$PKGNAME.0.apk"
 printf "\\e[1;38;5;114m%s" "Signing $PKGNAME.apk: "
-apksigner sign --cert "$RDR/opt/key/certificate.pem" --key "$RDR/opt/key/key.pk8" "$PKGNAME.apk"
+"$RDR/scripts/sh/shlibs/signapk" sign --cert "$RDR/opt/key/cert.x509.pem" --key "$RDR/opt/key/key.pk8" --out "$PKGNAME.apk" "$PKGNAME.0.apk"
 printf "%s\\e[1;38;5;108m\\n" "DONE"
-printf "\\e[1;38;5;114m%s\\e[1;38;5;108m\\n" "Verifying $PKGNAME.apk..."
-apksigner verify --verbose "$PKGNAME.apk"
 _COPYAPK_ || printf "%s\\n" "Unable to copy APK file ${0##*/} build.one.bash; Continuing..."
 mv "$PKGNAME.apk" ../"$PKGNAM.apk"
 cd ..
