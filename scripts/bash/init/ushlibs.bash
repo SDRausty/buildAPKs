@@ -34,14 +34,6 @@ _UFSHLIBS_() { # add and update submodules
 		rm -f scripts/$MLOC/.git
 		if [ -f "$RDR"/.gitmodules ]
 		then
-		echo echo
-		echo echo
-		echo echo
-		echo echo
-			echo grep "$MLOC" "$RDR"/.gitmodules
-			echo grep "$MLOC" "$RDR"/.gitmodules
-			echo grep "$MLOC" "$RDR"/.gitmodules
-			echo grep "$MLOC" "$RDR"/.gitmodules
 			{ grep "$MLOC" "$RDR"/.gitmodules && _UPDATEMODULE_ ; } || _ADDMODULE_
 		else
 			_ADDMODULE_
