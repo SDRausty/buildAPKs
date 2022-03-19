@@ -5,9 +5,7 @@
 ##### -r--r--r-- [setup.buildAPKs.bash](https://raw.githubusercontent.com/SDRausty/buildAPKs/master/setup.buildAPKs.bash)
 ##### -rwxrwxrwx [setup.buildAPKs.bash](https://buildAPKs.github.io/buildAPKs/setup.buildAPKs.bash) 
 
-[![Join the chat at https://gitter.im/builtAPKs/community](https://badges.gitter.i
-m/builtAPKs/community.svg)](https://gitter.im/builtAPKs/community?utm_source=badge
-&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/builtAPKs/community](https://badges.gitter.im/builtAPKs/community.svg)](https://gitter.im/builtAPKs/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 BuildAPKs has [source code](https://github.com/BuildAPKs) and [scripts](https://github.com/SDRausty/buildAPKs/tree/master/scripts/) in order to build APKs (Android Package Kits) on Android handhelds, and similar.  Quick setup instructions can be [found here](https://buildapks.github.io/docsBuildAPKs/setup) and [also right here.](https://buildapks.github.io/docsBuildAPKs/reallyEasilyBuildAndroidAPKsOnDevice)  To skip to installing in Amazon, Android, [Arch Linux](https://termuxarch.github.io/TermuxArch/), [Debian](https://termuxarch.github.io/docsTermuxArch/PRoot), Chromebook, [Ubuntu](https://termuxarch.github.io/docsTermuxArch/PRoot) and Windows on device in [Termux](https://github.com/termux) you can use:
 ```
